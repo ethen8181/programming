@@ -1,0 +1,16 @@
+personID,skills
+1,cricket;tabletennis;football
+2,tabletennis;badminton
+3,tabletennis
+4,cricket;tabletennis;volleyball
+5,football;volleyball
+6,tabletennis;football
+7,cricket;volleyball;badminton
+8,football;cricket
+9,badminton;tabletennis;volleyball
+10,cricket;volleyball
+11,football;badminton
+12,cricket;volleyball;football
+13,football;volleyball
+14,badminton
+15,cricket;football;tabletennis

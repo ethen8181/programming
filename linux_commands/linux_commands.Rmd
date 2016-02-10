@@ -1,0 +1,158 @@
+---
+title: "Linux Commands"
+author: "Ming-Yu Liu"
+date: "January 9, 2016"
+output: 
+  html_document: 
+    highlight: haddock
+    number_sections: yes
+    theme: flatly
+    toc: yes
+---
+
+# Navigation
+
+```
+pwd
+```
+
+Print working directory, knowing where you are.
+
+```
+ls 
+ls -l
+ls -l /Users/ethen/Desktop/
+ls -a
+```
+
+`ls [option] [option]`. List, know what is there. The square brackets mean that those items are optional.   
+
+- `ls` list the content fo the current directory.  
+- `ls -l` gives a long format. 
+    - The first character indicates whether it is a normal file ( - ) or directory ( d ).
+    - The third field is the owner of the file or directory.
+    - The next field is the group the file or directory belongs to (users in this case).
+    - Following this is the file size.
+    - Next up is the file modification time.
+    - Finally we have the actual name of the file or directory.
+- `ls -l /Users/ethen/Desktop/` Tells `ls` not to list our current directory but instead to list that directories contents.
+- `ls -a` List hidden files. Configuration files are hidden so they won't bother us on our routine work. It starts with a `.`.
+
+```
+cd /Users/ethen/Desktop/
+```
+
+`cd [location]`. Change directory, i.e. change to another directory. For location and all the other path related commands, there are two types of path, relative and absolute. Absolute path is to specify a location ( file or directory ) in relation to the root directory, they always begins with a backslash `/`. Relative path stands for specify a location (file or directory) in relation to where we currently are in the system.
+
+- ~ (tilde). This is a shortcut for your home directory. `cd ~/Desktop/` and `cd /Users/ethen/Desktop/` are equivalent to each other.
+- . (dot). This is a reference to your current directory.
+- .. (dotdot). This is a reference to the parent directory.
+For file names that have white spaces in between characters, add a escape character `\` symbol.
+
+**Tips :** 
+
+- `Up key` can print out things you've typed in the history.
+- `Tab` Auto completion, it's useful since typing out paths can become tedious.
+
+```
+man -ls
+```
+
+`man [command to look up]`. Manual page of the command. Press `q` to quit.
+
+# File Manipulation
+
+```
+mkdir test
+mkdir -p test/test1
+```
+
+`mkdir [options] <Directory>`. Make a directory. Option is for adding other paths.
+
+- `mkdir -p` Tells mkdir to make parent directories if needed. So `mkdir -p test/test1` is to create a test directory in the current directory if it does not exist and create another test1 directory nested within test1.
+
+```
+rmdir test/test1
+```
+
+`rmdir [options] <Directory>`. For this command, the directory must be empty before it may be removed. So now the test directory will be empty. Be careful with the remove command line, since it can not be undone. Once you've removed it, it's a gonner.
+
+```
+cd test
+mkdir foo
+touch example1
+```
+
+`touch [options] <filename>` Create a blank file named example1. 
+
+```
+cp example1 barney
+cp -r foo foo1
+```
+
+`cp [options] <source> <destination>`. Copy a file or directory. Copies the example1 file and name it barney. Note that both source and destination can be paths. When using `cp`, the destination can be a path to either a file or directory.
+
+- In it's default behaviour `cp` will only copy a file. Using the `-r` option, which stands for recursive, we may copy directories. Any files and directories sitting within the directory foo will also be copied to foo1.
+
+```
+mkdir backups
+mv foo1 backups/foo2
+mv barney backups/
+```
+
+`mv [options] <source> <destination>`. Moving the file. The line above means that :
+
+- We created a new directory called backups.
+- We moved the directory foo1 into the directory backups and renamed it as foo2.
+- We moved the file barney into backups. As we did not provide a destination name, it kept the same name.
+
+The example above shows that `mv` can be used to change names of a file. Now if we specify the destination to be the same directory as the source, but with a different name, then we have effectively used `mv` to rename a file or directory.
+
+```
+rm example1
+rm -r backups
+```
+`rm [options] <file>`. Remove a file. 
+
+- One particularly useful option which is `-r`, same which `cp` is stands for recursive. When you run `rm -r` it will remove the directories and all files and directories contained within.
+
+# WildCards
+
+Wildcards are a set of building blocks that allow you to create a pattern defining a set of files or directories. The basic set :
+
+- `*` Represents zero or more characters.
+- `?` Represents a single character.
+- `[]` Represents a range of characters.
+
+```
+touch barry.txt
+touch blah.txt
+ls b*
+ls *.txt
+```
+
+The command line create two .txt file name barry and blah.
+
+- `ls b*` is listing every file beginning with a b.
+- `ls *.txt` is listing every .txt type file , regardless of their file name.
+
+```
+ls *.???
+```
+
+List every file with a three letter file type.
+
+```
+ls [fb]*
+ls [^f]*
+```
+
+The range operator allows you to limit to a subset of characters. So 
+
+- `ls [fb]*` here will look for every file whose name either begins with a f or b. 
+- A `^` caret symbol in the front indicates do not match. `ls [^f]*` matches any file that does not begin with a f.
+
+# Reference 
+
+1. Linux Tutorial : http://ryanstutorials.net/linuxtutorial/navigation.php
+
