@@ -1,4 +1,3 @@
-
 import numpy as np
 
 # naming convention : add an underscore (_) to attributes
@@ -66,11 +65,6 @@ class AdaGrad(object) :
 	def net_input( self, x ) :		
 		# linear activation function 
 		return np.dot( x, self.w_[1:] ) + self.w_[0]
-
-	def predict( self, x ) :
-		# if output of the activation function is
-		# larger than threshold (0) return 1 or else -1 
-		return np.where( self.net_input(x) >= 0.0, 1, -1 )
 
 
 class AdaSGD(object) :
@@ -141,9 +135,4 @@ class AdaSGD(object) :
 	def net_input( self, x ) :		
 		# linear activation function 
 		return np.dot( x, self.w_[1:] ) + self.w_[0]
-
-	def predict( self, x ) :
-		# if output of the activation function is
-		# larger than threshold (0) return 1 or else -1 
-		return np.where( self.net_input(x) >= 0.0, 1, -1 )
 
