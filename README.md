@@ -15,43 +15,33 @@ This is one of the continuously updated repositories that documents personal dat
 
 Walking through the [python machine learning book](https://github.com/rasbt/python-machine-learning-book).
 
-**Chapter 2:** 
-
-Training Machine Learning Algorithms for Classification.
+**Chapter 2 : Training Machine Learning Algorithms for Classification** 
 
 - Coding up perceptron, batch / stochastic gradient descent.
-- View [[ipynb](https://github.com/ethen8181/programming/blob/master/python_machine_learning/chapter2/chapter2.ipynb)]
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter2/chapter2.ipynb)]
 
-**Chapter 3:** 
-
-A Tour of Machine Learning Classifiers Using Scikit-Learn.
+**Chapter 3 : A Tour of Machine Learning Classifiers Using Scikit-Learn** 
 
 - Using some of Scikit-Learn’s classification algorithm, including logistic regression, svm, decision tree, knn.
-- View [[ipynb](https://github.com/ethen8181/programming/blob/master/python_machine_learning/chapter3/chapter3.ipynb)]
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter3/chapter3.ipynb)]
 
-**Chapter 4:** 
-
-Building Good Training Sets – Data Pre-Processing.
+**Chapter 4 : Building Good Training Sets – Data Pre-Processing** 
 
 - Preprocessing. Filling in missing values and LabelCoding categorical variable.
 - Coding up sequential backward selection.
 - Accessing randomforest variable importance.
-- View [[ipynb](https://github.com/ethen8181/programming/blob/master/python_machine_learning/chapter4/chapter4.ipynb)]
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter4/chapter4.ipynb)]
 
-**Chapter 5:** (TODO : lda, kernel)
-
-Compressing Data via Dimensionality Reduction.
+**Chapter 5: Compressing Data via Dimensionality Reduction** ( TODO : lda, kernel )
 
 - Principal Component Analysis. Matching implementation from scratch and Scikit-Learn.
-- View [[ipynb](https://github.com/ethen8181/programming/blob/master/python_machine_learning/chapter5/chapter5.ipynb)]
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter5/chapter5.ipynb)]
 
-**Chapter 6:** 
+**Chapter 6 : Learning Best Practices for Model Evaluation and Hyperparameter Optimization** 
 
-Learning Best Practices for Model Evaluation and Hyperparameter Optimization.
-
-- Scikit-Learn’s Pipeline, Learning Curve, Validation Curve.
-- K-Fold and Grid Search.
-- View [[ipynb](https://github.com/ethen8181/programming/blob/master/python_machine_learning/chapter6/chapter6.ipynb)]
+- Scikit-Learn’s Pipeline, Learning and Validation Curve.
+- K-Fold, Grid Search and ROC curve.
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter6/chapter6.ipynb)]
 
 
 ## Others 
