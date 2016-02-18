@@ -11,9 +11,9 @@ This is one of the continuously updated repositories that documents personal dat
 | [Business-Analytics](https://github.com/ethen8181/Business-Analytics) | All the other data analytic related stuffs that are not solely about machine-learning. |
 | [database](https://github.com/ethen8181/database) | Database (MySQL). | 
 
-## Documentation Listings
+## Python Machine Learning
 
-Walking through the [python machine learning book](https://github.com/rasbt/python-machine-learning-book).
+Walking through the book [python machine learning](https://github.com/rasbt/python-machine-learning-book).
 
 **Chapter 2 : Training Machine Learning Algorithms for Classification** 
 
@@ -44,6 +44,7 @@ Walking through the [python machine learning book](https://github.com/rasbt/pyth
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter6/chapter6.ipynb)]
 
 
-## Others 
+## Linux Command Lines
 
-- Linux Command Lines. [[R markdown](http://ethen8181.github.io/programming/linux_commands/linux_commands.html)]
+- Basic nagivations. [[R markdown](http://ethen8181.github.io/programming/linux_commands/linux_commands.html)]
+- Customizing terminal. [[Youtube](https://www.youtube.com/watch?v=vDOVEDl2z84)]
