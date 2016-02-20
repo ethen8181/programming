@@ -16,6 +16,7 @@ class SBS(object) :
 		self.test_size 	  = test_size
 		self.random_state = random_state
 
+
 	def fit( self, x, y ) :
 
 		# split the training set further into train / valid 
@@ -48,7 +49,7 @@ class SBS(object) :
 			self.subsets_.append(self.indices_)
 			self.scores_.append(scores[best])
 			dim -= 1
-
+			
 		return self
 
 	def transform( self, x ) :

@@ -14,7 +14,7 @@ class Perceptron(object) :
 		# 2. collect the number of missclassifaction to identify the training progress
 		self.w_ = np.zeros( 1 + x.shape[1] ) 
 		self.errors_ = []
-
+		
 		# train for a fix number of iterations 
 		for _ in range( self.n_iter ) :
 			
@@ -73,13 +73,13 @@ class AdaSGD(object) :
 
 	Parameters 
 	----------
-	@eta : float
+	eta : float
 		learning rate between 0 ~ 1
-	@n_iter : int 
+	n_iter : int 
 		passes over the training data
-	@w_ : 1d-array
+	w_ : 1d-array
 		weights after fitting
-	@shuffle : boolean ( default = True )
+	shuffle : boolean ( default = True )
 		whether to shuffle the training data before each epoch to prevent cycles
 
 	"""
