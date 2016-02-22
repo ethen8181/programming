@@ -5,10 +5,10 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 
 
-class SBS(object) :
+class SBS(object):
 
 	def __init__( self, estimator, k_features, scoring = accuracy_score, 
-				  test_size = 0.25, random_state = 1 ) :
+				  test_size = 0.25, random_state = 1 ):
 
 		self.scoring 	  = scoring
 		self.estimator 	  = clone(estimator) # clone the estimator without copying the dataset
@@ -17,7 +17,7 @@ class SBS(object) :
 		self.random_state = random_state
 
 
-	def fit( self, x, y ) :
+	def fit( self, x, y ):
 
 		# split the training set further into train / valid 
 		x_train, x_test, y_train, y_test = train_test_split( 
@@ -32,12 +32,12 @@ class SBS(object) :
 		score = self.calc_score( x_train, x_test, y_train, y_test, self.indices_ )
 		self.scores_ = [score]
 
-		while dim > self.k_features :
+		while dim > self.k_features:
 
 			scores  = []
 			subsets = []
 
-			for i in combinations( self.indices_, dim - 1 ) :
+			for i in combinations( self.indices_, dim - 1 ):
 				score = self.calc_score( x_train, x_test, y_train, y_test, i )
 				scores.append(score)
 				subsets.append(i)
@@ -52,10 +52,10 @@ class SBS(object) :
 			
 		return self
 
-	def transform( self, x ) :
+	def transform( self, x ):
 		return x[ :, self.indices_ ]
 
-	def calc_score( self, x_train, x_test, y_train, y_test, indices ) :
+	def calc_score( self, x_train, x_test, y_train, y_test, indices ):
 		# fit the model using the chosen indices
 		# and return the prediction acurracy score
 		self.estimator.fit( x_train[ :, indices ], y_train )
