@@ -1,4 +1,5 @@
 # recommendation system
+# http://nbviewer.jupyter.org/github/cs109/content/blob/master/HW4_solutions.ipynb
 
 def recompute_frame(df):
 	"""
@@ -9,8 +10,8 @@ def recompute_frame(df):
 	# recomputing
 	df_u = df.groupby('user_id')
 	df_b = df.groupby('business_id')
-	avg_u, review_count_u = df_u.stars.mean(), df_u.review_id.count()
-	avg_b, review_count_b = df_b.stars.mean(), df_b.review_id.count()
+	avg_u, review_count_u = df_u['stars'].mean(), df_u['review_id'].count()
+	avg_b, review_count_b = df_b['stars'].mean(), df_b['review_id'].count()
 
 	"""
 	# using the merge way 
@@ -50,7 +51,27 @@ import numpy as np
 from operator import itemgetter
 
 class DataBase(object):
-	"""DataBase for the recommendation system"""
+	"""
+	DataBase for the recommendation system
+
+	Common Method Parameters
+	----------
+	These are common parameters that appears in the methods of this class
+	and is documented here so it doesn't pop up in every method's docstring
+
+	restaurant_id : string
+		The id of the restaurant whose nearest neighbors we want
+
+	user_id : string
+		The id of the user, in whose reviewed restaurants we want to find the neighbors
+
+	k : int, default 7
+		the number of nearest neighbors desired
+
+	reg: float, default 3.0
+		the regularization to penalize the similarity score
+
+	"""
 
 	def __init__( self, df ):
 		self.df = df
@@ -83,7 +104,7 @@ class DataBase(object):
 					self.database_sup[i1][i2] = nsup
 					self.database_sup[i2][i1] = nsup
 				elif i1 == i2:
-					nsup = self.df[ self.df.business_id == rest1 ].user_id.count()
+					nsup = self.df[ self.df['business_id'] == rest1 ].user_id.count()
 					self.database_sim[i1][i1] = 1.0
 					self.database_sup[i1][i1] = nsup
 
@@ -98,7 +119,7 @@ class DataBase(object):
 
 	def calculate_similarity( self, rest1, rest2 ):
 		"""
-		Main function that does the computation work
+		Main function that does the computation work,
 		calculate similarity between two restaurants
 
 		Parameters
@@ -108,12 +129,6 @@ class DataBase(object):
 
 		rest2 : string
 			The id of restaurant 2
-
-		similarity_func : function
-			A function which takes two dataframes of individual
-			restaurant reviews made by a common set of reviewers, and the number of
-			common reviews. This function returns the similarity of the two restaurants
-			based on the common reviews
 			
 		Returns
 		--------
@@ -123,8 +138,8 @@ class DataBase(object):
 		"""
 
 		# obtain the number of common (same) reviewers 
-		rest1_reviewers  = self.df[ self.df.business_id == rest1 ].user_id.unique()
-		rest2_reviewers  = self.df[ self.df.business_id == rest2 ].user_id.unique()
+		rest1_reviewers  = self.df[ self.df['business_id'] == rest1 ].user_id.unique()
+		rest2_reviewers  = self.df[ self.df['business_id'] == rest2 ].user_id.unique()
 		common_reviewers = set(rest1_reviewers).intersection(rest2_reviewers)
 		n_common = len(common_reviewers)
 
@@ -146,12 +161,12 @@ class DataBase(object):
 		return the sub-dataframe of their reviews 
 		"""
 
-		condition = ( ( self.df.business_id == restaurant_id ) & 
-					  ( self.df.user_id.isin(set_of_users)   ) )
+		condition = ( ( self.df['business_id'] == restaurant_id ) & 
+					  ( self.df['user_id'].isin(set_of_users)   ) )
 		reviews = self.df[condition]
 
 		# double check for duplicated user id 
-		reviews[ reviews.user_id.duplicated() == False ] 
+		reviews[ reviews['user_id'].duplicated() == False ] 
 		return reviews
 
 	
@@ -191,17 +206,8 @@ class DataBase(object):
 
 		Parameters
 		----------
-		restaurant_id : string
-			The id of the restaurant whose nearest neighbors we want
-		
 		set_of_restaurants : array
 			The set of restaurants from which we want to find the nearest neighbors
-		
-		k : int, default 7
-			the number of nearest neighbors desired
-		
-		reg: float, default 3.0
-			the regularization.	
 		  
 		Returns
 		--------
@@ -210,8 +216,7 @@ class DataBase(object):
 			( business_id, shrunken similarity, common support ).	
 		"""
 		
-		similar = []
-		
+		similar = []		
 		for other_rest_id in set_of_restaurants:
 			if other_rest_id != restaurant_id:
 				sim, n_common = self.get( other_rest_id, restaurant_id )
@@ -232,17 +237,8 @@ class DataBase(object):
 		"""
 		Parameters
 		----------
-		user_id : string
-			The id of the user for whom we want the top recommendations
-
 		n : int, default 5
 			the top n restaurants of the user ( sorted by star rating )
-
-		k : int, default 7
-			the number of nearest neighbors
-
-		reg : float, default 3.0
-			regularization to penalize the similarity score
 		  
 		Returns
 		--------
@@ -296,6 +292,56 @@ class DataBase(object):
 		return user_df
 
 	
+	def rating( self, restaurant_id, user_id, k, reg ):
+		"""
+		returns the predicted rating for a user and an item
+		  
+		Returns
+		--------
+		A float
+			which is the imputed rating that we predict that user_id will make 
+			for the given restaurant_id
+		"""
+
+		# extract the reviews of the user and recalculate the baseline rating 
+		user_reviews = self.df[ self.df['user_id'] == user_id ]
+		mean_all  = self.df['stars'].mean()
+		mean_user = user_reviews['user_avg'].values[0]
+		mean_item = self.df['business_avg'][ self.df['business_id'] == restaurant_id ].values[0]
+		baseline  = mean_user + mean_item - mean_all
+
+		scores_numerator   = []
+		scores_denominator = []
+		nearest = self.knearest_amongst_user_rated( restaurant_id, user_id, k = 7, reg = 3.0 )
+
+		for biz_id, sim, _ in nearest:
+			reviews = user_reviews[ user_reviews['business_id'] == biz_id ]
+			reviews_avg   = reviews['business_avg'].values[0]
+			reviews_stars = reviews['stars'].values[0]			
+			reviews_baseline = mean_user + reviews_avg - mean_all
+			scores_numerator.append( sim * ( reviews_stars - reviews_baseline ) )
+			scores_denominator.append(sim)
+
+		scores = baseline + sum(scores_numerator) / sum(scores_denominator)
+		return scores
+
+
+	def knearest_amongst_user_rated( self, restaurant_id, user_id, k = 7, reg = 3.0 ):
+		"""
+		obtain the knearest restaurants, but this time also supply a user id
+		so when can only obtain the restaurants that the user has rated 
+		  
+		Returns
+		--------
+		A sorted list
+			of the top k similar restaurants. The list is a list of tuples
+			( business_id, shrunken similarity, common support ).
+		"""
+
+		user_rated = self.df[ self.df['user_id'] == user_id ]['business_id'].unique()
+		return self.knearest( restaurant_id = restaurant_id, 
+							  set_of_restaurants = user_rated, k = k, reg = reg )
+
 	@staticmethod
 	def lookup_business_name( df, biz_id ):
 		return df['biz_name'][ df['business_id'] == biz_id ].values[0]
@@ -305,72 +351,31 @@ class DataBase(object):
 	def lookup_user_name( df, user_id ):
 		return df['user_name'][ df['user_id'] == user_id ].values[0]
 
-# -----------------------------------------------------------------------------
 
-def knearest_amongst_user_rated( restaurant_id, user_id, k, reg ):
+	@staticmethod
+	def get_other_ratings( df, restaurant_id, user_id ):
+		"""get a user's rating for a restaurant and the restaurant's average rating"""
+		choice = df[ ( df['business_id'] == restaurant_id ) & ( df['user_id'] == user_id ) ]
+		users_score   = choice['stars'].values[0]
+		average_score = choice['business_avg'].values[0]
+		return users_score, average_score
+
+
+# ------------------------------------------------------------------------------------------
+from itertools import izip
+
+def make_results_plot( df, k, reg ):
 	"""
-	obtain the knearest restaurants, but this time also supply a user id
-	so when can only obtain the restaurants that the user has rated 
-
-	Parameters
-	----------
-	restaurant_id : string
-		The id of the restaurant whose nearest neighbors we want
-
-	user_id : string
-		The id of the user, in whose reviewed restaurants we want to find the neighbors
-
-	k : int, default 7
-		the number of nearest neighbors desired
-
-	reg: float, default 3.0
-		the regularization.
-	  
-	Returns
-	--------
-	A sorted list
-		of the top k similar restaurants. The list is a list of tuples
-		( business_id, shrunken similarity, common support ).
+	takes a set of actual ratings, and a set of predicted ratings, 
+	and plots the latter against the former for comparison
 	"""
 
-	user_rated = smalldf[ smalldf['user_id'] == user_id ]['business_id'].unique()
-	return db.knearest( restaurant_id = restaurant_id, 
-						set_of_restaurants = user_rated, k = 7, reg = 3.0 )
-
-
-def rating( restaurant_id, user_id, k, reg ):
-	"""
-	Parameters
-	----------
-	df : DataFrame
-		The dataframe of reviews such as smalldf
-	
-	dbase : instance of Database class.
-		A database of similarities, on which the get method can be used to get the similarity
-		of two businessed. e.g. dbase.get(rid1,rid2)
-	
-	restaurant_id : string
-		The id of the restaurant whose nearest neighbors we want
-	
-	user_id : string
-		The id of the user, in whose reviewed restaurants we want to find the neighbors
-	
-	k : int
-		the number of nearest neighbors desired, default 7
-	
-	reg: float
-		the regularization.
-	  
-	Returns
-	--------
-	A float
-		which is the imputed rating that we predict that user_id will make 
-		for the given restaurant_id
-	"""
-	mu = smalldf.stars.mean()
-
-	
-
-
-
-
+	uid = smalldf['user_id'].values
+	bid = smalldf['business_id'].values
+	actual = smalldf['stars'].values
+	predicted = np.zeros( len(actual) )
+	counter = 0
+	for biz_id, user_id in izip( bid, uid ):
+		predicted[counter] = rating( biz_id, user_id, k = k, reg = reg ) 
+		counter = counter + 1
+	# compare_results( actual, predicted )
