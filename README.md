@@ -44,6 +44,17 @@ Walking through the book [python machine learning](https://github.com/rasbt/pyth
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter6/chapter6.ipynb)]
 
 
+## Programming
+
+- 2016.2.22 | @classmethod and @staticmethod. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/class.ipynb)]
+- 2016.2.22 | sorting with itemgetter and attrgetter. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/sorting_with_itemgetter.ipynb)]
+- 2016.2.19 | tricks with list and dictionaries; for .. else .. statement; decorators. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/idiomatic_python.ipynb)] 
+- 2016.2.18 | namedtuple and defaultdict. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/collections_module.ipynb)]
+
+
+
+
+
 ## Linux Command Lines
 
 - Basic nagivations. [[R markdown](http://ethen8181.github.io/programming/linux_commands/linux_commands.html)]

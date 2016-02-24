@@ -77,10 +77,10 @@ class DataBase(object):
 		self.df = df
 
 		# generate a index for each id to be match in the array 
-		self.unique_biz_id = { v : k for k, v in enumerate( df.business_id.unique() ) }
+		self.unique_biz_id = { v : k for k, v in enumerate( df['business_id'].unique() ) }
 		self.keys = self.unique_biz_id.keys()
 
-		# initialzie the similarity and support array 
+		# initialize the similarity and support array 
 		l_keys = len(self.keys)
 		self.database_sim = np.zeros( [ l_keys, l_keys ] )
 		self.database_sup = np.zeros( [ l_keys, l_keys ], dtype = int )
@@ -104,7 +104,7 @@ class DataBase(object):
 					self.database_sup[i1][i2] = nsup
 					self.database_sup[i2][i1] = nsup
 				elif i1 == i2:
-					nsup = self.df[ self.df['business_id'] == rest1 ].user_id.count()
+					nsup = self.df[ self.df['business_id'] == rest1 ]['user_id'].count()
 					self.database_sim[i1][i1] = 1.0
 					self.database_sup[i1][i1] = nsup
 
@@ -138,8 +138,8 @@ class DataBase(object):
 		"""
 
 		# obtain the number of common (same) reviewers 
-		rest1_reviewers  = self.df[ self.df['business_id'] == rest1 ].user_id.unique()
-		rest2_reviewers  = self.df[ self.df['business_id'] == rest2 ].user_id.unique()
+		rest1_reviewers  = self.df[ self.df['business_id'] == rest1 ]['user_id'].unique()
+		rest2_reviewers  = self.df[ self.df['business_id'] == rest2 ]['user_id'].unique()
 		common_reviewers = set(rest1_reviewers).intersection(rest2_reviewers)
 		n_common = len(common_reviewers)
 
@@ -157,15 +157,15 @@ class DataBase(object):
 	
 	def get_restaurant_reviews( self, restaurant_id, set_of_users ):
 		"""
-		given a restaurant id and set of users that rated that restaurant
-		return the sub-dataframe of their reviews 
+		given a restaurant id and the set of common users that 
+		rated that restaurant, return the sub-dataframe of their reviews
 		"""
 
 		condition = ( ( self.df['business_id'] == restaurant_id ) & 
 					  ( self.df['user_id'].isin(set_of_users)   ) )
 		reviews = self.df[condition]
 
-		# double check for duplicated user id 
+		# remove for duplicated user id 
 		reviews[ reviews['user_id'].duplicated() == False ] 
 		return reviews
 
