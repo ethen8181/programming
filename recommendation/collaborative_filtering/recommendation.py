@@ -111,7 +111,7 @@ class DataBase(object):
 
 	def get( self, b1, b2 ):
 		"""returns a tuple of similarity, common_support given two business ids"""
-
+		
 		sim  = self.database_sim[ self.unique_biz_id[b1] ][ self.unique_biz_id[b2] ]
 		nsup = self.database_sup[ self.unique_biz_id[b1] ][ self.unique_biz_id[b2] ]
 		return ( sim, nsup ) 
@@ -180,7 +180,6 @@ class DataBase(object):
 		individual variances are 0, since the denominator of the pearson correlation 
 		is the variance. In this case also returns a 0
 		"""
-
 		if n_common == 0:
 			rho = 0
 		else: 
@@ -214,8 +213,7 @@ class DataBase(object):
 		A sorted list
 			of the top k similar restaurants. The list is a list of tuples
 			( business_id, shrunken similarity, common support ).	
-		"""
-		
+		"""		
 		similar = []		
 		for other_rest_id in set_of_restaurants:
 			if other_rest_id != restaurant_id:
@@ -248,7 +246,6 @@ class DataBase(object):
 			combining the k-nearest recommendations for each of the user's n top choices, 
 			removing duplicates and the ones the user has already rated.
 		"""
-
 		top_choices = self.get_user_top_choices( user_id = user_id, n = n )
 		biz_ids = top_choices['business_id'].values
 		rated_by_users = self.df[ self.df['user_id'] == user_id ]['business_id'].values
@@ -258,7 +255,7 @@ class DataBase(object):
 		top_biz_ids = []	
 		for biz_id in biz_ids:
 			tops = self.knearest( restaurant_id = biz_id, 
-								  set_of_restaurants = self.df.business_id.unique(), 
+								  set_of_restaurants = self.df['business_id'].unique(), 
 								  k = k, reg = reg )
 			for biz, _, _ in tops:
 				if biz not in rated_by_users:
@@ -284,8 +281,7 @@ class DataBase(object):
 		"""
 		get the sorted top # of restaurants for a user by the star 
 		rating the user gave them
-		"""
-		
+		"""	
 		user_df = ( self.df[ self.df['user_id'] == user_id ][[ 'business_id', 'stars' ]]
 					.sort_values( ['stars'], ascending = False )
 					.head(n) )
@@ -329,7 +325,7 @@ class DataBase(object):
 	def knearest_amongst_user_rated( self, restaurant_id, user_id, k = 7, reg = 3.0 ):
 		"""
 		obtain the knearest restaurants, but this time also supply a user id
-		so when can only obtain the restaurants that the user has rated 
+		so we can only obtain the restaurants that the user has rated 
 		  
 		Returns
 		--------
@@ -337,7 +333,6 @@ class DataBase(object):
 			of the top k similar restaurants. The list is a list of tuples
 			( business_id, shrunken similarity, common support ).
 		"""
-
 		user_rated = self.df[ self.df['user_id'] == user_id ]['business_id'].unique()
 		return self.knearest( restaurant_id = restaurant_id, 
 							  set_of_restaurants = user_rated, k = k, reg = reg )
@@ -355,6 +350,7 @@ class DataBase(object):
 	@staticmethod
 	def get_other_ratings( df, restaurant_id, user_id ):
 		"""get a user's rating for a restaurant and the restaurant's average rating"""
+		
 		choice = df[ ( df['business_id'] == restaurant_id ) & ( df['user_id'] == user_id ) ]
 		users_score   = choice['stars'].values[0]
 		average_score = choice['business_avg'].values[0]
@@ -369,7 +365,6 @@ def make_results_plot( df, k, reg ):
 	takes a set of actual ratings, and a set of predicted ratings, 
 	and plots the latter against the former for comparison
 	"""
-
 	uid = smalldf['user_id'].values
 	bid = smalldf['business_id'].values
 	actual = smalldf['stars'].values
