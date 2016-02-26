@@ -43,6 +43,10 @@ Walking through the book [python machine learning](https://github.com/rasbt/pyth
 - K-Fold, Grid Search and ROC curve.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter6/chapter6.ipynb)]
 
+**Chapter 7 : Combining Different Models for Ensemble Learning**
+
+- Implementing majority voting from scratch, using Scikit-Learn’s version and combining it with Grid Search.
+- View[[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter7/chapter7.ipynb)]
 
 ## Programming
 
@@ -50,9 +54,6 @@ Walking through the book [python machine learning](https://github.com/rasbt/pyth
 - 2016.2.22 | sorting with itemgetter and attrgetter. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/sorting_with_itemgetter.ipynb)]
 - 2016.2.19 | tricks with list and dictionaries; for .. else .. statement; decorators. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/idiomatic_python.ipynb)] 
 - 2016.2.18 | namedtuple and defaultdict. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/collections_module.ipynb)]
-
-
-
 
 
 ## Linux Command Lines

@@ -1,10 +1,10 @@
-
 from sklearn.base import clone
 from sklearn.base import BaseEstimator
 from sklearn.base import ClassifierMixin
 from sklearn.externals import six
 from sklearn.pipeline import _name_estimators
 from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
 # the BaseEstimator, ClassifierMixin parent class
 # is used to get some base functionality including 
@@ -78,7 +78,7 @@ class MajorityVoteClassifier( BaseEstimator, ClassifierMixin ):
 		
 		# fit the estimators
 		self.classifiers_ = []
-		for clf in self.classifiers:
+		for clf in self.classifier:
 			fitted_clf = clone(clf).fit( X, self.lablenc_.transform(y) )
 			self.classifiers_.append(fitted_clf)
 
@@ -87,7 +87,8 @@ class MajorityVoteClassifier( BaseEstimator, ClassifierMixin ):
 	def predict( self, X ):
 
 		if self.vote == 'probability':
-
+			maj_vote = np.argmax( self.predict_proba(X), axis = 1 )
+		
 		else: # 'classlabel'
 			# collect predictions for each estimator
 			predictions = np.asarray( [ clf.predict(X) for clf in self.classifiers_ ] ).T
@@ -99,9 +100,17 @@ class MajorityVoteClassifier( BaseEstimator, ClassifierMixin ):
 		return maj_vote
 
 	def predict_proba( self, X ):
+		""" Predict class probabilities for X."""
 
+		# probas is an ( # of classifiers, # of observation, # of output class ) array
+		# np.average along axis = 1 will compute the weighted probability of 
+		# each observation  for each output class, thus the shape will then become
+		# ( # of class, # of output class )
+		probas = np.asarray( [ clf.predict_proba(X) for clf in self.classifiers_ ] )
+		avg_proba = np.average( probas, axis = 0, weights = self.weights )
+		return avg_proba
 
-
+	
 	def get_params( self, deep = True ):
 		""" Get classifier parameter names for GridSearch"""
 		if not deep:
@@ -109,7 +118,7 @@ class MajorityVoteClassifier( BaseEstimator, ClassifierMixin ):
 		else:
 			out = self.named_classifiers.copy()
 			for name, step in six.iteritems(self.named_classifiers):
-				for key, value in six.iteritems(step.get_params(deep=True)):
+				for key, value in six.iteritems( step.get_params( deep = True ) ):
 					out['%s__%s' % (name, key)] = value
 			return out
 
