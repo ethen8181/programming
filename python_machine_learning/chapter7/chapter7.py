@@ -84,6 +84,7 @@ class MajorityVoteClassifier( BaseEstimator, ClassifierMixin ):
 
 		return self
 
+	
 	def predict( self, X ):
 
 		if self.vote == 'probability':
@@ -99,6 +100,7 @@ class MajorityVoteClassifier( BaseEstimator, ClassifierMixin ):
 		maj_vote = self.lablenc_.inverse_transform(maj_vote)
 		return maj_vote
 
+	
 	def predict_proba( self, X ):
 		""" Predict class probabilities for X."""
 

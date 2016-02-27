@@ -45,7 +45,7 @@ Walking through the book [python machine learning](https://github.com/rasbt/pyth
 
 **Chapter 7 : Combining Different Models for Ensemble Learning**
 
-- Implementing majority voting from scratch, using Scikit-Learn’s version and combining it with Grid Search.
+- Coding up majority voting, using Scikit-Learn’s version and combining it with Grid Search.
 - View[[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter7/chapter7.ipynb)]
 
 ## Programming

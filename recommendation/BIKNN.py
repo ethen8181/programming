@@ -13,14 +13,14 @@ class BIKNN(object):
 		value specifying the number of nearest (similar) items 
 		to predicted the unknown ratings
 	
-	B1 : int, default = 25
+	B1 : int, default = 5
 		regularization parameter that penalizes the item bias 
 
-	B2 : int, default = 25
+	B2 : int, default = 5
 		regularization parameter that penalizes the user bias 
 	"""
 	
-	def __init__( self, K = 10, B1 = 25, B2 = 25 ):
+	def __init__( self, K = 10, B1 = 5, B2 = 5 ):
 		self.K  = K
 		self.B1 = B1
 		self.B2 = B2
@@ -59,8 +59,8 @@ class BIKNN(object):
 							  for k, v in enumerate( data['item_id'].unique() ) }
 		self.keys_ = self.item_id_dict.keys() 
 		size = len(self.keys_)
-		self.F_ = np.ones( [ size, size ], dtype = np.int )
-		self.G_ = np.ones( [ size, size ], dtype = np.int )
+		self.F_   = np.ones( [ size, size ], dtype = np.int )
+		self.G_   = np.ones( [ size, size ], dtype = np.int )
 		self.sup_ = np.ones( [ size, size ], dtype = np.int )
 		self.sim_ = np.ones( [ size, size ] )
 
@@ -83,11 +83,13 @@ class BIKNN(object):
 					continue
 
 		# recalculate the support 
-		supports = np.array(supports)
-		mean = float( np.sum(supports) ) / supports.shape[0]
-		std  = np.sqrt( float( np.sum( supports ** 2 ) ) / supports.shape[0] - mean ** 2 )
+		supports = np.asarray(supports)
+		self.N = supports.shape[0]
+		self.mean = float( np.sum(supports) ) / self.N
+		self.variance = ( float( np.sum( supports ** 2 ) ) / self.N ) - self.mean ** 2
+		std = np.sqrt(self.variance)
 
-		self.w_ = np.ones( [ size, size ] )
+		self.w_ 	= np.ones( [ size, size ] )
 		self.sim_w_ = np.ones( [ size, size ] )
 		
 		# loop over all the item pair combinations and calculate the 
@@ -95,7 +97,7 @@ class BIKNN(object):
 		for _, i1 in self.item_id_dict.iteritems():
 			for _, i2 in self.item_id_dict.iteritems():
 				if i1 < i2:
-					weight = norm( mean, std ).cdf( self.sup_[i1][i2] )
+					weight = norm( self.mean, std ).cdf( self.sup_[i1][i2] )
 					self.w_[i1][i2], self.w_[i2][i1] = weight, weight				
 	
 				elif i1 == i2:
@@ -127,9 +129,7 @@ class BIKNN(object):
 			third being the denominator,
 			fourth is the support number ( number of user that rated both items )
 		"""
-		item1_users  = self.data[ self.data['item_id'] == item1 ]['user_id'].unique()
-		item2_users  = self.data[ self.data['item_id'] == item2 ]['user_id'].unique()
-		common_users = set(item1_users).intersection(item2_users)
+		common_users = self.get_common_users( item1, item2 )
 		support = len(common_users)
 		
 		if support == 0:
@@ -144,6 +144,15 @@ class BIKNN(object):
 		denominator = np.sum( item1_ratings ** 2 ) + np.sum( item2_ratings ** 2 )
 		similarity  = float(numerator) / denominator
 		return similarity, numerator, denominator, support
+
+
+	def get_common_users( self, item1, item2 ):
+		"""get the set of users that have rated both items"""
+
+		item1_users  = self.data[ self.data['item_id'] == item1 ]['user_id'].unique()
+		item2_users  = self.data[ self.data['item_id'] == item2 ]['user_id'].unique()
+		common_users = set(item1_users).intersection(item2_users)
+		return common_users
 	
 	
 	def get_item_ratings( self, item_id, set_of_users ):
@@ -167,14 +176,14 @@ class BIKNN(object):
 		# and user, these information are then used to calculate the baseline 
 		item = self.data[ self.data['item_id'] == item_id ] 
 		user = self.data[ self.data['user_id'] == user_id ]
-		item_count = item['ratings'].count()
-		user_count = user['ratings'].count()
+		item_count   = item['ratings'].count()
+		user_count   = user['ratings'].count()
 		item_ratings = item['ratings'].values
 		user_ratings = user['ratings'].values
-		global_avg = self.data['ratings'].mean()
+		global_avg   = self.data['ratings'].mean()
 
 		item_bias = float( np.sum( item_ratings - global_avg ) ) / ( self.B1 + item_count )
-		user_bias = float( np.sum( user_ratings - global_avg ) ) / ( self.B2 + user_count )
+		user_bias = float( np.sum( user_ratings - global_avg - item_bias ) ) / ( self.B2 + user_count )
 		baseline  = global_avg + item_bias + user_bias
 		
 		numerator   = 0.
@@ -212,17 +221,19 @@ class BIKNN(object):
 		similars = []
 		for other_item_id in user_rated:
 			if other_item_id != item_id:
-				similarity = self.get( other_item_id, item_id )
+				similarity = self.get_similarity( other_item_id, item_id )
 				similars.append( ( other_item_id, similarity ) )
 
 		similars_sorted = sorted( similars, key = itemgetter(1), reverse = True )	
 		return similars_sorted[0:self.K] 
 
 	
-	def get( self, item1, item2 ):
+	def get_similarity( self, item1, item2 ):
 		"""returns the similarity score given two item ids"""
 		sim = self.sim_w_[ self.item_id_dict[item1] ][ self.item_id_dict[item2] ]
 		return sim
+
+
 
 
 
