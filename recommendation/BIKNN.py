@@ -92,9 +92,6 @@ class BIKNN(object):
 					self.sup_[i1][i2], self.sup_[i2][i1] = support, support
 					supports.append(support)
 
-				elif i1 == i2:
-					continue
-
 		# calculate the support's info, this is then used to update the 
 		# support weight array and the weighted similarity score array
 		supports = np.asarray(supports)
@@ -189,9 +186,6 @@ class BIKNN(object):
 				if i1 < i2:
 					weight = norm( self.mean, std ).cdf( self.sup_[i1][i2] )
 					self.w[i1][i2], self.w[i2][i1] = weight, weight				
-	
-				elif i1 == i2:
-					continue
 
 		self.sim_w_ = ( self.F_ / self.G_ ) * self.w
 		return self
@@ -325,7 +319,6 @@ class BIKNN(object):
 		denominator = 0.
 		nearest = self.knearest_amongst_user_rated( item_id, user_rated_item_id )
 		
-
 		for nearest_id, sim in nearest:
 			nearest_rating = user[ user['item_id'] == nearest_id ]['ratings'].values[0]
 			nearest_item_bias  = self.calculate_item_bias(nearest_id)

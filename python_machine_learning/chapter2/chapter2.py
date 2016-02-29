@@ -120,7 +120,7 @@ class AdaSGD(object):
 		# generate a random permutated index and return
 		# the permutated ordered dataset
 		r = np.random.permutation( len(y) )
-		return ( x[r], y[r] )
+		return x[r], y[r]
 
 	def update_weights( self, x_i, target ):
 		# stochastic gradient descent
