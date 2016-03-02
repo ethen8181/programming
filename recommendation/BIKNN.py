@@ -1,3 +1,4 @@
+# python 2.7
 from operator import itemgetter
 from scipy.stats import norm
 import pandas as pd
@@ -26,7 +27,7 @@ class BIKNN(object):
 
 	Reference 
 	---------
-	boosting the k-nearest-neighborhood based incremental collaborative
+	boosting the k-nearest-neighborhood based incremental collaborative filtering
 	"""
 	
 	def __init__( self, K = 10, B1 = 5, B2 = 5, iterations = 10 ):
@@ -85,8 +86,7 @@ class BIKNN(object):
 		for item1, i1 in self.item_id_dict.iteritems():
 			for item2, i2 in self.item_id_dict.iteritems():
 				if i1 < i2:					
-					numerator, denominator, support = \
-					self.calculate_similarity( item1, item2 )				
+					numerator, denominator, support = self.calculate_similarity( item1, item2 )				
 					self.F_[i1][i2], self.F_[i2][i1] = numerator, numerator
 					self.G_[i1][i2], self.G_[i2][i1] = denominator, denominator
 					self.sup_[i1][i2], self.sup_[i2][i1] = support, support
@@ -128,9 +128,9 @@ class BIKNN(object):
 		Returns
 		--------
 		A tuple
-			The second element is the numerator of the similarity score, 
-			third being the denominator,
-			fourth is the support number ( number of user that rated both items )
+			The first element is the numerator of the similarity score, 
+			second being the denominator,
+			third is the support number ( number of user that rated both items )
 		"""
 		common_users = self.get_common_users( item1, item2 )
 		support = len(common_users)
@@ -292,7 +292,7 @@ class BIKNN(object):
 			# update the linear bias's cached factor
 			global_avg_new_n = self.global_avg * self.known_ratings_count + rating1
 			global_avg_new_d = 1 + self.known_ratings_count			
-			self.global_avg = float(global_avg_new_n) / global_avg_new_d
+			self.global_avg  = float(global_avg_new_n) / global_avg_new_d
 
 			self.known_ratings_count += 1
 			self.user_ratings_sum[user_id1] += rating1
