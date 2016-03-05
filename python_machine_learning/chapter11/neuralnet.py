@@ -48,6 +48,9 @@ class NeuralNetMLP(object):
 		X_data, y_data = X.copy(), y.copy()
 		y_enc = self._encode_labels(y)
 
+		delta_w1_prev = np.zeros(self.w1.shape)
+		delta_w2_prev = np.zeros(self.w2.shape)
+
 		for i in xrange(self.epochs):
 
 			# an adaptive learning rate that decreases over time
@@ -78,9 +81,14 @@ class NeuralNetMLP(object):
 				# compute gradient via backpropagation
 				grad1, grad2 = self._get_gradient( a1 = a1, a2 = a2,
 												   a3 = a3, z2 = z2,
-												   y_enc = y_enc[:, idx],
+												   y_enc = y_enc[ idx, : ],
 												   w1 = self.w1,
 												   w2 = self.w2 )
+
+				delta_w1, delta_w2 = self.eta * grad1, self.eta * grad2
+				self.w1 -= ( delta_w1 + ( self.alpha * delta_w1_prev ) )
+				self.w2 -= ( delta_w2 + ( self.alpha * delta_w2_prev ) )
+				delta_w1_prev, delta_w2_prev = delta_w1, delta_w2
 
 		return self
 
@@ -96,9 +104,9 @@ class NeuralNetMLP(object):
 
 		Returns
 		-------
-		onehot : array, shape = ( # of labels, n_samples )
+		onehot : array, shape = ( n_samples, n_output )
 		"""
-		onehot = np.zeros( ( y.shape[0], self.n_output ) ) # change the shape ???
+		onehot = np.zeros( ( y.shape[0], self.n_output ) )
 		for idx, val in enumerate(y):
 			onehot[ idx, val ] = 1.0
 		return onehot
@@ -180,30 +188,46 @@ class NeuralNetMLP(object):
 		return cost
 
 	
-	def _L2_reg(self, lambda_, w1, w2):
+	def _L2_reg( self, lambda_, w1, w2 ):
 		"""compute L2-regularization cost"""
-		return (lambda_/2.0) * ( np.sum(w1[:, 1:] ** 2) + np.sum(w2[:, 1:] ** 2) )
+		return ( lambda_ / 2.0 ) * ( np.sum( w1[:, 1:] ** 2 ) + np.sum( w2[:, 1:] ** 2 ) )
 
-	def _L1_reg(self, lambda_, w1, w2):
+	def _L1_reg( self, lambda_, w1, w2 ):
 		"""compute L1-regularization cost"""
-		return (lambda_/2.0) * ( np.abs(w1[:, 1:]).sum() + np.abs(w2[:, 1:]).sum() )
+		return ( lambda_ / 2.0 ) * ( np.abs( w1[:, 1:] ).sum() + np.abs( w2[:, 1:] ).sum() )
 
 	
-	def _get_gradient( a1 = a1, a2 = a2, a3 = a3, z2 = z2,
-					   y_enc = y_enc[:, idx], w1 = self.w1, w2 = self.w2 ):
+	def _get_gradient( self, a1, a2, a3, z2, y_enc, w1, w2 ):
 
+		# error vector of the output layer
+		sigma3 = ( a3 - y_enc ).T
+		z2 = self._add_bias_unit( z2, how = 'row' )
+		# derivative of the sigmoid function 
+		sigma2 = w2.T.dot(sigma3) * self._sigmoid_gradient(z2)
+		sigma2 = sigma2[1:, :]
+		grad1  = sigma2.dot(a1)
+		grad2  = sigma3.dot(a2.T)
 
-		return pass
+		# regularize, bias unit does not have regularization 
+		grad1[:, 1:] += (w1[:, 1:] * (self.l1 + self.l2))
+		grad2[:, 1:] += (w2[:, 1:] * (self.l1 + self.l2))
+
+		return grad1, grad2
 
 	
 	def _sigmoid_gradient(self, z):
 		"""
 		Compute gradient of the logistic function
-		# http://sambfok.blogspot.tw/2012/08/partial-derivative-logistic-regression.html
+		http://sambfok.blogspot.tw/2012/08/partial-derivative-logistic-regression.html
 		"""
 		sg = self._sigmoid(z)
 		return sg * (1 - sg)
 
+
+	def predict( self, X ):
+		a1, z2, a2, z3, a3 = self._feedforward( X, self.w1, self.w2 )
+		y_pred = np.argmax( z3, axis = 0 )
+		return y_pred
 	
 
 

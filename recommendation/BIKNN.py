@@ -21,23 +21,18 @@ class BIKNN(object):
 	B2 : int, default = 5
 		regularization parameter that penalizes the user bias
 
-	iterations : int, default 10
-		after this number of iterations ( number of new test data ), 
-		the weighted similarity score will be updated
-
 	Reference 
 	---------
 	boosting the k-nearest-neighborhood based incremental collaborative filtering
 	"""
 	
-	def __init__( self, K = 10, B1 = 5, B2 = 5, iterations = 10 ):
+	def __init__( self, K = 10, B1 = 5, B2 = 5 ):
 		self.K  = K
 		self.B1 = B1
 		self.B2 = B2
-		self.iterations = iterations
 		
 	
-	def fit( self, data ):
+	def fit( self, data, columns ):
 		"""
 		Pass in the training data and fits the model, also
 		initialize the factors that are required to perform the
@@ -46,7 +41,10 @@ class BIKNN(object):
 		Parameters
 		----------
 		data : DataFrame
-			with three columns, takes the order of
+			base training data
+
+		columns : a list of strings
+			specifying the column name of the DataFrame,
 			[ 'user_id', 'item_id', 'ratings' ]
 
 		Attributes
@@ -70,9 +68,9 @@ class BIKNN(object):
 			the weighted similarity array
 		"""
 		self.data = data
-		self.data.columns = [ 'user_id', 'item_id', 'ratings' ]
+		self.data.columns = columns
 		self.item_id_dict = { v : k 
-							  for k, v in enumerate( data['item_id'].unique() ) }
+							  for k, v in enumerate( self.data['item_id'].unique() ) }
 		self.keys_ = self.item_id_dict.keys() 
 		size = len(self.keys_)
 		self.F_   = np.ones( [ size, size ] )
@@ -86,7 +84,7 @@ class BIKNN(object):
 		for item1, i1 in self.item_id_dict.iteritems():
 			for item2, i2 in self.item_id_dict.iteritems():
 				if i1 < i2:					
-					numerator, denominator, support = self.calculate_similarity( item1, item2 )				
+					numerator, denominator, support  = self.calculate_similarity( item1, item2 )				
 					self.F_[i1][i2], self.F_[i2][i1] = numerator, numerator
 					self.G_[i1][i2], self.G_[i2][i1] = denominator, denominator
 					self.sup_[i1][i2], self.sup_[i2][i1] = support, support
@@ -136,7 +134,7 @@ class BIKNN(object):
 		support = len(common_users)
 		
 		if support == 0:
-			return 0, 0, 0, 0
+			return 0, 0, 0
 
 		# obtain the sub-dataframe of the common user's ratings
 		# for both items and calculate their similarities
@@ -223,13 +221,30 @@ class BIKNN(object):
 		return self
 
 
-	def update( self, test ):
+	def update( self, test, iterations = 10 ):
 		"""
 		loop through all the test data,
 		meanwhile update relative information on the way
 		and in the end return the MAE (mean absolute error)
 		of the test data's rating 
+		
+		Parameters
+		----------
+		test : DataFrame
+			test data
+
+		iterations : int, default 10
+			after this number of iterations ( number of new test data ), 
+			the weighted similarity score will be updated
+		Returns
+		-------
+		MAE : float
+			mean absolute error of the predicted rating on the test data
 		"""
+		self.test = test
+		self.test.columns = self.data.columns
+		self.iterations = iterations
+
 		absolute_error = 0
 		absolute_error_count = 0
     
@@ -244,8 +259,8 @@ class BIKNN(object):
 			# obtain the user's other rating, after that
 			# update the user rating database
 			other_user = self.data[ self.data['user_id'] == user_id1 ]
-			self.data = pd.concat( [ self.data, test.iloc[ index1:index1 + 1 ] ], 
-							  	   ignore_index = True )
+			self.data  = pd.concat( [ self.data, test.iloc[ index1:index1 + 1 ] ], 
+							  	    ignore_index = True )
 			
 			# loop through all the user's other rating
 			for _, _, item_id2, rating2 in other_user.itertuples():
@@ -397,7 +412,7 @@ test  = train.iloc[ :, 0:3 ]
 
 from BIKNN import BIKNN
 movie_lens = BIKNN()
-movie_lens.fit(train)
-movie_lens.update(test)
+movie_lens.fit( data = train, columns = [ 'user_id', 'item_id', 'ratings' ] )
+mae = movie_lens.update(test)
 """
 
