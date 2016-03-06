@@ -1,4 +1,3 @@
-# python 2.7
 from operator import itemgetter
 from scipy.stats import norm
 import pandas as pd
@@ -81,8 +80,8 @@ class BIKNN(object):
 		# also stores the support for each item pair to calculate the weighted
 		# support later
 		supports = []
-		for item1, i1 in self.item_id_dict.iteritems():
-			for item2, i2 in self.item_id_dict.iteritems():
+		for item1, i1 in self.item_id_dict.items():
+			for item2, i2 in self.item_id_dict.items():
 				if i1 < i2:					
 					numerator, denominator, support  = self.calculate_similarity( item1, item2 )				
 					self.F_[i1][i2], self.F_[i2][i1] = numerator, numerator
@@ -179,8 +178,8 @@ class BIKNN(object):
 		# standard deviation for the normal distribution
 		std = np.sqrt(self.variance)
 		
-		for _, i1 in self.item_id_dict.iteritems():
-			for _, i2 in self.item_id_dict.iteritems():
+		for _, i1 in self.item_id_dict.items():
+			for _, i2 in self.item_id_dict.items():
 				if i1 < i2:
 					weight = norm( self.mean, std ).cdf( self.sup_[i1][i2] )
 					self.w[i1][i2], self.w[i2][i1] = weight, weight				
