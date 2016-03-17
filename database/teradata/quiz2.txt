@@ -1,0 +1,116 @@
+#### Terdata 
+
+# establish a database as the default database
+Database ua_dillards;
+
+1. Which of the following keywords are required in any query to retrieve data from a relational database? Select all that apply.
+
+A: SELECT, FROM
+
+2. Which of the following database systems recognize the keyword “LIMIT” to limit the number of rows displayed from a query output?
+
+A: MySQL
+
+3. Which keywords could you use to determine the names of the columns contained in a table?
+
+A: DESCRIBE in MySQL and HELP in Teradata
+
+4. In how many columns of the STRINFO table of the Dillard’s database are NULL values *permitted*?
+
+HELP TABLE STRINFO
+
+A: 3
+
+5. In how many columns of the STRINFO table of the Dillard’s database are NULL values *present*?
+
+SELECT *
+FROM   STRINFO
+WHERE  CITY IS NULL OR STATE IS NULL OR ZIP IS NULL
+
+A: 0 
+
+6. What was the highest original price in the Dillard’s database of the item with SKU 3631365?
+
+SELECT   TOP 1 *
+FROM     TRNSACT
+WHERE    SKU = 3631365
+ORDER BY ORGPRICE DESC
+
+A: $17.50
+
+7. What is the color of the Liz Claiborne brand item with the highest SKU # in the Dillard’s database (the Liz Claiborne brand is abbreviated “LIZ CLAI” in the Dillard’s database)?
+
+SELECT   TOP 1 *
+FROM     SKUINFO
+WHERE    BRAND = 'LIZ CLAI'
+ORDER BY SKU DESC
+
+A: TEAK CBO
+
+8. What aspect of the following query will make the query crash?
+SELECT SKU, orgprice, sprice, amt,
+FROM TRNSACT
+WHERE AMT>50
+
+A: There is a comma after "amt" in the first line of the query
+
+9. What is the sku number of the item in the Dillard’s database that had the highest original sales price?
+
+SELECT   TOP 1 SKU
+FROM     TRNSACT   
+ORDER BY ORGPRICE DESC
+
+A: 6200173
+
+10. According to the strinfo table, in how many states within the United States are Dillard’s stores located? (HINT: the bottom of the SQL scratchpad reports the number of rows in your output)
+
+SELECT DISTINCT STATE
+FROM   STRINFO
+
+A: 31
+
+11. How many Dillard’s departments start with the letter “e”
+
+SELECT *
+FROM   DEPTINFO
+WHERE  DEPTDESC LIKE 'e%'
+
+A: 5
+
+12. What was the date of the earliest sale in the database where the sale price of the item did not equal the original price of the item, and what was the largest margin (original price minus sale price) of an item sold on that earliest date?
+
+SELECT TOP 1 SALEDATE, ORGPRICE, SPRICE, ORGPRICE - SPRICE
+FROM     TRNSACT
+WHERE    ORGPRICE <> SPRICE
+ORDER BY SALEDATE ASC, ( ORGPRICE - SPRICE ) DESC
+
+A: 04/08/01, $510.00
+
+13. What register number made the sale with the highest original price and highest sale price between the dates of August 1, 2004 and August 10, 2004? Make sure to sort by original price first and sale price second.
+
+SELECT TOP 1 REGISTER
+FROM     TRNSACT
+WHERE    SALEDATE BETWEEN '2004-08-01' AND '2004-08-10'
+ORDER BY ORGPRICE DESC, SPRICE DESC
+
+A: 621
+
+14. Which of the following brand names with the word/letters “liz” in them exist in the Dillard’s database? Select all that apply. 
+
+SELECT DISTINCT BRAND
+FROM   SKUINFO
+WHERE  BRAND LIKE '%liz%'
+
+A: BELIZA, CIVILIZE
+
+
+15. What is the lowest store number of all the stores in the STORE_MSA table that are in the city of “little rock”,”Memphis”, or “tulsa”?
+
+SELECT TOP 1 STORE
+FROM     STORE_MSA
+WHERE    CITY = 'little rock' OR CITY = 'Memphis' OR CITY = 'tulsa'
+ORDER BY STORE 
+
+A: 504
+
+

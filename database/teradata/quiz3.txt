@@ -1,0 +1,149 @@
+
+
+1. Given Table A (first table to be entered in the query) and Table B (second table to be entered in the query) the query result shown below is a result of what kind of join?
+
+A: Right Join
+
+
+2. On what day was Dillard’s income based on total sum of purchases the greatest
+
+SELECT TOP 1 saledate, SUM(AMT)
+FROM TRNSACT
+WHERE stype = 'P'
+GROUP BY saledate  
+ORDER BY SUM(AMT) DESC
+
+A: 04/12/18
+
+
+3. What is the deptdesc of the departments that have the top 3 greatest numbers of skus from the skuinfo table associated with them?
+
+SELECT   TOP 3 DEPTDESC, COUNT( s.SKU )
+FROM     SKUINFO AS s INNER JOIN DEPTINFO AS d
+ON       d.DEPT = s.DEPT
+GROUP BY d.DEPTDESC
+ORDER BY COUNT( s.SKU ) DESC
+
+A: INVEST, POLOMEN, BRIOSO
+
+
+4. Which table contains the most distinct sku numbers?
+
+SELECT COUNT( DISTINCT SKU )
+FROM skuinfo
+
+1564178
+
+SELECT COUNT( DISTINCT SKU )
+FROM SKSTINFO
+
+760212
+
+SELECT COUNT( DISTINCT SKU )
+FROM TRNSACT
+
+714499
+
+A: skuinfo
+
+
+5. How many skus are in the skstinfo table, but NOT in the skuinfo table?
+
+SELECT COUNT(*)
+FROM SKSTINFO AS sks LEFT JOIN SKUINFO AS sku 
+ON   sks.SKU = sku.SKU
+WHERE sks.SKU IS NOT NULL AND sku.SKU IS NULL
+
+A: 0 
+
+
+6. What is the average amount of profit Dillard’s made per day?
+
+7. The store_msa table provides population statistics about the geographic location around a store. Using one query to retrieve your answer, how many MSAs are there within the state of North Carolina (abbreviated “NC”), and within these MSAs, what is the lowest population level (msa_pop) and highest income level (msa_income)?
+
+SELECT COUNT(store), MIN(msa_pop), MAX(msa_income)
+FROM   store_msa
+WHERE  state = 'NC'
+
+A: 16 MSAs, lowest population of 339,511, highest income level of $36,151
+
+
+8. What department (with department description), brand, style, and color brought in the greatest total amount of sales?
+
+SELECT t.AMT
+FROM SKUINFO AS s 
+INNER JOIN DEPTINFO AS d ON s.DEPT = d.DEPT
+INNER JOIN TRNSACT AS t ON s.SKU = t.SKU
+WHERE d.DEPT = 4407 AND s.BRAND = 'SILVER C' AND s.STYLE = 'TO02SCBELT-S' AND s.COLOR = 'SILVER'
+
+1300
+
+A: Department 4407 described as Environ, brand Silver C, style TO02SCBELT-S , color silver
+
+
+9. How many stores have more than 180,000 distinct skus associated with them in the skstinfo table?
+
+SELECT STORE
+FROM SKSTINFO 
+GROUP BY STORE
+HAVING COUNT( DISTINCT SKU ) > 180000 
+
+A: 12 
+
+
+10. What feature(s) differs among all the distinct skus in the “cop” department with the “federal” brand and a “rinse wash” color? Choose all that apply. Note that you will need more than a single correct selection to answer the question correctly.
+
+SELECT DISTINCT SKU, STYLE, SIZE, PACKSIZE, VENDOR
+FROM SKUINFO AS s INNER JOIN DEPTINFO AS d
+ON   s.dept = d.dept
+WHERE s.BRAND = 'federal' AND s.COLOR = 'rinse wash' AND d.DEPTDESC = 'cop'
+
+A: style, size 
+
+
+11. How many skus are in the skuinfo table, but NOT in the skstinfo table?
+
+SELECT COUNT(*)
+FROM SKUINFO AS sku LEFT JOIN SKSTINFO AS sks
+ON   sks.SKU = sku.SKU
+WHERE sku.SKU IS NOT NULL AND sks.SKU IS NULL
+
+A: 803966
+
+
+12. In what city and state is the store that had the greatest total sum of sales?
+
+SELECT TOP 1 s.STORE, s.CITY, s.STATE, SUM(AMT)
+FROM   STRINFO AS s INNER JOIN TRNSACT AS t 
+ON     s.STORE = t.STORE
+WHERE stype = 'P'
+GROUP BY s.STORE, s.STATE, s.CITY
+ORDER BY SUM(AMT) DESC;
+
+A: Metairie, LA
+
+
+13. Given Table A (first table to be entered in the query) and Table B (second table to be entered in the query) the query result shown below is a result of what kind of join?
+
+A: Left Join
+
+
+14. How many states have more than 10 Dillards stores in them?
+
+SELECT STATE
+FROM  STRINFO
+GROUP BY STATE
+HAVING COUNT(STORE) > 10;
+
+A: 15
+
+
+15. What is the suggested retail price of all the skus in the “reebok” department with the “skechers” brand and a “wht/saphire” color?
+
+SELECT DISTINCT RETAIL 
+FROM   SKUINFO AS sku 
+INNER JOIN DEPTINFO AS d ON sku.DEPT = d.DEPT
+INNER JOIN SKSTINFO AS sks ON sks.SKU = sku.SKU
+WHERE sku.BRAND = 'SKECHERS' AND sku.COLOR = 'WHT/SAPHIRE' AND d.DEPTDESC = 'REEBOK'
+
+A : 29

@@ -235,6 +235,7 @@ class BIKNN(object):
 		iterations : int, default 10
 			after this number of iterations ( number of new test data ), 
 			the weighted similarity score will be updated
+		
 		Returns
 		-------
 		MAE : float
