@@ -40,7 +40,6 @@ def recompute_frame(df):
 	df['user_avg'] = avg_u
 	df['user_review_count'] = review_count_u
 	df.reset_index( inplace = True )
-
 	return df
 
 

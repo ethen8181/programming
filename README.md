@@ -49,6 +49,7 @@ This is one of the continuously updated repositories that documents personal dat
 
 ## Programming
 
+- 2016.3.18 | pandas's pivot table. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/pivot_table/pivot_table.ipynb)]
 - 2016.3.02 | @property, python's way of getters and setters. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/class_@property.ipynb)]
 - 2016.2.22 | @classmethod (alternative constructor) and @staticmethod (adding functions under class). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/class.ipynb)]
 - 2016.2.22 | sorting with itemgetter and attrgetter. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/sorting_with_itemgetter.ipynb)]
@@ -60,6 +61,47 @@ This is one of the continuously updated repositories that documents personal dat
 
 - Basic nagivations. [[R markdown](http://ethen8181.github.io/programming/linux_commands/linux_commands.html)]
 - Customizing terminal. [[Youtube](https://www.youtube.com/watch?v=vDOVEDl2z84)]
+
+## Python3 Object-Oriented Programming
+
+2016.3.20 | Walking through the book. Link on [Amazon](http://www.amazon.com/Python-3-Object-Oriented-Programming/dp/1849511268).
+
+**Chapter2: Python OOP Basics**
+
+- Naming conventions for public, protected, private methods.
+- Setting up a python package.
+- Explanation of `if __name__ == '__main__'`.
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter2_python_objects/python_objects.ipynb)] 
+
+**Chapter4: Exceptions**
+
+- Raising exceptions and overriding the Exception class to define our own.
+- Using `hashlib` to encode strings.
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter4_exception/exception.ipynb)]
+
+**Chapter5: When to Use OOP**
+
+- Using `@property` to cache expensive values.
+- Explanations of EAFP (easier to ask for forgiveness) and when to use `hasattr` and when to use `try .. except`.
+- Use of the `zipfile`, `os` and `shutil` module to unzip file and remove directory.
+- Use of `__str__` to format printing.
+- Examples of defining methods in subclass.
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter5_when_to_use/when_to_use.ipynb)]
+
+**Chapter6: Data Structures**
+
+- Data structures: tuples, nametuples, dictionary, set.
+- Examples of `__lt__`(to make classes sortable), `__repr__`; `__add__` and __ `__radd__`(to make classes summable).
+- `re.compile` used with finding all links in a webpage.
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter6_data_structure/data_structure.ipynb)]
+
+**Chapter7: OOP Shortcuts**
+
+- Unpacking lists or dictionaries with * and **; update method for dictionaries.
+- Generator comprehension.
+- `__getitem__` dictionary like indexing syntax for classes.
+- View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter7_object_oriented_shortcuts/shortcuts.ipynb)]
+
 
 ## Managing Big Data with MySQL
 
@@ -73,7 +115,9 @@ Important things to note!!!!!
 
 ![truncate_rows](database/truncate_rows.png)
 
- - Looking at your data. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/database/mysql_exercise/MySQL_Exercise_01_Looking_at_Your_Data.ipynb)]
+**notebooks:**
+
+- Looking at your data. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/database/mysql_exercise/MySQL_Exercise_01_Looking_at_Your_Data.ipynb)]
 - Selecting data subsets using WHERE. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/database/mysql_exercise/MySQL_Exercise_02_Selecting_Data_Subsets_using_WHERE.ipynb)]
 - Formatting selected data ( AS, DISTINCT, exporting data to csv file ). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/database/mysql_exercise/MySQL_Exercise_03_Formatting_Selected_Data.ipynb)]
 - Summarizing your data. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/database/mysql_exercise/MySQL_Exercise_04_Summarizing_Your_Data.ipynb)]
