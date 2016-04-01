@@ -91,7 +91,7 @@ This is one of the continuously updated repositories that documents personal dat
 **Chapter6: Data Structures**
 
 - Data structures: tuples, nametuples, dictionary, set.
-- Examples of `__lt__`(to make classes sortable), `__repr__`; `__add__` and __ `__radd__`(to make classes summable).
+- Examples of `__lt__`(to make classes sortable), `__repr__`; `__add__` and `__radd__`(to make classes summable).
 - `re.compile` used with finding all links in a webpage.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter6_data_structure/data_structure.ipynb)]
 
