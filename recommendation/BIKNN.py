@@ -220,7 +220,7 @@ class BIKNN(object):
 		return self
 
 
-	def update( self, test, iterations = 10 ):
+	def update( self, test, iterations = 100 ):
 		"""
 		loop through all the test data,
 		meanwhile update relative information on the way
@@ -405,12 +405,13 @@ class BIKNN(object):
 # Example
 
 """
+import pandas as pd
+from BIKNN import BIKNN
 train = pd.read_csv( 'data/u1.base', sep = '\t', header = None )
 train = train.iloc[ :, 0:3 ]
 test  = pd.read_csv( 'data/u1.test', sep = '\t', header = None )
-test  = train.iloc[ :, 0:3 ]
+test  = test.iloc[ :, 0:3 ]
 
-from BIKNN import BIKNN
 movie_lens = BIKNN()
 movie_lens.fit( data = train, columns = [ 'user_id', 'item_id', 'ratings' ] )
 mae = movie_lens.update(test)

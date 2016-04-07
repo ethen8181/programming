@@ -31,7 +31,7 @@ This is one of the continuously updated repositories that documents personal dat
 - Accessing randomforest variable importance.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter4/chapter4.ipynb)]
 
-**Chapter 5: Compressing Data via Dimensionality Reduction** ( TODO : lda, kernel )
+**Chapter 5 : Compressing Data via Dimensionality Reduction** ( TODO : lda, kernel )
 
 - Principal Component Analysis. Matching implementation from scratch and Scikit-Learn.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter5/chapter5.ipynb)]
@@ -53,7 +53,7 @@ This is one of the continuously updated repositories that documents personal dat
 - 2016.3.02 | @property, python's way of getters and setters. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/class_@property.ipynb)]
 - 2016.2.22 | @classmethod (alternative constructor) and @staticmethod (adding functions under class). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/class.ipynb)]
 - 2016.2.22 | sorting with itemgetter and attrgetter. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/sorting_with_itemgetter.ipynb)]
-- 2016.2.19 | tricks with list and dictionaries; for .. else .. statement; decorators. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/idiomatic_python.ipynb)] 
+- 2016.2.19 | tricks with list and dictionaries; for .. else .. statement. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/idiomatic_python.ipynb)] 
 - 2016.2.18 | namedtuple and defaultdict. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/collections_module.ipynb)]
 
 
@@ -64,22 +64,22 @@ This is one of the continuously updated repositories that documents personal dat
 
 ## Python3 Object-Oriented Programming
 
-2016.3.20 | Walking through the book. Link on [Amazon](http://www.amazon.com/Python-3-Object-Oriented-Programming/dp/1849511268).
+2016.3.20 | Walking through the book [Python3 Object-Oriented Programming](http://www.amazon.com/Python-3-Object-Oriented-Programming/dp/1849511268).
 
-**Chapter2: Python OOP Basics**
+**Chapter 2 : Python OOP Basics**
 
 - Naming conventions for public, protected, private methods.
 - Setting up a python package.
 - Explanation of `if __name__ == '__main__'`.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter2_python_objects/python_objects.ipynb)] 
 
-**Chapter4: Exceptions**
+**Chapter 4 : Exceptions**
 
 - Raising exceptions and overriding the Exception class to define our own.
 - Using `hashlib` to encode strings.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter4_exception/exception.ipynb)]
 
-**Chapter5: When to Use OOP**
+**Chapter 5 : When to Use OOP**
 
 - Using `@property` to cache expensive values.
 - Explanations of EAFP (easier to ask for forgiveness) and when to use `hasattr` and when to use `try .. except`.
@@ -88,14 +88,14 @@ This is one of the continuously updated repositories that documents personal dat
 - Examples of defining methods in subclass.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter5_when_to_use/when_to_use.ipynb)]
 
-**Chapter6: Data Structures**
+**Chapter 6 : Data Structures**
 
 - Data structures: tuples, nametuples, dictionary, set.
 - Examples of `__lt__`(to make classes sortable), `__repr__`; `__add__` and `__radd__`(to make classes summable).
 - `re.compile` used with finding all links in a webpage.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter6_data_structure/data_structure.ipynb)]
 
-**Chapter7: OOP Shortcuts**
+**Chapter 7 : OOP Shortcuts**
 
 - Unpacking lists or dictionaries with * and **; update method for dictionaries.
 - Generator comprehension.

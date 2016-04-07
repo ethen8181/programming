@@ -51,7 +51,7 @@ class NeuralNetMLP(object):
 		delta_w1_prev = np.zeros(self.w1.shape)
 		delta_w2_prev = np.zeros(self.w2.shape)
 
-		for i in xrange(self.epochs):
+		for i in range(self.epochs):
 
 			# an adaptive learning rate that decreases over time
 			# for better convergence : eta / ( 1 + t * d )
