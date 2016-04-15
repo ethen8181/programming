@@ -10,6 +10,29 @@ This is one of the continuously updated repositories that documents personal dat
 | [Business-Analytics](https://github.com/ethen8181/Business-Analytics) | All the other data analytic related stuffs that are not solely about machine-learning. |
 | [programming](https://github.com/ethen8181/programming) | Walking through books / online courses. |
 
+
+## General Programming
+
+**python**
+
+- 2016.3.18 | pandas's pivot table. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/pivot_table/pivot_table.ipynb)]
+- 2016.3.02 | @property, python's way of getters and setters. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/class_@property.ipynb)]
+- 2016.2.22 | @classmethod (alternative constructor) and @staticmethod (adding functions under class). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/class.ipynb)]
+- 2016.2.22 | sorting with itemgetter and attrgetter. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/sorting_with_itemgetter.ipynb)]
+- 2016.2.19 | tricks with list and dictionaries; for .. else .. statement. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/idiomatic_python.ipynb)] 
+- 2016.2.18 | namedtuple and defaultdict. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/collections_module.ipynb)]
+
+**R**
+
+- 2016.4.15 | data.table joining and other tricks. [[R markdown](http://ethen8181.github.io/programming/R/data_table/data_table.html)]
+
+
+## Linux Command Lines
+
+- Basic nagivations. [[R markdown](http://ethen8181.github.io/programming/linux_commands/linux_commands.html)]
+- Customizing terminal. [[Youtube](https://www.youtube.com/watch?v=vDOVEDl2z84)]
+
+
 ## Python Machine Learning
 
 2016.3.20 | Walking through the book [python machine learning](https://github.com/rasbt/python-machine-learning-book).
@@ -47,20 +70,6 @@ This is one of the continuously updated repositories that documents personal dat
 - Coding up majority voting, using Scikit-Learn’s version and combining it with Grid Search.
 - View[[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter7/chapter7.ipynb)]
 
-## Programming
-
-- 2016.3.18 | pandas's pivot table. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/pivot_table/pivot_table.ipynb)]
-- 2016.3.02 | @property, python's way of getters and setters. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/class_@property.ipynb)]
-- 2016.2.22 | @classmethod (alternative constructor) and @staticmethod (adding functions under class). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/class.ipynb)]
-- 2016.2.22 | sorting with itemgetter and attrgetter. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/sorting_with_itemgetter.ipynb)]
-- 2016.2.19 | tricks with list and dictionaries; for .. else .. statement. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/idiomatic_python.ipynb)] 
-- 2016.2.18 | namedtuple and defaultdict. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/programming/collections_module.ipynb)]
-
-
-## Linux Command Lines
-
-- Basic nagivations. [[R markdown](http://ethen8181.github.io/programming/linux_commands/linux_commands.html)]
-- Customizing terminal. [[Youtube](https://www.youtube.com/watch?v=vDOVEDl2z84)]
 
 ## Python3 Object-Oriented Programming
 
