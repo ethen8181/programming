@@ -15,6 +15,7 @@ This is one of the continuously updated repositories that documents personal dat
 
 **python**
 
+- 2016.4.17 | python's decorators (useful script for logging and timing function). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/decorators/decorators.ipynb)]
 - 2016.3.18 | pandas's pivot table. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/pivot_table/pivot_table.ipynb)]
 - 2016.3.02 | @property, python's way of getters and setters. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/class_@property.ipynb)]
 - 2016.2.22 | @classmethod (alternative constructor) and @staticmethod (adding functions under class). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/class.ipynb)]
