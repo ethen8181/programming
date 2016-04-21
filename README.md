@@ -1,7 +1,5 @@
 # programming
 
-## Overall Description
-
 This is one of the continuously updated repositories that documents personal data science journey. Currently, contents are organized into three different repositories based on the following table's description.
 
 | Repository | Documentation Focus |
@@ -34,7 +32,12 @@ This is one of the continuously updated repositories that documents personal dat
 - Customizing terminal. [[Youtube](https://www.youtube.com/watch?v=vDOVEDl2z84)]
 
 
-## Python Machine Learning
+## Books and Courses  
+
+Contents and code snippets kept for personal reference.
+
+
+### Python Machine Learning
 
 2016.3.20 | Walking through the book [python machine learning](https://github.com/rasbt/python-machine-learning-book).
 
@@ -71,8 +74,10 @@ This is one of the continuously updated repositories that documents personal dat
 - Coding up majority voting, using Scikit-Learn’s version and combining it with Grid Search.
 - View[[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python_machine_learning/chapter7/chapter7.ipynb)]
 
+---
 
-## Python3 Object-Oriented Programming
+
+### Python3 Object-Oriented Programming
 
 2016.3.20 | Walking through the book [Python3 Object-Oriented Programming](http://www.amazon.com/Python-3-Object-Oriented-Programming/dp/1849511268).
 
@@ -112,8 +117,9 @@ This is one of the continuously updated repositories that documents personal dat
 - `__getitem__` dictionary like indexing syntax for classes.
 - View [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/OOP/chapter7_object_oriented_shortcuts/shortcuts.ipynb)]
 
+---
 
-## Managing Big Data with MySQL
+### Managing Big Data with MySQL
 
 2016.2.18 | Walking through the Coursera course [Managing Big Data with MySQL](https://www.coursera.org/learn/analytics-mysql). 
 
