@@ -15,11 +15,11 @@ This is one of the continuously updated repositories that documents personal dat
 
 - 2016.4.17 | python's decorators (useful script for logging and timing function). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/decorators/decorators.ipynb)]
 - 2016.3.18 | pandas's pivot table. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/pivot_table/pivot_table.ipynb)]
-- 2016.3.02 | @property, python's way of getters and setters. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/class_@property.ipynb)]
-- 2016.2.22 | @classmethod (alternative constructor) and @staticmethod (adding functions under class). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/class.ipynb)]
+- 2016.3.02 | @classmethod, @staticmethod and @property. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/class.ipynb)]
 - 2016.2.22 | sorting with itemgetter and attrgetter. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/sorting_with_itemgetter.ipynb)]
-- 2016.2.19 | tricks with list and dictionaries; for .. else .. statement. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/idiomatic_python.ipynb)] 
+- 2016.2.19 | for .. else .. statement. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/for_else.ipynb)] 
 - 2016.2.18 | namedtuple and defaultdict. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/collections_module.ipynb)]
+
 
 **R**
 
@@ -36,6 +36,15 @@ This is one of the continuously updated repositories that documents personal dat
 
 Contents and code snippets kept for personal reference.
 
+
+### Python3 Cookbook
+
+2016.4.26 | Walking through the book [Python3 Cookbook](http://chimera.labs.oreilly.com/books/1230000000393/).
+
+- Data Structure and Algorithm. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python3_cookbook/1_data_structure.ipynb)]
+- Strings and Text. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python3_cookbook/2_strings_and_text.ipynb)]
+
+---
 
 ### Python Machine Learning
 
