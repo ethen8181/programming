@@ -1,7 +1,8 @@
-from operator import itemgetter
-from scipy.stats import norm
-import pandas as pd
+import heapq
 import numpy as np
+import pandas as pd
+from scipy.stats import norm
+from operator import itemgetter
 
 class BIKNN(object):
 	"""
@@ -10,7 +11,7 @@ class BIKNN(object):
 
 	Parameters
 	----------
-	K : int, default = 10
+	K : int, default = 20
 		value specifying the number of nearest (similar) items 
 		to predicted the unknown ratings
 	
@@ -20,12 +21,22 @@ class BIKNN(object):
 	B2 : int, default = 5
 		regularization parameter that penalizes the user bias
 
-	Reference 
-	---------
-	boosting the k-nearest-neighborhood based incremental collaborative filtering
+	Example
+	-------
+	import pandas as pd
+	from BIKNN import BIKNN
+	train = pd.read_csv( 'data/u1.base', sep = '\t', header = None )
+	train = train.iloc[ :, 0:3 ]
+	test  = pd.read_csv( 'data/u1.test', sep = '\t', header = None )
+	test  = test.iloc[ :, 0:3 ]
+
+	movie_lens = BIKNN( K = 10, B1 = 5, B2 = 5 )
+	movie_lens.fit( data = train, columns = [ 'user_id', 'item_id', 'ratings' ] )
+	mae = movie_lens.update( test, iterations = 100 )
+
 	"""
 	
-	def __init__( self, K = 10, B1 = 5, B2 = 5 ):
+	def __init__( self, K = 20, B1 = 5, B2 = 5 ):
 		self.K  = K
 		self.B1 = B1
 		self.B2 = B2
@@ -68,6 +79,9 @@ class BIKNN(object):
 		"""
 		self.data = data
 		self.data.columns = columns
+
+		# mapps the item_id to indices, so they can be represented as an element
+		# in an array
 		self.item_id_dict = { v : k 
 							  for k, v in enumerate( self.data['item_id'].unique() ) }
 		self.keys = self.item_id_dict.keys() 
@@ -178,11 +192,11 @@ class BIKNN(object):
 		# standard deviation for the normal distribution
 		std = np.sqrt(self.variance)
 		
-		for _, i1 in self.item_id_dict.items():
-			for _, i2 in self.item_id_dict.items():
+		for i1 in self.item_id_dict.values():
+			for i2 in self.item_id_dict.values():
 				if i1 < i2:
-					weight = norm( self.mean, std ).cdf( self.sup_[i1][i2] )
-					self.w[i1][i2], self.w[i2][i1] = weight, weight				
+					weight = norm( self.mean, std ).cdf( self.sup[i1][i2] )
+					self.w[i1][i2] = self.w[i2][i1] = weight
 
 		self.sim_w = ( self.F / self.G ) * self.w
 		return self
@@ -230,7 +244,7 @@ class BIKNN(object):
 		Parameters
 		----------
 		test : DataFrame
-			test data
+			test data for evaluating the predicted ratings
 
 		iterations : int, default 100
 			after this number of iterations ( number of new test data ), 
@@ -296,7 +310,7 @@ class BIKNN(object):
 				self.mean = mean_new
 				self.variance = variance_new
 
-			# -----------------------------------
+			# ------------------------------------------------------------------
 			# update the support weight array and the weighted similarity 
 			# score array, after a going through certain number of new ratings,
 			# the number is specified by the user
@@ -369,7 +383,7 @@ class BIKNN(object):
 		user_bias_n = ( self.user_ratings_sum[user_id] - 
 						self.global_avg * self.user_ratings_count[user_id] - 
 						item_bias_total )
-		user_bias_d = self.B1 + self.user_ratings_count[user_id]
+		user_bias_d = self.B2 + self.user_ratings_count[user_id]
 		user_bias 	= user_bias_n / user_bias_d
 		return user_bias
 
@@ -381,9 +395,9 @@ class BIKNN(object):
 		  
 		Returns
 		--------
-		A sorted list
-			of the top k similar items. The list is a list of tuples
-			( item_id, similarity ).
+		(list) 
+			A list of tuples ( item_id, similarity ), sorted by
+			the top k similar items.
 		"""		
 		similars = []
 		for other_item_id in user_rated_item_id:
@@ -391,29 +405,12 @@ class BIKNN(object):
 				similarity = self._get_similarity( other_item_id, item_id )
 				similars.append( ( other_item_id, similarity ) )
 
-		similars_sorted = sorted( similars, key = itemgetter(1), reverse = True )	
-		return similars_sorted[0:self.K] 
+		similars_sorted = heapq.nlargest( self.K, similars, key = itemgetter(1) )
+		return similars_sorted
 
 	
 	def _get_similarity( self, item1, item2 ):
 		"""returns the similarity score given two item ids"""
 		sim = self.sim_w[ self.item_id_dict[item1] ][ self.item_id_dict[item2] ]
 		return sim
-
-
-# -----------------------------------------------------------------------
-# Example
-
-"""
-import pandas as pd
-from BIKNN import BIKNN
-train = pd.read_csv( 'data/u1.base', sep = '\t', header = None )
-train = train.iloc[ :, 0:3 ]
-test  = pd.read_csv( 'data/u1.test', sep = '\t', header = None )
-test  = test.iloc[ :, 0:3 ]
-
-movie_lens = BIKNN()
-movie_lens.fit( data = train, columns = [ 'user_id', 'item_id', 'ratings' ] )
-mae = movie_lens.update(test)
-"""
 
