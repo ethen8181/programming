@@ -105,7 +105,7 @@ class BIKNN(object):
 
 		# calculate the support's info, this is then used to update the 
 		# support weight array and the weighted similarity score array
-		supports = np.asarray(supports)
+		supports = np.array(supports)
 		self.N = supports.shape[0]
 		self.mean = np.sum(supports) / self.N
 		self.variance = ( np.sum( supports ** 2 ) / self.N ) - self.mean ** 2		
