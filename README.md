@@ -1,29 +1,6 @@
 # programming
 
-This is one of the continuously updated repositories that documents personal data science journey. Currently, contents are organized into three different repositories based on the following table's description.
-
-| Repository | Documentation Focus |
-| ---------- | ----------- |
-| [machine-learning](https://github.com/ethen8181/machine-learning) | Machine learning in R / python. |
-| [Business-Analytics](https://github.com/ethen8181/Business-Analytics) | All the other data analytic related stuffs that are not solely about machine-learning. |
-| [programming](https://github.com/ethen8181/programming) | Walking through books / online courses. |
-
-
-## General Programming
-
-**python**
-
-- 2016.4.17 | python's decorators (useful script for logging and timing function). [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/decorators/decorators.ipynb)]
-- 2016.3.18 | pandas's pivot table. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/pivot_table/pivot_table.ipynb)]
-- 2016.3.02 | @classmethod, @staticmethod and @property. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/class.ipynb)]
-- 2016.2.22 | sorting with itemgetter and attrgetter. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/sorting_with_itemgetter.ipynb)]
-- 2016.2.19 | for .. else .. statement. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/for_else.ipynb)] 
-- 2016.2.18 | namedtuple and defaultdict. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python/collections_module.ipynb)]
-
-
-**R**
-
-- 2016.4.15 | data.table joining and other tricks. [[R markdown](http://ethen8181.github.io/programming/R/data_table/data_table.html)]
+Contents and code snippets kept for personal reference only.
 
 
 ## Linux Command Lines
@@ -32,19 +9,7 @@ This is one of the continuously updated repositories that documents personal dat
 - Customizing terminal. [[Youtube](https://www.youtube.com/watch?v=vDOVEDl2z84)]
 
 
-## Books and Courses  
-
-Contents and code snippets kept for personal reference.
-
-
-### Python3 Cookbook
-
-2016.4.26 | Walking through the book [Python3 Cookbook](http://chimera.labs.oreilly.com/books/1230000000393/).
-
-- Data Structure and Algorithm. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python3_cookbook/1_data_structure.ipynb)]
-- Strings and Text. [[nbviewer](http://nbviewer.jupyter.org/github/ethen8181/programming/blob/master/python3_cookbook/2_strings_and_text.ipynb)]
-
----
+## Books and Courses
 
 ### Python Machine Learning
 
