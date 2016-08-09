@@ -5,7 +5,7 @@ library(dplyr)
 library(ggplot2)
 library(cowplot)
 library(data.table)
-setwd('/Users/ethen/machine-learning/sentiment/twitter_sentiment')
+setwd('/Users/ethen/programming/twitter_sentiment')
 
 
 # The dataset contains 14640 tweets and 15 variables (columns)
