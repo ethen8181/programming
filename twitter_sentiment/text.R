@@ -228,8 +228,3 @@ json <- createJSON(
 
 )
 serVis(json)
-
-
-# for python
-# https://github.com/bmabey/pyLDAvis
-# https://github.com/bmabey/hacker_news_topic_modelling
