@@ -39,24 +39,10 @@ class GABIKNN:
     import pandas as pd
     from recommender import BIKNN, GABIKNN
 
-    # movielens, column order: user id, item id, ratings and timestamp
-    # the fourth column is the timestamp, exclude it
-    train = pd.read_csv( 'data/u1.base', sep = '\t', header = None )
-    train = train.iloc[ :, 0:3 ]
-    test  = pd.read_csv( 'data/u1.test', sep = '\t', header = None )
-    test  = test.iloc[ :, 0:3 ]
-    column_names  = [ 'user_ids', 'item_ids', 'ratings' ]
-    train.columns = column_names
-    test.columns  = column_names
-
-    # make sure all the items and users that are in the testing data
-    # has been seen in training 
-    contain_items = test['item_ids'].isin( train['item_ids'].unique() )
-    contain_users = test['user_ids'].isin( train['user_ids'].unique() )
-    test = test[ contain_users & contain_items ]
-
+    train, test = read_file( FILENAME, TESTSIZE, SEED )
     biknn1 = BIKNN( K = 20, B1 = 25, B2 = 25, iterations = 100000 )
     biknn1.fit( data = train, column_names = [ 'user_ids', 'item_ids', 'ratings' ] )
+    
     ga1 = GABIKNN( 
         generation = 2, 
         pop_size = 5,
@@ -66,15 +52,14 @@ class GABIKNN:
         mutate_rate = 0.2,
         BIKNN = biknn1
     )
-    ga1.fit(test)
+    ga1.predict(test)
     ga1.convergence_plot()
     """
-    def __init__( self, generation, pop_size, low, high, 
-                  retain_rate, mutate_rate, BIKNN, verbose = False ):       
+    def __init__(self, BIKNN, generation, pop_size, low, high, 
+                 retain_rate, mutate_rate, verbose):       
 
         self.low  = low
-        self.high = high
-        
+        self.high = high        
         if not BIKNN.is_fitted:
             raise ValueError('BIKNN model is not fitted, call .fit() first')
         
@@ -82,17 +67,17 @@ class GABIKNN:
         self.verbose  = verbose
         self.pop_size = pop_size
         self.generation  = generation
-        self.retain_len  = int( pop_size * retain_rate )
+        self.retain_len  = int(pop_size * retain_rate)
         self.mutate_rate = mutate_rate
 
         # only tunes two hyperpameter, thus the chromo size is fixed
         self.chromo_size = 2 
-        self.info = namedtuple( 'info', [ 'cost', 'chromo' ] )
+        self.info = namedtuple( 'info', ['cost', 'chromo'] )
     
     
-    def fit( self, data ):
+    def predict(self, data):
         """
-        Pass in the data and fits the model
+        Pass in the data and obtain the prediction
 
         Parameters
         ----------
@@ -106,24 +91,23 @@ class GABIKNN:
         
         # randomly generate the initial population, and evaluate its cost
         array_size = self.pop_size, self.chromo_size
-        pop = np.random.random_integers( self.low, self.high, array_size )      
-        graded_pop = self._compute_cost( pop, data )
+        pop = np.random.randint(self.low, self.high + 1, array_size)      
+        graded_pop = self._compute_cost(pop, data)
 
         # store the best chromosome and its cost for each generation,
         # so we can get an idea of when the algorithm converged
         self.generation_history = []
         for i in range(self.generation):
-            graded_pop, generation_best = self._evolve( graded_pop, data )
+            graded_pop, generation_best = self._evolve(data, graded_pop)
             self.generation_history.append(generation_best)
             if self.verbose:
-                print( "generation {}'s best chromo: {}".format( i + 1, generation_best ) )
+                print( "generation {}'s best chromo: {}".format(i + 1, generation_best) )
 
         self.best = self.generation_history[self.generation - 1]
-        self.is_fitted = True
         return self
 
 
-    def _compute_cost( self, pop, data ):
+    def _compute_cost(self, pop, data):
         """
         compute the cost (mae) for different B1, B2 hyperparameter
         combine the cost and chromosome into one list and sort them
@@ -142,7 +126,7 @@ class GABIKNN:
         return graded
 
     
-    def _evolve( self, graded_pop, data ):
+    def _evolve(self, data, graded_pop):
         """
         core method that does the crossover, mutation to generate
         the possibly best children for the next generation
@@ -150,7 +134,7 @@ class GABIKNN:
         
         # retain the best chromos (number determined by the retain_len)
         graded_pop = graded_pop[:self.retain_len]
-        parent = [ p.chromo for p in graded_pop ]
+        parent = [p.chromo for p in graded_pop]
 
         # generate the children for the next generation 
         children = []
@@ -162,7 +146,7 @@ class GABIKNN:
         # evaluate the children chromosome and retain the overall best,
         # overall simply means the best from the parent and the children, where
         # the size retained is determined by the population size
-        graded_children = self._compute_cost( children, data )
+        graded_children = self._compute_cost(children, data)
         graded_pop.extend(graded_children)
         graded_pop = sorted(graded_pop)
         graded_pop = graded_pop[:self.pop_size]
@@ -172,7 +156,7 @@ class GABIKNN:
         return graded_pop, generation_best 
 
 
-    def _crossover( self, parent ):
+    def _crossover(self, parent):
         """
         mate the children by randomly choosing two parents and mix 
         the first half element of one parent with the later half 
@@ -185,26 +169,26 @@ class GABIKNN:
         return child
 
 
-    def _mutate( self, child ):
+    def _mutate(self, child):
         """
         randomly change one element of the chromosome if it
         exceeds the user-specified threshold (mutate_rate)
         """
         if self.mutate_rate > random.random():
             idx_to_mutate = random.randrange(self.chromo_size)
-            child[idx_to_mutate] = random.randint( self.low, self.high )
+            child[idx_to_mutate] = random.randint(self.low, self.high)
 
         return child
 
 
     def convergence_plot(self):
         gh = self.generation_history
-        costs = [ g.cost for g in gh ]
+        costs = [g.cost for g in gh]
         plt.plot( range( 1, len(gh) + 1 ), costs, '-o' )
-        plt.title( 'Cost Convergence Plot' )
+        plt.title('Cost Convergence Plot')
         plt.xlabel('Iteration')
         plt.ylabel('Cost')
-        plt.ylim( 0, costs[0] + 0.5 )
+        plt.ylim(0, costs[0] + 0.5)
         plt.tight_layout()
         plt.show()
 

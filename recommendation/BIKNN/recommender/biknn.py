@@ -32,22 +32,7 @@ class BIKNN:
     import pandas as pd
     from recommender import BIKNN
 
-    # movielens, column order: user id, item id, ratings and timestamp
-    # the fourth column is the timestamp, exclude it
-    train = pd.read_csv( 'data/u1.base', sep = '\t', header = None )
-    train = train.iloc[ :, 0:3 ]
-    test  = pd.read_csv( 'data/u1.test', sep = '\t', header = None )
-    test  = test.iloc[ :, 0:3 ]
-    column_names  = [ 'user_ids', 'item_ids', 'ratings' ]
-    train.columns = column_names
-    test.columns  = column_names
-
-    # make sure all the items and users that are in the testing data
-    # has been seen in training 
-    contain_items = test['item_ids'].isin( train['item_ids'].unique() )
-    contain_users = test['user_ids'].isin( train['user_ids'].unique() )
-    test = test[ contain_users & contain_items ]
-
+    train, test = read_file( FILENAME, TESTSIZE, SEED )
     biknn1 = BIKNN( K = 20, B1 = 25, B2 = 25, iterations = 100000 )
     biknn1.fit( data = train, column_names = [ 'user_ids', 'item_ids', 'ratings' ] )
     pred = biknn1.predict(test)
