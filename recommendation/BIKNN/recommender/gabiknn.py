@@ -55,34 +55,40 @@ class GABIKNN:
     ga1.predict(test)
     ga1.convergence_plot()
     """
-    def __init__(self, BIKNN, generation, pop_size, low, high, 
-                 retain_rate, mutate_rate, verbose):       
+    def __init__(self, generation, pop_size, low, high, 
+                 retain_rate, mutate_rate, K, iterations, 
+                 column_names, verbose):       
 
         self.low  = low
-        self.high = high        
-        if not BIKNN.is_fitted:
-            raise ValueError('BIKNN model is not fitted, call .fit() first')
-        
-        self.BIKNN = BIKNN
-        self.verbose  = verbose
+        self.high = high
         self.pop_size = pop_size
         self.generation  = generation
-        self.retain_len  = int(pop_size * retain_rate)
+        retain_len = int(pop_size * retain_rate)
+        if retain_len < 2:
+            raise ValueError('pop_size * retain_rate should be at least 2 to perform crossover')
+        
+        self.retain_len  = retain_len
         self.mutate_rate = mutate_rate
+
+        # BIKNN parameters
+        self.K = K
+        self.iterations = iterations
+        self.column_names = column_names
+        self.verbose = verbose
 
         # only tunes two hyperpameter, thus the chromo size is fixed
         self.chromo_size = 2 
         self.info = namedtuple( 'info', ['cost', 'chromo'] )
     
     
-    def predict(self, data):
+    def predict(self, train, test):
         """
         Pass in the data and obtain the prediction
 
         Parameters
         ----------
-        data : DataFrame
-            base training data
+        train : DataFrame
+            training and testing
 
         column_names : list of strings
             specifying the column names of the DataFrame,
@@ -92,13 +98,13 @@ class GABIKNN:
         # randomly generate the initial population, and evaluate its cost
         array_size = self.pop_size, self.chromo_size
         pop = np.random.randint(self.low, self.high + 1, array_size)      
-        graded_pop = self._compute_cost(pop, data)
+        graded_pop = self._compute_cost(pop, train, test)
 
         # store the best chromosome and its cost for each generation,
         # so we can get an idea of when the algorithm converged
         self.generation_history = []
         for i in range(self.generation):
-            graded_pop, generation_best = self._evolve(data, graded_pop)
+            graded_pop, generation_best = self._evolve(train, test, graded_pop)
             self.generation_history.append(generation_best)
             if self.verbose:
                 print( "generation {}'s best chromo: {}".format(i + 1, generation_best) )
@@ -107,7 +113,7 @@ class GABIKNN:
         return self
 
 
-    def _compute_cost(self, pop, data):
+    def _compute_cost(self, pop, train, test):
         """
         compute the cost (mae) for different B1, B2 hyperparameter
         combine the cost and chromosome into one list and sort them
@@ -116,17 +122,19 @@ class GABIKNN:
         graded = []
         for p in pop:
             p_B1, p_B2 = p
-            self.BIKNN.B1 = p_B1
-            self.BIKNN.B2 = p_B2
-            pred = self.BIKNN.predict(data)
-            cost = self.BIKNN.evaluate( pred, data['ratings'] )
+            biknn = BIKNN( K = self.K, B1 = p_B1, B2 = p_B2, 
+                           iterations = self.iterations,
+                           column_names = self.column_names )
+            biknn.fit(train)
+            pred = biknn.predict(test)
+            cost = biknn.evaluate( pred, test['ratings'] )
             graded.append( self.info( cost, list(p) ) )
         
         graded = sorted(graded)
         return graded
 
     
-    def _evolve(self, data, graded_pop):
+    def _evolve(self, train, test, graded_pop):
         """
         core method that does the crossover, mutation to generate
         the possibly best children for the next generation
@@ -146,7 +154,7 @@ class GABIKNN:
         # evaluate the children chromosome and retain the overall best,
         # overall simply means the best from the parent and the children, where
         # the size retained is determined by the population size
-        graded_children = self._compute_cost(children, data)
+        graded_children = self._compute_cost(children, train, test)
         graded_pop.extend(graded_children)
         graded_pop = sorted(graded_pop)
         graded_pop = graded_pop[:self.pop_size]

@@ -14,7 +14,7 @@ def load_style( css_style = 'custom1.css', directory = '' ):
 	"""
 
 	# recent matplotlibs are raising deprecation warnings that
-	# we don't worry about.
+	# we don't worry about (it's the axes_prop_cycle).
 	warnings.filterwarnings('ignore')
 
 	# update the default matplotlib's formating

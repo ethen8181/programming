@@ -12,17 +12,17 @@ class BIKNN:
 
     Parameters
     ----------
-    K : int, default = 20
+    K : int
         value specifying the number of nearest (similar) items 
         to predicted the unknown ratings
     
-    B1 : int, default = 5
+    B1 : int
         regularization parameter that penalizes the item bias 
 
-    B2 : int, default = 5
+    B2 : int
         regularization parameter that penalizes the user bias
 
-    iterations : int, default 10000
+    iterations : int
         in the stage of predicting the newdata,
         after this number of iterations (rows of newdata), 
         the weighted similarity will be updated
@@ -38,14 +38,15 @@ class BIKNN:
     pred = biknn1.predict(test)
     biknn1.evaluate( pred, test['ratings'] )
     """
-    def __init__( self, K = 20, B1 = 5, B2 = 5, iterations = 10000 ):
+    def __init__( self, K, B1, B2, iterations, column_names ):
         self.K  = K
         self.B1 = B1
         self.B2 = B2
         self.iterations = iterations
+        self.column_names = column_names
 
 
-    def fit( self, data, column_names ):
+    def fit( self, data ):
         """
         Pass in the data and fits the model
 
@@ -80,7 +81,6 @@ class BIKNN:
         sim_w : np.array
             the weighted similarity array
         """
-        self.column_names = column_names
         data.columns  = self.column_names
         self.user_ids = np.array(data['user_ids'])
         self.item_ids = np.array(data['item_ids'])
