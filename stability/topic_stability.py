@@ -1,27 +1,53 @@
+import numpy as np
 from scipy.optimize import linear_sum_assignment
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.decomposition import LatentDirichletAllocation
 
 
 class TopicStability:
-    # we could possibly support different vectorizer and models
+    """
+    Compute topic stability for scikit-learn's LDA model,
+    we could possibly support different vectorizer and models
+    
+    Parameters
+    ----------
+    vec: scikit-learn's CountVectorizer or TfidfVectorizer
+    
+    lda_model: scikit-learn's LatentDirichletAllocation
+    
+    n_top_words: int
+        number of top words that represents each topic
+    
+    n_topics_range: sequence such as a list or 1d-numpy array
+        search for the optimal topic number within this range
+    
+    n_sample_frac: float 0 ~ 1
+        percentage of documents to sample for each sample set
+    
+    n_sample_time: int
+        number of times to perform the sampling
+
+    Reference
+    ---------
+    https://arxiv.org/abs/1404.4606
+    """
 
     def __init__(self, vec, lda_model, n_top_words, n_topics_range, 
-                 n_sample_frac, n_sample_time):
+                 n_sample_time, n_sample_frac, bootstrap):
         self.vec = vec
         self.lda_model = lda_model
+        self.bootstrap = bootstrap
         self.n_top_words = n_top_words
-        self.n_sample_frac = n_sample_frac
         self.n_sample_time = n_sample_time
+        self.n_sample_frac = n_sample_frac    
         self.n_topics_range = n_topics_range
 
 
-    def fit(self, X):
-        n_sample_size = int(X.shape[0] * self.n_sample_frac)
+    def fit(self, X):        
         topics = len(self.n_topics_range)
         self.avg_agreements = np.zeros(topics)
         self.max_probs = np.zeros(( topics, len(X) ))
+
+        if not self.bootstrap:
+            n_sample_size = int(X.shape[0] * self.n_sample_frac)
     
         for idx, k in enumerate(self.n_topics_range):
             X_dtm = self.vec.fit_transform(X)
@@ -44,7 +70,11 @@ class TopicStability:
             # apply LDA to each samples and obtain each samples' rank set
             S_samples = []
             for _ in range(self.n_sample_time):
-                sample = np.random.choice(X, n_sample_size)
+                if self.bootstrap: 
+                    sample = np.random.choice(X, size = X.shape[0])
+                else:
+                    sample = np.random.choice(X, size = n_sample_size, replace = False)
+                
                 sample_dtm = self.vec.transform(sample)
                 self.lda_model.fit(sample_dtm)
                 S_sample = self._get_rank_set(features)
@@ -117,9 +147,6 @@ class TopicStability:
         """
         set1 = set(ranking1)
         set2 = set(ranking2)
-        
-        # if the numerator or the denominator turned out
-        # to be 0, return 0 as the jaccard similarity
         numerator = len( set1.intersection(set2) )
         if not numerator:
             return 0
@@ -127,5 +154,3 @@ class TopicStability:
         denominator = len( set1.union(set2) )
         jaccard_sim = numerator / denominator
         return jaccard_sim
-
-

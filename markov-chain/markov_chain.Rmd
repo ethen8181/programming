@@ -1,0 +1,121 @@
+---
+title: "Markov Chain"
+author: "Ethen Liu"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: hpstr
+    highlight: github
+---
+
+# Markov Chains
+
+## Introduction
+
+**Markov Chains** are systems that moves from one "state" (a situation) to another. For example, if we made a Markov chain model of our daily routine, we might include Go to work, Go to the gym, Go to the pub or Go home as states, which together could form a "state space". Apart from the state space, a Markov chain tells you the probabilitiy of moving from one state to any other state, or so called **transition probabilities**.
+
+To give a concrete example, let's say it is 5pm, we’re at work and we have 4 choices of what to do next: Stay at work, Go to the gym, Go to the pub or Go home. The transition matrix below shows your probabilities of moving from one state to the next. For example, if we are currently at work then our probability of staying at work for the next hour is 0.2, whereas your probability of going home back is 0.4. But If we are currently at home, then there is 0 probability of moving elsewhere (because January in Chicago is freezing).
+
+```{r}
+
+states <- c('work', 'gym', 'pub', 'home')
+transition <- matrix(
+    c(0.2, 0.2, 0.2, 0.4,
+      0.0, 0.1, 0.2, 0.7,
+      0.0, 0.0, 0.5, 0.5,
+      0.0, 0.0, 0.0, 1.0),
+    byrow = TRUE, nrow = 4, 
+    dimnames = list(states, states)
+)
+knitr::kable(transition)
+
+```
+
+Once you have this transition matrix you can answer all kinds of questions about where you are likely to be at a certain time. e.g. What is the probability we will still be at work at 8pm?
+
+To get from 5pm to 8pm we have to go through 3 transitions (assuming that each transition is an hour).
+
+- Probability we will be at work at 6pm = $0.2$
+- Probability we will be at work at 7pm = $0.2 * 0.2 = 0.04$
+- Probability we will be at work at 8pm = $0.2 * 0.2 * 0.2 = 0.008$
+
+We can obtain this number by doing a matrix multiplication on the same transition matrix for three times.
+
+```{r}
+
+# we start with 1, 0, 0, 0, because we are current
+# at work, and work is the first element of the state vector
+start <- c(1, 0, 0, 0)
+start %*% transition %*% transition %*% transition
+
+```
+
+As we can see, apart from getting the probability that we will still be at work at 8pm, we also obtain the probability that we'll be in all the other states. We can also use the `markovchain` package to make the matrix multiplication part easier/cleaner. The general workflow is to convert it convert to a markov chain class first and to simulate the distribution after n-steps use the formula $\text{initial state * transition matrix} ^{steps}$
+
+```{r, message=FALSE, warning=FALSE}
+
+library(markovchain)
+
+mc <- new('markovchain', states = states, byrow = TRUE, 
+          transitionMatrix = transition, name = 'daily routine')
+start * mc ^ 3
+
+```
+
+We can take a look at another example to let the notion sink in:
+
+The following **transition matrix** represent the transition probabilities
+for the various kinds of weather following a rainy day (first row), a nice day (second row) and a snowy day (third day). And this time we're interested in the state of the markov chain after a large number of steps (in this case 6).
+
+```{r}
+
+states <- c('Rain', 'Nice', 'Snow')
+transition <- matrix(
+    c(0.50, 0.25, 0.25,
+      0.50, 0.00, 0.50,
+      0.25, 0.25, 0.50),
+    nrow = 3, byrow = TRUE,
+    dimnames = list(states, states)
+)
+
+# transition matrix after 6 steps
+mc <- new('markovchain', states = states, byrow = TRUE, 
+          transitionMatrix = transition, name = 'weather')
+(mc ^ 6)@transitionMatrix
+
+```
+
+Looking at the output, we can see that the probabilities for the three types of weather, R, N, and S, are .4, .2, and .4 no matter where the chain started. I hope it is kind of intuitive that it makes sense that the farther away we wish to predict, where we start off will have less and less predictive power about where we end up being.
+
+This is an example of a type of Markov chain called a **regular Markov chain**. For this type of chain, it is true that long-range predictions are independent of the starting state. Not all chains are regular. And we can also obtain this stationary distribution by simply calling `steadyStates` on our `markovchain` object.
+
+```{r}
+
+steadyStates(mc)
+
+```
+
+
+A state si of a Markov chain is called absorbing if it is impossible
+to leave it (i.e., pii = 1). A Markov chain is absorbing if it has at least one absorbing
+state, and if from every state it is possible to go to an absorbing state (not necessarily
+in one step). ✷
+Definition 11.2 In an absorbing Markov chain, a state which is not absorbing is
+called transient
+
+## Reference
+
+- [Blog: Markov Chains Explained Visually](http://setosa.io/ev/markov-chains/)
+- [Blog: Making data science accessible - Markov Chains](http://www.analyticbridge.com/profiles/blog/show?id=2004291%3ABlogPost%3A346087)
+
+
+## R Session Information
+
+```{r}
+
+sessionInfo()
+
+```
+
+
+
