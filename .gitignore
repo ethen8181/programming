@@ -1,0 +1,3 @@
+# Jupter Notebooks
+*.ipynb_checkpoints/
+*.DS_Store
