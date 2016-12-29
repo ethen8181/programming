@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Intro - Flask for Data Scientists</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <!-- the below decorator loads the name you've passed in your route -->
+    <h1 style="margin-top: 50px;">Showing: {{ name }}</h1>
+    <!-- this decorator loads the data you've read using Pandas -->
+    <!-- the | safe decorator tells Jinja2 to disable autoescaping so your table is loaded properly -->
+    <!-- Autoescaping is the concept of automatically escaping special characters for you. -->
+    <!-- Special characters in the sense of HTML (or XML, and thus XHTML) are &, >, <, " as well as '. -->
+    <!-- since these are used to build a table in HTML, we must disable autoescaping to properly load the table -->
+    <div class="row">
+        <div class="col-md-12 formatted-table">{{ data | safe }}</div>
+    </div>
+</div>
+</body>
+<!-- js -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+</html>
