@@ -1,0 +1,167 @@
+---
+title: "Big Data with Cloudera Quickstart VM"
+author: "Ming-Yu Liu"
+date: "December 31, 2015"
+output: 
+  html_document: 
+    highlight: zenburn
+    number_sections: yes
+    theme: flatly
+    toc: yes
+---
+
+# Data Science
+
+Data science is a field that aims to derive knowledge from Big Data efficiently and intelligently. The combinations of domain knowledge, math and statistic skills, hacking skills yields data science. Meaning that a data scientist is someone who can apply data analysis at a large scale, while understanding both the algorithms that they've used and the results that they've obtained.
+
+Basic workflow :
+
+1. Data acquisition
+2. Data preparation
+3. Data analysis
+4. Data presentation
+5. Data product
+
+# Installations and Basics
+
+## Environment Settings
+
+1. Install **VirtualBox** from the following [link](https://www.virtualbox.org/wiki/Downloads).
+2. Install **Cloudera VM** from the following [link](http://www.cloudera.com/content/www/en-us/downloads/quickstart_vms/5-4.html?src=Coursera%22%20%5Ct%20%22_blank), or install the zip file directly [here](https://downloads.cloudera.com/demo_vm/virtualbox/cloudera-quickstart-vm-5.4.2-0-virtualbox.zip). Note that the file is around 4GB, it may take a while to download. After finished downloading, unzip it.
+3. Start up VirtualBox. Import the Cloudera VM by going to `File > Import Appliance`. After that click the folder icon and select the **Cloudera VM.ovf** ( may have different file names, but the file type is always .ovf ) from the folder where you unzipped it, after that click continue and import.
+4. Select the Cloudera VM from the navigation on the left of the VirtualBox and hit start. It could take a few minutes for the Virtual Machine to start (the background will not be black if it's fully started).
+
+## Getting Started
+
+1. Open up a new tab in the Firefox browser and Click on **Hue**, a open source web interface to Hadoop (should be on the BookMark section of the browser).
+2. To sign in, type `cloudera` for both Username and Password.
+3. After that open up the **Terminal**, it is the black TV like icon at the located at the top of the Cloudera VM ( not the web browser! ). Or right click at the desktop where you'll find the open terminal tab.
+
+## Hello World
+
+Upload a text file onto HDFS. In the **Terminal:**
+
+1. Create an empty file name testfile.txt.
+```
+touch testfile.txt
+```
+
+2. Create the content "Hello world in HDFS" in this new file.
+```
+echo "Hello world in HDFS" >> testfile.txt
+```
+
+3. Print out the content of the .txt file.
+```
+cat testfile.txt
+```
+
+4. Put the file up onto HDFS (Hadoop Distributed File System), the core data storage on Hadoop.
+```
+hdfs dfs -put testfile.txt
+```
+
+To check if it worked, go to the **File Browser** in the Hue environment. Located at the top underneath the bookmark of the web browser. 
+
+## Copying and Pasting Word Count Example 
+
+Be sure you are logged in to Coursera and are viewing these instructions using a web browser within the Cloudera Quickstart VM. If not, you may have difficulty copying and pasting
+
+In the **terminal:**
+
+1. Change Directory to the Hadoop library directory.
+```
+cd /usr/lib/hadoop-mapreduce/
+```
+
+2. Create a couple of text files with a few words in it for testing. Type both commands, one at a time.
+```
+echo "Hello world in HDFS" > /home/cloudera/testfile1
+echo "Hadoop word count example in HDFS" > /home/cloudera/testfile2
+```
+
+3. Create directory for the input files on the HDFS file system.
+```
+hdfs dfs -mkdir /user/cloudera/input
+```
+
+4. Copy the files from local filesystem to the HDFS filesystem. Type both commands, one at a time.
+```
+hdfs dfs -put /home/cloudera/testfile1 /user/cloudera/input
+hdfs dfs -put /home/cloudera/testfile2 /user/cloudera/input
+```
+
+5. Run the Hadoop WordCount example with the input and output specified
+```
+hadoop jar hadoop-mapreduce-examples.jar wordcount /user/cloudera/input /user/cloudera/output
+```
+
+6. When running the example, Hadoop will print out a large amount of logging information. After completion, view the output directory.
+```
+hdfs dfs -ls /user/cloudera/output
+```
+
+7. Check the output file to see the results.
+```
+hdfs dfs -cat /user/cloudera/output/part-r-00000
+```
+
+8. Put the output in a location, in this case your Cloudera user's home directory.
+```
+hdfs dfs -get /user/cloudera/output/part-r-00000 /home/cloudera/wordcount.txt
+```
+
+# Basic Hadoop Ecosystem
+
+An open source software framework for storage and large scale processing of datasets on clusters of commodity hardware. It currently consists of four main components: 
+
+- **Hadoop Common** : Libraries and utilies needed by our module.
+- **HDFS** : Distributed File system that stores data on clusters of commodity hardware.
+- **Hadoop YARN** : Resource management platform responsible for managing resources in the cluster and schedule applications. This enhances the power of a Hadoop computing cluster and also makes Hadoop support work flows other than MapReduce, e.g. iterative processing, graph modeling etc.
+- **Hadoop MapReduce** : The programming paradigm that allows distributed processing.
+
+Several Commonly seen components build on top of Hadoop.
+
+- **Sqoop** : SQL to Hadoop. Tool designed to transfer bulk of data between Hadoop and structured database. It allows us to import individual tables or the entire database to Hive.
+- **Hbase** : Hbase is a distributed column-oriented data store column built on top of HDFS. The reason to use Hbase over HDFS is that is it designed to efficiently address random access ( record lookup ) and supports for updates. In a sense, we'll choose Hbase when real time read / access to Big Data is needed. It is an unstructure, key - value pair storage or so called a NoSQL Database.
+- **Pig** : High level programming language on top of Hadoop MapReduce. It excels at describing data analysis problems as data flows. Can be used to perform ETL ( extract, transform and load ) through user-defined functions.
+- **Hive** : Data warehouse. It allows to use SQL-like commands to access the data we have stored in this data warehouse.
+- **Oozie** : Workflow scheduler system to manage Hadoop Jobs.
+- **ZooKeeper** : Opertional services for the Hadoop cluster, e.g. configuring, maintaining.
+- **Spark** : An alternative to map reduce that includes built-in libraries for machine learning and graphing. 
+    - It claims to be significantly faster than MapReduce as most of its computations are done in-memory rather than on disk. 
+    - Currently it can be used with Scala, Java, Python or R. ( Though most documentations seems to be using Scala ).
+    - Has Spark SQL that offers easy querying.
+
+# HDFS Command Line 
+
+Very similar to linux machine's command line, except you add `hdfs dfs` up front.
+
+1. List files in root directory of hdfs.
+```
+hdfs dfs -ls /
+```
+2. Make a directory called /user/test at hdfs.
+```
+hdfs dfs -mkdir /user/test
+```
+3. Upload file `sample.txt` to the directory we've just created at hdfs.
+```
+hdfs dfs -put sample.txt /user/test
+```
+4. A quick check on the status of the file at hdfs, including seeing if the file size is identical and if the connection is healthy.
+```
+hdfs dfs -fsck /user/test/sample.txt
+```
+
+# Spark
+
+## Resilient Distributed Datasets
+
+It is simply an immutable distributed collection of objects. Once you've created it you can not change it. Though you can perform actions on it.
+
+The basic workflow with RDD is that you create a RDD from a data source, apply transformation on it and then apply actions to it.
+
+
+
+

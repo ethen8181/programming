@@ -1,0 +1,9 @@
+
+# download the necessary requirements and open up vagrant in the virtual box.
+vagrant up
+
+# power off
+vagrant halt
+
+# local host that contains the python notebook
+http://localhost:8001/tree
