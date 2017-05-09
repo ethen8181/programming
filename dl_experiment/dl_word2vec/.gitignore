@@ -1,0 +1,6 @@
+mymodel
+mymodel.*
+aclImdb/
+aclImdb_v1.tar.gz
+kaggle-data/
+word2vec-sentiments/

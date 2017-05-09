@@ -11,4 +11,4 @@ rsc15_test.txt
 rsc15_train_full.txt
 rsc15_train_partial.txt
 rsc15_validation.txt
-keras-networks
+mid_data.csv

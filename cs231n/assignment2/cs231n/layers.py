@@ -49,7 +49,7 @@ def affine_backward( dout, cache ):
 	dw = np.dot( x.reshape( x.shape[0], -1 ).T, dout )
 
 	# gradient of for each class's bias is simply the sum of the errors
-	db = np.sum( dout, axis = 0 )	
+	db = np.sum( dout, axis = 0 )
 	return dx, dw, db
 
 

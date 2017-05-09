@@ -1,0 +1,15 @@
+
+You can do a fast, single-line transfer from the terminal using the scp ("secure copy") command, which works just like ssh:
+ 
+$ scp -i my_key_file file_to_copy me@wolf.iems.northwestern.edu:.
+
+# or if you've set up .ssh/config
+$ scp file_to_copy wolf:.
+
+# to copy a file from wolf to local:
+$ scp wolf:results/output.csv .	 	
+
+the . at the end is the current directory on your local machine 
+
+The :. at the end is shorthand for the directory you land in when you ssh in, i.e. your home directory.
+
