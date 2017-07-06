@@ -27,8 +27,7 @@ def _format_explanation(model, data_row, prediction, contrib, feature_names):
 
     pred_info = {'predict': prediction}
     if isinstance(model, (DecisionTreeClassifier, RandomForestClassifier)):
-        pred_info = {'predict': best_idx,
-                     'predict_proba': prediction}
+        pred_info = {'predict': best_idx, 'predict_proba': prediction}
 
     return df_explained, pred_info
 
@@ -40,13 +39,14 @@ class DecisionTreeExplainer:
         self.feature_names = feature_names
 
         # map leaves to paths, and reverse the path so
-        # that the sequence starts with the root node
+        # that the sequence starts with the root node (node_id = 0)
         paths = self._get_tree_paths(tree = self.model_tree.tree_, node_id = 0)
         leaf_to_path = {}
         for path in paths:
             path.reverse()
             leaf_to_path[path[-1]] = path
 
+        # obtain the prediction value at each node,
         # remove the single-dimensional inner arrays
         values = self.model_tree.tree_.value.squeeze()
         if isinstance(self.model_tree, DecisionTreeRegressor):
@@ -64,7 +64,7 @@ class DecisionTreeExplainer:
         self._values = values
         self.bias_ = values[0]
 
-        # TODO: the attribute is used to return different value
+        # TODO: ??? the attribute is used to return different value
         # when using the class in the RandomForestExplainer;
         # might need to evaluate whether this is the best way
         self._ensemble_tree = False
@@ -96,7 +96,7 @@ class DecisionTreeExplainer:
         else:
             return prediction, contrib, self.bias_
 
-    def _get_tree_paths(self, tree, node_id, depth = 0):
+    def _get_tree_paths(self, tree, node_id):
         """
         returns all paths through the tree as list
         of node_ids, note that the path here will
@@ -107,8 +107,8 @@ class DecisionTreeExplainer:
         right_node = tree.children_right[node_id]
 
         if left_node != _tree.TREE_LEAF:
-            left_paths = self._get_tree_paths(tree, left_node, depth + 1)
-            right_paths = self._get_tree_paths(tree, right_node, depth + 1)
+            left_paths = self._get_tree_paths(tree, left_node)
+            right_paths = self._get_tree_paths(tree, right_node)
 
             for path in left_paths:
                 path.append(node_id)
@@ -165,6 +165,11 @@ class RandomForestExplainer:
         self.pre_dispatch = pre_dispatch
         self.feature_names = feature_names
 
+        # TODO : ???
+        # move the computing contribution to init to
+        # only perform the computation once, and future
+        # explain will only be a fast lookup
+
     def explain(self, data_row):
         """
         Parameters
@@ -205,4 +210,4 @@ class RandomForestExplainer:
         return prediction, contrib, bias
 
 
-__all__ = [DecisionTreeExplainer, RandomForestExplainer]
+__all__ = ['DecisionTreeExplainer', 'RandomForestExplainer']
