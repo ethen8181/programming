@@ -28,10 +28,10 @@ class BPR(BaseEstimator):
     n_factors : int, default 20
         Number/dimension of user and item latent factors
 
-    n_iters : int, default 15
+    n_iters : int, default 10
         Number of iterations to train the algorithm
 
-    n_batch_size : int, default 2000
+    batch_size : int, default 2000
         batch size for batch gradient descent, the original paper
         uses stochastic gradient descent (i.e., batch size of 1),
         but this can make the training unstable (very sensitive to
@@ -40,42 +40,47 @@ class BPR(BaseEstimator):
     reg : int, default 0.01
         Regularization term for the user and item latent factors
 
-    seed : int, default 1234
-        Seed for the randomly initialized user, item latent factors
+    random_state : int, default 1234
+        Seed for the randomly initialized user, item latent factors,
+        note that internally, this doesn't use numpy's RandomState but
+        instead uses tensorflow's random generator
 
-    verbose : boolean, default True
+    verbose : bool, default True
         Whether to print progress bar while training
 
     Attributes
     ----------
-    user_factors : 2d numpy array [n_users, n_factors]
-        User latent factors learnt
+    user_factors_ : 2d ndarray [n_users, n_factors]
+        User latent factors learned
 
-    item_factors : 2d numpy array [n_items, n_factors]
-        Item latent factors learnt
+    item_factors_ : 2d ndarray [n_items, n_factors]
+        Item latent factors learned
 
-    item_bias : 1d numpy array [n_items]
-        bias term for the items
+    item_bias_ : 1d ndarray [n_items]
+        Bias term for the items
 
-    history : list
-        Loss function's history, can be used to evaluate
-        whether the algorithm converged or not
+    history_ : list
+        Loss function's history at each iteration, useful
+        for evaluating whether the algorithm converged or not
 
-    Reference
-    ---------
-    S. Rendle, C. Freudenthaler, Z. Gantner, L. Schmidt-Thieme
-    Bayesian Personalized Ranking from Implicit Feedback
-    - https://arxiv.org/pdf/1205.2618.pdf
+    References
+    ----------
+    .. [1] `S. Rendle, C. Freudenthaler, Z. Gantner, L. Schmidt-Thieme
+            Bayesian Personalized Ranking from Implicit Feedback
+            <https://arxiv.org/pdf/1205.2618.pdf>`_
     """
-    def __init__(self, learning_rate = 0.01, n_factors = 15, n_iters = 10,
-                 n_batch_size = 2000, reg = 0.01, seed = 1234, verbose = True):
+    def __init__(self, learning_rate = 0.01, n_factors = 20, n_iters = 10,
+                 batch_size = 2000, reg = 0.01, random_state = 1234, verbose = True):
         self.reg = reg
-        self.seed = seed
         self.verbose = verbose
         self.n_iters = n_iters
         self.n_factors = n_factors
-        self.n_batch_size = n_batch_size
+        self.batch_size = batch_size
+        self.random_state = random_state
         self.learning_rate = learning_rate
+
+        # to avoid re-computation at predict
+        self._prediction = None
 
     def fit(self, ratings):
         """
@@ -85,13 +90,13 @@ class BPR(BaseEstimator):
             sparse matrix of user-item interactions
         """
         # history stores the cost, allows assessing convergence
-        self.history = []
+        self.history_ = []
         indptr = ratings.indptr
         indices = ratings.indices
         n_users, n_items = ratings.shape
 
         # ensure batch size makes sense
-        batch_size = self.n_batch_size
+        batch_size = self.batch_size
         if ratings.nnz < batch_size:
             batch_size = ratings.nnz
             sys.stderr.write('WARNING: Batch size is greater than number of training interactions,'
@@ -119,24 +124,22 @@ class BPR(BaseEstimator):
                                  self._slice_i: sampled_pos_items,
                                  self._slice_j: sampled_neg_items}
                     _, cost = sess.run([self._train_step, self._total_cost], feed_dict)
-                    iteration_cost += cost / self.n_batch_size
+                    iteration_cost += cost / self.batch_size
 
                 iteration_cost /= batch_iters
-                self.history.append(iteration_cost)
+                self.history_.append(iteration_cost)
 
-            self.user_factors = sess.run(self.user_factors)
-            self.item_factors = sess.run(self.item_factors)
-            self.item_bias = sess.run(self.item_bias)
+            self.user_factors_ = sess.run(self.user_factors)
+            self.item_factors_ = sess.run(self.item_factors)
+            self.item_bias_ = sess.run(self.item_bias)
 
-        # avoid recomputing the predicted rating when calling the predict method
-        self._predicted = False
         return self
 
     def _sample(self, n_users, n_items, indices, indptr):
         """sample batches of random triplets u, i, j"""
-        sampled_pos_items = np.zeros(self.n_batch_size, dtype = np.int32)
-        sampled_neg_items = np.zeros(self.n_batch_size, dtype = np.int32)
-        sampled_users = np.random.choice(n_users, size = self.n_batch_size).astype(np.int32)
+        sampled_pos_items = np.zeros(self.batch_size, dtype = np.int32)
+        sampled_neg_items = np.zeros(self.batch_size, dtype = np.int32)
+        sampled_users = np.random.choice(n_users, size = self.batch_size).astype(np.int32)
 
         for idx, user in enumerate(sampled_users):
             pos_items = indices[indptr[user]:indptr[user + 1]]
@@ -153,17 +156,17 @@ class BPR(BaseEstimator):
     def _build_graph(self, n_users, n_items):
         """build the tensorflow computational graph"""
         # initialize random weights
-        user_init = tf.truncated_normal((n_users, self.n_factors), seed = self.seed)
-        item_init = tf.truncated_normal((n_items, self.n_factors), seed = self.seed)
+        user_init = tf.truncated_normal((n_users, self.n_factors), seed = self.random_state)
+        item_init = tf.truncated_normal((n_items, self.n_factors), seed = self.random_state)
         self.user_factors = tf.Variable(user_init, name = 'user_factors')
         self.item_factors = tf.Variable(item_init, name = 'item_factors')
         self.item_bias = tf.Variable(tf.zeros(n_items), name = 'item_bias')
 
         # the input data is the sampled batch of users and
-        # its corresponding positive and negative items
-        self._slice_u = tf.placeholder(tf.int32, self.n_batch_size)
-        self._slice_i = tf.placeholder(tf.int32, self.n_batch_size)
-        self._slice_j = tf.placeholder(tf.int32, self.n_batch_size)
+        # its corresponding positive items (i) and negative items (j)
+        self._slice_u = tf.placeholder(tf.int32, self.batch_size)
+        self._slice_i = tf.placeholder(tf.int32, self.batch_size)
+        self._slice_j = tf.placeholder(tf.int32, self.batch_size)
 
         # use tf.gather() to select a non-contiguous slice from the tensor
         # http://stackoverflow.com/questions/35146444/tensorflow-python-accessing-individual-elements-in-a-tensor
@@ -174,8 +177,26 @@ class BPR(BaseEstimator):
         bias_j = tf.gather(self.item_bias, self._slice_j)
 
         # decompose the estimator, compute the difference between
-        # the score of the positive items i and negative items j
-        r_uij = tf.diag_part(tf.matmul(user_u, tf.transpose(item_i - item_j)))
+        # the score of the positive items i and negative items j;
+        #
+        # a naive implementation in numpy might look like the following:
+        # r_ui = np.diag(user_u.dot(item_i.T))
+        # r_uj = np.diag(user_u.dot(item_j.T))
+        # r_uij = r_ui - r_uj
+        #
+        # however, we can do better, so
+        # for batch dot product, instead of doing the dot product
+        # then only extract the diagonal element (which is the value
+        # of that current batch), we perform a hadamard product,
+        # i.e. matrix element-wise product then do a sum along the column will
+        # be more efficient since it's less operations
+        # http://people.revoledu.com/kardi/tutorial/LinearAlgebra/HadamardProduct.html
+        # r_ui = np.sum(user_u * item_i, axis = 1)
+        #
+        # then we can achieve another speedup by doing the difference
+        # on the positive and negative item up front instead of computing
+        # r_ui and r_uj separately, these two idea will speed up the operations
+        r_uij = tf.reduce_sum(user_u * (item_i - item_j), axis = 1)
         diff = bias_i - bias_j + r_uij
 
         # minimize the cost
@@ -185,6 +206,7 @@ class BPR(BaseEstimator):
         output = tf.clip_by_value(tf.nn.sigmoid(diff), 1e-10, 1.0)
         cost_uij = tf.reduce_sum(tf.log(output))
         self._total_cost = cost_u + cost_i + cost_j - cost_uij
+
         optimizer = tf.train.AdamOptimizer(self.learning_rate)
         self._train_step = optimizer.minimize(self._total_cost)
         return self
@@ -193,23 +215,16 @@ class BPR(BaseEstimator):
         """
         Obtain the predicted ratings for every users and items
         by doing a dot product of the learnt user and item vectors.
-        The result will be cached to avoid re-computing
-        it every time we call predict, thus there will
-        only be an overhead the first time we call it.
-        Note, ideally you probably don't need to compute
-        this as it returns a dense matrix and may take
-        up huge amounts of memory for large datasets
+        The result will be cached to avoid re-computing it every time
+        we call predict, thus there will only be an overhead the first
+        time we call it. Note, ideally you probably don't need to compute
+        this as it returns a dense matrix and may take up huge amounts of
+        memory for large datasets
         """
-        if not self._predicted:
-            self._get_prediction()
-            self._predicted = True
+        if self._prediction is None:
+            self._prediction = self.user_factors_.dot(self.item_factors_.T) + self.item_bias_
 
-        return self._pred
-
-    def _get_prediction(self):
-        """Predicted ratings (dot product of user and item vectors)"""
-        self._pred = self.user_factors.dot(self.item_factors.T) + self.item_bias
-        return self
+        return self._prediction
 
     def _predict_user(self, user):
         """
@@ -219,7 +234,7 @@ class BPR(BaseEstimator):
 
         TODO : do we even need this in the class?
         """
-        user_pred = self.user_factors[user].dot(self.item_factors.T) + self.item_bias
+        user_pred = self.user_factors_[user].dot(self.item_factors_.T) + self.item_bias_
         return user_pred
 
     def recommend(self, ratings, N = 5, user_ids = None):
@@ -309,7 +324,7 @@ class BPR(BaseEstimator):
         # we can use the more efficient kd-tree for nearest neighbor search;
         # also the item will always to nearest to itself, so we add 1 to =
         # get an additional nearest item and remove itself at the end
-        normed_item_factors = normalize(self.item_factors)
+        normed_item_factors = normalize(self.item_factors_)
         knn = NearestNeighbors(n_neighbors = N + 1, metric = 'euclidean')
         knn.fit(normed_item_factors)
 
