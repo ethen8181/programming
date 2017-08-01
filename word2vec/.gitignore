@@ -1,3 +1,4 @@
 *.txt
 *.zip
 word2vec
+graphs/
