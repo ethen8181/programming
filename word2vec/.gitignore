@@ -1,4 +1,7 @@
-*.txt
+glove.6B*.txt
+unigram.txt
+r8*.txt
 *.zip
 word2vec
 graphs/
+
