@@ -106,6 +106,7 @@ class Word2Vectorizer(BaseEstimator, TransformerMixin):
     Gensim Documentation: Model word2vec
     https://radimrehurek.com/gensim/models/word2vec.html
     """
+
     def __init__(self, sg = 0, hs = 0, size = 100, alpha = 0.025, window = 5, min_count = 5,
                  max_vocab_size = None, sample = 1e-3, seed = 1, workers = -1, min_alpha = 0.0001,
                  negative = 5, cbow_mean = 1, hashfxn = hash, iter = 5, null_word = 0,
