@@ -1,0 +1,11 @@
+[I 170811 13:29:05 word2vec_workflow:38] job started
+[I 170811 13:29:06 word2vec_workflow:64] training word2vec
+[I 170811 13:29:37 word2vec_workflow:38] job started
+[I 170811 13:29:37 word2vec_workflow:43] preprocessing text
+[I 170811 13:33:04 word2vec_workflow:51] training phrase model
+[I 170811 13:33:08 word2vec_workflow:58] converting words to phrases
+[I 170811 13:33:13 word2vec_workflow:64] training word2vec
+[I 170811 13:40:27 word2vec_workflow:39] job started
+[I 170811 13:40:27 word2vec_workflow:44] preprocessing text
+[I 170811 13:44:10 word2vec_workflow:52] training phrase model
+[I 170811 13:44:15 word2vec_workflow:59] converting words to phrases

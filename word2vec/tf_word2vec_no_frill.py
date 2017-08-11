@@ -5,8 +5,10 @@ from tqdm import trange
 
 # def tf_word2vec(batch_gen, epochs, learning_rate, num_sampled,
 #                 batch_size, embed_size, vocab_size, tensorboard):
-def tf_word2vec(data, epochs, learning_rate, num_sampled, window_size,
-                batch_size, embed_size, vocab_size, tensorboard):
+# def tf_word2vec(data, epochs, learning_rate, num_sampled, window_size,
+#                 batch_size, embed_size, vocab_size, tensorboard):
+def tf_word2vec(sentences, vocab, epochs, learning_rate, num_sampled,
+                window_size, batch_size, embed_size, tensorboard):
     """
     Word2vec skipgram model with negative sample loss using
     Tensorflow as backend
@@ -18,6 +20,7 @@ def tf_word2vec(data, epochs, learning_rate, num_sampled, window_size,
     ----------
     https://github.com/chiphuyen/tf-stanford-tutorials/blob/master/examples/04_word2vec_no_frills.py
     """
+    vocab_size = len(vocab)
 
     # Clears the default graph stack and resets the global default graph;
     # this line is crucial if we want to re-run the class in interactive
@@ -62,26 +65,29 @@ def tf_word2vec(data, epochs, learning_rate, num_sampled, window_size,
     tf.summary.scalar('total_loss', total_loss)
     summary_op = tf.summary.merge_all()
 
-    optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+    optimizer = tf.train.AdagradOptimizer(learning_rate)
     train_step = optimizer.minimize(total_loss)
     init = tf.global_variables_initializer()
 
-    batch_iters = len(data) // batch_size
+    # batch_iters = len(data) // batch_size
     with tf.Session() as sess:
         sess.run(init)
 
         # record the average loss in the last skip_step steps
         history = []
         writer = tf.summary.FileWriter(tensorboard, sess.graph)
-        for _ in trange(epochs):
-            iterator = generate_sample(indexed_words = data, window = window_size)
+        for epoch in trange(epochs):
+            iterator = generate_sample(sentences, vocab, window = window_size)
             batch_gen = get_batch(iterator, batch_size)
 
-            for _ in range(batch_iters):
-                centers, targets = next(batch_gen)
-                feed_dict = {center_words: centers, target_words: targets}
-                _, loss, summary = sess.run([train_step, total_loss, summary_op], feed_dict)
-                history.append(loss / batch_size)
+            # for _ in range(batch_iters):
+            # try:
+            centers, targets = next(batch_gen)
+            feed_dict = {center_words: centers, target_words: targets}
+            _, loss, summary = sess.run([train_step, total_loss, summary_op], feed_dict)
+
+            writer.add_summary(summary, epoch)
+            history.append(loss)
 
         writer.close()
         word_vectors = sess.run(embed_matrix)
@@ -89,41 +95,88 @@ def tf_word2vec(data, epochs, learning_rate, num_sampled, window_size,
     return word_vectors, history
 
 
-def generate_sample(indexed_words, window):
+def build_vocab(sentences, sample = 0.001, min_count = 5):
+    raw_vocab = {}
+    for index, sentence in enumerate(sentences, 1):
+        for word in sentence:
+            if word not in raw_vocab:
+                raw_vocab[word] = 0
+            else:
+                raw_vocab[word] += 1
+
+    # corpus_count = index
+
+    # keep track of the total number of retained
+    # words to perform subsampling later
+    vocab = {}
+    index2word = []
+    count_total = 0
+    for word, count in raw_vocab.items():
+        if count >= min_count:
+            count_total += count
+            vocab[word] = {'count': count}
+            index2word.append(word)
+
+    del raw_vocab
+
+    # sort vocabulary's index by descending word count and create the reverse index
+    index2word.sort(key = lambda word: vocab[word]['count'], reverse = True)
+    for index, word in enumerate(index2word):
+        vocab[word]['index'] = index
+
+    # precalculate each vocabulary item's threshold for down sampling
+    threshold_count = sample * count_total
+    for word in index2word:
+        count = vocab[word]['count']
+
+        # word2vec's formula for the probability of down sampling
+        prob = np.sqrt(count / threshold_count + 1) * threshold_count / count
+        vocab[word]['prob'] = min(prob, 1.0)
+
+    return vocab, index2word
+
+
+def generate_sample(sentences, vocab, window):
     """
     Form training pairs according to the skip-gram model
 
     Parameters
     ----------
     indexed_words : list
-        list of index that represents the words, e.g. [5243, 3083, 11],
+        List of index that represents the words, e.g. [5243, 3083, 11],
         and 5243 might represent the word "Today"
 
     window : int
-        window size of the skip-gram model, where word is sampled before
+        Window size of the skip-gram model, where word is sampled before
         and after the center word according to this window size
     """
-    for index, center in enumerate(indexed_words):
-        # random integers from `low` (inclusive) to `high` (exclusive)
-        context = np.random.randint(1, window + 1)
+    for sentence in sentences:
+        word_vocabs = [vocab[w] for w in sentence if w in vocab and
+                       vocab[w]['prob'] > np.random.rand()]
 
-        # get a random target before the center word
-        for target in indexed_words[max(0, index - context):index]:
-            yield center, target
+        for index, word in enumerate(word_vocabs):
+            center = word['index']
+            reduced_window = np.random.randint(1, window + 1)
 
-        # get a random target after the center word
-        for target in indexed_words[(index + 1):(index + 1 + context)]:
-            yield center, target
+            # words before the center word
+            for context in word_vocabs[max(0, index - reduced_window):index]:
+                target = context['index']
+                yield center, target
+
+            # words after the center word
+            for context in word_vocabs[(index + 1):(index + 1 + reduced_window)]:
+                target = context['index']
+                yield center, target
 
 
 def get_batch(iterator, batch_size):
     """
-    Group a numerical stream of centered and targeted
-    word into batches and yield them as Numpy arrays
+    Group a numerical stream of centered and context
+    word into batches and yield them as numpy arrays
     """
     while True:
-        center_batch = np.zeros(batch_size, dtype = np.int32)
-        target_batch = np.zeros((batch_size, 1), dtype = np.int32)
+        center_batch = np.zeros(batch_size, dtype = np.uint32)
+        target_batch = np.zeros((batch_size, 1), dtype = np.uint32)
         for index in range(batch_size):
             center_batch[index], target_batch[index] = next(iterator)
 
