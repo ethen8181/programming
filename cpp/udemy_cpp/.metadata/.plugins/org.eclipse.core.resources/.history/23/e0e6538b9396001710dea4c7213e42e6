@@ -1,0 +1,34 @@
+/*
+ * ring.h
+ *
+ *  Created on: Sep 10, 2017
+ *      Author: ethen
+ */
+
+#ifndef RING_H_
+#define RING_H_
+
+#include <iostream>
+using namespace std;
+
+class ring {
+public:
+	ring();
+	virtual ~ring();
+
+	// define the class iterator here
+	class iterator;
+};
+
+
+// implement the actual iterator class of the ring class outside
+// the ring class's bracket scope to avoid confusion (class nested
+// inside another class might become less readable)
+class ring::iterator {
+public:
+	void print() {
+		cout << "iterator" << endl;
+	}
+};
+
+#endif /* RING_H_ */

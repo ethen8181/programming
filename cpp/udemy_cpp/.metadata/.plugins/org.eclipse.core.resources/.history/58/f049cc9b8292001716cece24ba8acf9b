@@ -1,0 +1,26 @@
+//============================================================================
+// Name        : Vector.cpp
+// Author      : Ethen
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+	// create a vector of string type
+	// and pre-size the vector (not necessary)
+	vector<string> strings(5);
+
+	// the square bracket is overloaded for the vector class
+	strings[3] = "dog";
+	cout << strings[3] << endl;
+
+	//
+	strings.push_back("one");
+	cout << strings.size() << endl;
+	return 0;
+}

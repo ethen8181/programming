@@ -1,0 +1,15 @@
+16:31:37 **** Incremental Build of configuration Debug for project FunctionPointers2 ****
+make all 
+Building file: ../src/FunctionPointers2.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/FunctionPointers2.d" -MT"src/FunctionPointers2.o" -o "src/FunctionPointers2.o" "../src/FunctionPointers2.cpp"
+Finished building: ../src/FunctionPointers2.cpp
+ 
+Building target: FunctionPointers2
+Invoking: MacOS X C++ Linker
+g++  -o "FunctionPointers2"  ./src/FunctionPointers2.o   
+Finished building target: FunctionPointers2
+ 
+
+16:31:37 Build Finished (took 325ms)
+

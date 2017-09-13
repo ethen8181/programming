@@ -1,0 +1,39 @@
+/*
+ * Complex.cpp
+ *
+ *  Created on: Sep 8, 2017
+ *      Author: ethen
+ */
+
+#include "Complex.h"
+
+namespace basics {
+
+Complex::Complex(): real(0.0), imaginary(0.0) {
+}
+
+Complex::Complex(double real, double imaginary) {
+	this->real = real;
+	this->imaginary = imaginary;
+}
+
+Complex::Complex(const Complex &other) {
+	// We can access private members of a class from within the class
+	// even those of another instance.
+	real = other.real;
+	imaginary = other.imaginary;
+}
+
+const Complex &Complex::operator=(const Complex &other) {
+	real = other.real;
+	imaginary = other.imaginary;
+	// dereference the pointer, which is a pointer
+	// to the object itself
+	return *this;
+}
+
+Complex::~Complex() {
+	// TODO Auto-generated destructor stub
+}
+
+} /* namespace basics */

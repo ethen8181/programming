@@ -1,0 +1,15 @@
+12:15:30 **** Incremental Build of configuration Debug for project Exception ****
+make all 
+Building file: ../src/Exception.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Exception.d" -MT"src/Exception.o" -o "src/Exception.o" "../src/Exception.cpp"
+Finished building: ../src/Exception.cpp
+ 
+Building target: Exception
+Invoking: MacOS X C++ Linker
+g++  -o "Exception"  ./src/Exception.o   
+Finished building target: Exception
+ 
+
+12:15:30 Build Finished (took 341ms)
+

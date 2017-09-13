@@ -1,0 +1,21 @@
+/*
+ * Complex.cpp
+ *
+ *  Created on: Sep 8, 2017
+ *      Author: ethen
+ */
+
+#include "Complex.h"
+
+namespace basics {
+
+Complex::Complex() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Complex::~Complex() {
+	// TODO Auto-generated destructor stub
+}
+
+} /* namespace basics */

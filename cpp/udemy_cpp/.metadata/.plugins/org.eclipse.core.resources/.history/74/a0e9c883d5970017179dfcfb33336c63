@@ -1,0 +1,22 @@
+//============================================================================
+// Name        : cpp11-3.cpp
+// Author      : Ethen
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	// c-style casting float to integer
+	// both type of casting works:
+	float value = 3.23;
+	cout << int(value) << endl;
+	cout << (int)value << endl;
+
+	// cpp style static_cast
+	cout << static_cast<int>value << endl;
+	return 0;
+}

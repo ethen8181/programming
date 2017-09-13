@@ -1,0 +1,25 @@
+//============================================================================
+// Name        : Templates.cpp
+// Author      : Ethen
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+
+// for templates, define all the definition and actual implementation
+// in the header files
+
+// after defining the class T, T is now a generic type that we can use
+template<class T>
+class Test {
+
+};
+
+int main() {
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

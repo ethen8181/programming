@@ -1,0 +1,27 @@
+/*
+ * Complex.h
+ *
+ *  Created on: Sep 8, 2017
+ *      Author: ethen
+ */
+
+#ifndef COMPLEX_H_
+#define COMPLEX_H_
+
+namespace basics {
+
+class Complex {
+private:
+	double real;
+	double imaginary;
+
+public:
+	Complex();
+	Complex(double real, double imaginary);
+	Complex(const Complex &other);
+	virtual ~Complex();
+};
+
+} /* namespace basics */
+
+#endif /* COMPLEX_H_ */

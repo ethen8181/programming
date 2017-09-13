@@ -1,0 +1,21 @@
+//============================================================================
+// Name        : LeetCode.cpp
+// Author      : Ethen
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int findKthLargest(vector<int>& nums, int k) {
+	sort(nums.begin(), nums.end());
+	return nums[k - 1];
+}
+
+int main() {
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

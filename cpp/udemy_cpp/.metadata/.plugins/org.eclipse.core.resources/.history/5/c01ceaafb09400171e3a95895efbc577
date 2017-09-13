@@ -1,0 +1,50 @@
+//============================================================================
+// Name        : overloading.cpp
+// Author      : Ethen
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+
+class Test {
+private:
+	int id;
+	string name;
+
+public:
+	Test(): id(0), name("") {
+
+	}
+
+	Test(int id, string name): id(id), name(name) {
+
+	}
+
+	void print() {
+		cout << id << ": " << name << endl;
+	}
+
+	const Test &operator=(const Test &other) {
+		id = other.id;
+		name = other.name;
+		// dereference the pointer, which is a pointer
+		// to the object
+		return *this;
+	}
+};
+
+int main() {
+	Test test1(10, "Mike");
+	test1.print();
+
+	// by default, cpp provides a shallow copy;
+	// when we do the "=" sign operator
+	Test test2(20, "Bob");
+	test2 = test1;
+	test2.print();
+	return 0;
+}

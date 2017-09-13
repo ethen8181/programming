@@ -1,0 +1,18 @@
+/*
+ * ring.cpp
+ *
+ *  Created on: Sep 10, 2017
+ *      Author: ethen
+ */
+
+#include "ring.h"
+
+ring::ring() {
+	// TODO Auto-generated constructor stub
+
+}
+
+ring::~ring() {
+	// TODO Auto-generated destructor stub
+}
+

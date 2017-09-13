@@ -1,0 +1,146 @@
+14:16:51 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+Finished building: ../src/cpp11-3.cpp
+ 
+Building target: cpp11-3
+Invoking: MacOS X C++ Linker
+g++  -o "cpp11-3"  ./src/cpp11-3.o   
+Finished building target: cpp11-3
+ 
+14:16:56 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+make: Nothing to be done for `all'.
+14:18:42 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+../src/cpp11-3.cpp:61:2: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+        auto calculate = bind(add, 1, 2);
+        ^
+../src/cpp11-3.cpp:61:19: error: use of undeclared identifier 'bind'; did you mean 'find'?
+        auto calculate = bind(add, 1, 2);
+                         ^~~~
+                         find
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/algorithm:862:1: note: 'find' declared here
+find(_InputIterator __first, _InputIterator __last, const _Tp& __value_)
+^
+../src/cpp11-3.cpp:61:19: error: no matching function for call to 'find'
+        auto calculate = bind(add, 1, 2);
+                         ^~~~
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/algorithm:862:1: note: candidate template ignored: deduced conflicting types for parameter '_InputIterator' ('int (*)(int, int)' vs. 'int')
+find(_InputIterator __first, _InputIterator __last, const _Tp& __value_)
+^
+1 warning and 2 errors generated.
+make: *** [src/cpp11-3.o] Error 1
+14:19:58 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+../src/cpp11-3.cpp:62:2: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+        auto calculate = bind(add, 1, 2);
+        ^
+../src/cpp11-3.cpp:62:19: error: use of undeclared identifier 'bind'; did you mean 'find'?
+        auto calculate = bind(add, 1, 2);
+                         ^~~~
+                         find
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/algorithm:862:1: note: 'find' declared here
+find(_InputIterator __first, _InputIterator __last, const _Tp& __value_)
+^
+../src/cpp11-3.cpp:62:19: error: no matching function for call to 'find'
+        auto calculate = bind(add, 1, 2);
+                         ^~~~
+/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/algorithm:862:1: note: candidate template ignored: deduced conflicting types for parameter '_InputIterator' ('int (*)(int, int)' vs. 'int')
+find(_InputIterator __first, _InputIterator __last, const _Tp& __value_)
+^
+1 warning and 2 errors generated.
+make: *** [src/cpp11-3.o] Error 1
+14:20:31 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+Finished building: ../src/cpp11-3.cpp
+ 
+Building target: cpp11-3
+Invoking: MacOS X C++ Linker
+g++  -o "cpp11-3"  ./src/cpp11-3.o   
+Finished building target: cpp11-3
+ 
+14:20:45 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+Finished building: ../src/cpp11-3.cpp
+ 
+Building target: cpp11-3
+Invoking: MacOS X C++ Linker
+g++  -o "cpp11-3"  ./src/cpp11-3.o   
+Finished building target: cpp11-3
+ 
+14:20:51 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+Finished building: ../src/cpp11-3.cpp
+ 
+Building target: cpp11-3
+Invoking: MacOS X C++ Linker
+g++  -o "cpp11-3"  ./src/cpp11-3.o   
+Finished building target: cpp11-3
+ 
+14:34:32 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+Finished building: ../src/cpp11-3.cpp
+ 
+Building target: cpp11-3
+Invoking: MacOS X C++ Linker
+g++  -o "cpp11-3"  ./src/cpp11-3.o   
+Finished building target: cpp11-3
+ 
+14:43:48 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+../src/cpp11-3.cpp:86:7: error: calling a private constructor of class 'Temp'
+        Temp temp;
+             ^
+../src/cpp11-3.cpp:37:2: note: declared private here
+        Temp(): ptr(new int[2]) {
+        ^
+1 error generated.
+make: *** [src/cpp11-3.o] Error 1
+14:44:23 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+Finished building: ../src/cpp11-3.cpp
+ 
+Building target: cpp11-3
+Invoking: MacOS X C++ Linker
+g++  -o "cpp11-3"  ./src/cpp11-3.o   
+Finished building target: cpp11-3
+ 
+14:44:55 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+Finished building: ../src/cpp11-3.cpp
+ 
+Building target: cpp11-3
+Invoking: MacOS X C++ Linker
+g++  -o "cpp11-3"  ./src/cpp11-3.o   
+Finished building target: cpp11-3
+ 

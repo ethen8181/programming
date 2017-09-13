@@ -1,0 +1,44 @@
+//============================================================================
+// Name        : cpp11-3.cpp
+// Author      : Ethen
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+class Parent {
+	virtual ~Parent() {
+
+	}
+};
+
+class Brother: public Parent {
+
+};
+
+int main() {
+	// c-style casting float to integer
+	// both type of casting works:
+	float value = 3.23;
+	cout << int(value) << endl;
+	cout << (int)value << endl;
+
+	// cpp style static_cast,
+	// note that it does not perform checking for
+	// you, it's up to us to make sure our casting
+	// is sensible
+	cout << static_cast<int>(value) << endl;
+
+	Parent parent;
+	Brother* brother = dynamic_cast<Brother*>(&parent);
+	if (brother == nullptr) {
+		cout << "Invalid"
+	} else {
+		cout << brother;
+	}
+
+	return 0;
+}
