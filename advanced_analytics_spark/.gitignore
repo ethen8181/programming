@@ -1,0 +1,10 @@
+**/spark-warehouse/
+ch02-intro/linkage/
+ch03-recommender/profiledata_06-May-2005/
+ch03-recommender/profiledata_06-May-2005.tar.gz
+ch04-rdf/covtype.data
+ch04-rdf/covtype.data.gz
+ch05-kmeans/kddcup.data
+ch05-kmeans/kddcup.data.gz
+ch06-lsa/Wikipedia-20170920184300.xml
+ch06-lsa/stopwords.txt
