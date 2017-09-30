@@ -14,8 +14,6 @@ val kvs = spark.sparkContext.newAPIHadoopFile(path, classOf[XMLInputFormat],
 val rawXmls = kvs.map(_._2.toString).toDS()
 
 
-
-
 def wikiXmlToPlainText(pageXml: String): Option[(String, String)] = {
     // Wikipedia has updated their dumps slightly since Cloud9 was written,
     // so this hacky replacement is sometimes required to get parsing to work.
@@ -38,6 +36,7 @@ import edu.stanford.nlp.pipeline._
 import edu.stanford.nlp.ling.CoreAnnotations._
 import java.util.Properties
 import org.apache.spark.sql.Dataset
+
 
 def createNLPPipeline(): StanfordCoreNLP = {
     val props = new Properties()
@@ -64,6 +63,9 @@ produced from two silhouette images taken from different viewpoints. The interse
 two cones is called a visual hull, which is a bounding geometry of the actual 3D object (see
 the bottom right thumbnail).
 """
+val pipeline = createNLPPipeline()
+val doc = new Annotation(texts)
+pipeline.annotate(doc)
 
 def isOnlyLetter(str: String): Boolean = {
     // .forall returns True is the expression is true for every element
@@ -145,7 +147,51 @@ val docTermMatrix = idfModel.
 val termIds: Array[String] = vocabModel.vocabulary
 
 
+val docIds = docTermFreqs.
+    rdd.map(_.getString(0)).
+    zipWithUniqueId().
+    map(_.swap).
+    collect.
+    toMap
+
+import org.apache.spark.mllib.linalg.{Vectors, Vector => MLLibVector}
+import org.apache.spark.ml.linalg.{Vector => MLVector}
 
 
+val vecRdd = docTermMatrix.select("tfidfVec").rdd.map { row =>
+    Vectors.fromML(row.getAs[MLVector]("tfidfVec"))
+}
 
+
+import org.apache.spark.mllib.linalg.{Matrix,
+    SingularValueDecomposition}
+import org.apache.spark.mllib.linalg.distributed.RowMatrix
+
+vecRdd.cache()
+val mat = new RowMatrix(vecRdd)
+val k = 30
+val svd = mat.computeSVD(k, computeU = true)
+
+
+def topTermsInTopConcepts(
+    svd: SingularValueDecomposition[RowMatrix, Matrix],
+    numConcepts: Int, numTerms: Int, termIds: Array[String]) {
+    // flatten the mllib Matrix to an Array, its the rows that gets flatten first
+    val v = svd.V
+    val arr = v.toArray
+
+    // concatenate an array of term and its corresponding score
+    val topTerms = new ArrayBuffer[Seq[(String, Double)]]()
+    for (i <- 0 until numConcepts) {
+        val offs = i * v.numRows
+        val termWeights = arr.slice(offs, offs + v.numRows).zipWithIndex
+        // negate the numeric value to sort in decreasing order
+        val sorted = termWeights.sortBy(-_._1)
+        topTerms += sorted.take(numTerms).map { case(score, id) =>
+            (termIds(id), score)
+        }
+        topTerms
+    }
+}
+val topConceptTerms = topTermsInTopConcepts(svd, 4, 10, termIds)
 
