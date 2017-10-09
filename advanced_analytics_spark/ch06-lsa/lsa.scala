@@ -1,8 +1,10 @@
+// bin/spark-shell --jars ../aas/ch06-lsa/target/ch06-lsa-2.0.0-jar-with-dependencies.jar
 import edu.umd.cloud9.collection.XMLInputFormat
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.io._
 import edu.umd.cloud9.collection.wikipedia.language._
 import edu.umd.cloud9.collection.wikipedia._
+
 
 val basepath = "/Users/ethen/programming/advanced_analytics_spark/ch06-lsa/"
 val path = basepath + "Wikipedia-20170920184300.xml"
@@ -23,8 +25,12 @@ def wikiXmlToPlainText(pageXml: String): Option[(String, String)] = {
 
     val page = new EnglishWikipediaPage()
     WikipediaPage.readPage(page, hackedPageXml)
-    if (page.isEmpty) None
-    else Some((page.getTitle, page.getContent))
+    if (page.isEmpty || !page.isArticle || page.isRedirect ||
+        page.getTitle.contains("(disambiguation)")) {
+        None
+    } else {
+        Some((page.getTitle, page.getContent))
+    }
 }
 
 val docTexts = rawXmls.filter(_ != null).flatMap(wikiXmlToPlainText)
@@ -49,23 +55,6 @@ def createNLPPipeline(): StanfordCoreNLP = {
 val stopWords = scala.io.Source.fromFile(basepath + "stopwords.txt").getLines().toSet
 val bStopWords = spark.sparkContext.broadcast(stopWords)
 
-
-val texts = """
-A visual hull is a geometric entity created by shape-from-silhouette 3D
-reconstruction technique introduced by A. Laurentini. This technique assumes 
-the foreground object in an image can be separated from the background.
-Under this assumption, the original image can be thresholded into a foreground/background
-binary image, which we call a silhouette image. The foreground mask, known as a silhouette,
-is the 2D projection of the corresponding 3D foreground object. Along with the camera viewing
-parameters, the silhouette defines a back-projected generalized cone that contains the actual
-object. This cone is called a silhouette cone. The upper right thumbnail shows two such cones
-produced from two silhouette images taken from different viewpoints. The intersection of the
-two cones is called a visual hull, which is a bounding geometry of the actual 3D object (see
-the bottom right thumbnail).
-"""
-val pipeline = createNLPPipeline()
-val doc = new Annotation(texts)
-pipeline.annotate(doc)
 
 def isOnlyLetter(str: String): Boolean = {
     // .forall returns True is the expression is true for every element
@@ -143,10 +132,17 @@ val docTermMatrix = idfModel.
     transform(docTermFreqs).
     select("title", "tfidfVec")
 
-// mapping of index to string
+// mapping of index to term/vocabulary
 val termIds: Array[String] = vocabModel.vocabulary
 
-
+/*
+to create a mapping of index to document, we rely
+on zipWithUniqueId method, note that if we call
+this method on a transformed version of the original
+DataFrame, it will assign that same id to each row
+as long as the transformation does not change their
+row ordering or partition
+*/
 val docIds = docTermFreqs.
     rdd.map(_.getString(0)).
     zipWithUniqueId().
@@ -173,25 +169,57 @@ val k = 30
 val svd = mat.computeSVD(k, computeU = true)
 
 
+// find the most relevant term for each of the top concepts
 def topTermsInTopConcepts(
     svd: SingularValueDecomposition[RowMatrix, Matrix],
-    numConcepts: Int, numTerms: Int, termIds: Array[String]) {
+    numConcepts: Int,
+    numTerms: Int, termIds: Array[String]): Seq[Seq[(String, Double)]] = {
     // flatten the mllib Matrix to an Array, its the rows that gets flatten first
     val v = svd.V
     val arr = v.toArray
-
-    // concatenate an array of term and its corresponding score
     val topTerms = new ArrayBuffer[Seq[(String, Double)]]()
     for (i <- 0 until numConcepts) {
         val offs = i * v.numRows
         val termWeights = arr.slice(offs, offs + v.numRows).zipWithIndex
         // negate the numeric value to sort in decreasing order
         val sorted = termWeights.sortBy(-_._1)
-        topTerms += sorted.take(numTerms).map { case(score, id) =>
+        topTerms += sorted.take(numTerms).map { case (score, id) =>
             (termIds(id), score)
         }
-        topTerms
     }
+    topTerms
 }
-val topConceptTerms = topTermsInTopConcepts(svd, 4, 10, termIds)
+
+/*
+find the documents relevant to each of the top concepts, the idea
+is similar to finding top terms, but the syntax is a bit different
+since U is a distributed RowMatrix
+*/
+def topDocsInTopConcepts(
+    svd: SingularValueDecomposition[RowMatrix, Matrix],
+    numConcepts: Int, numDocs: Int,
+    docIds: Map[Long, String]): Seq[Seq[(String, Double)]] = {
+    val u = svd.U
+    val topDocs = new ArrayBuffer[Seq[(String, Double)]]()
+    for (i <- 0 until numConcepts) {
+        val docWeights = u.rows.map(_.toArray(i)).zipWithUniqueId()
+        // .top returns the rdd sorted in decreasing order
+        topDocs += docWeights.top(numDocs).map { case (score, id) =>
+            (docIds(id), score)
+        }
+    }
+    topDocs
+}
+
+
+val topConceptTerms = topTermsInTopConcepts(
+    svd, numConcepts = 4, numTerms = 10, termIds)
+val topConceptDocs = topDocsInTopConcepts(
+    svd, numConcepts = 4, numDocs = 10, docIds)
+
+for ((terms, docs) <- topConceptDocs.zip(topConceptTerms)) {
+    println("Concept terms: " + terms.map(_._1).mkString(", "))
+    println("Concept docs: " + docs.map(_._1).mkString(", "))
+    println()
+}
 
