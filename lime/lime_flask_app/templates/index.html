@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}LIME{% endblock %}
+
+
+{% block styles %}
+
+{% if bokeh_css_files %}
+{% for css_files in bokeh_css_files %}
+<link rel="stylesheet" href="{{ url_for('.static', filename = css_files) }}">
+{% endfor %}
+{% endif %}
+
+{{ super() }}
+{% endblock %}
+
+
+{% block scripts %}
+
+{% if bokeh_js_files %}
+{% for js_files in bokeh_js_files %}
+<script src="{{ url_for('static', filename = js_files) }}"></script>
+{% endfor %}
+{% endif %}
+
+{% if plot_script %}
+{{ plot_script|safe }}
+{% endif %}
+
+{{ super() }}
+{% endblock %}
+
+
+{% block page_content %}
+{{ wtf.quick_form(form) }}
+
+{% if plot_div %}
+{{ plot_div|safe }}
+{% endif %}
+
+{% endblock %}
