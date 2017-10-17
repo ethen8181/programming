@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 import numpy.ma as ma
 from collections import defaultdict
 from scipy.stats import mode, boxcox
@@ -8,133 +7,7 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 
-__all__ = ['MultipleImputer', 'BoxCoxTransformer', 'Preprocess']
-
-
-class MultipleImputer(BaseEstimator, TransformerMixin):
-    """
-    Extends the sklearn Imputer Transformer [1]_ by allowing users
-    to specify different imputing strategies for different columns
-
-    Parameters
-    ----------
-    missing_values : float or "NaN"/np.nan, default "NaN"
-        The placeholder for the missing values. All occurrences of
-        `missing_values` will be imputed. For missing values encoded as np.nan,
-        we can either use the string value "NaN" or np.nan.
-
-    copy : bool, default True
-        Set to False to perform inplace transformation.
-
-    Attributes
-    ----------
-    statistics_ : 1d ndarray [n_features]
-        The imputation fill value for each feature
-
-    References
-    ----------
-    .. [1] `Scikit-learn Imputer
-            <http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Imputer.html>`_
-    """
-
-    def __init__(self, strategies, missing_values = "NaN", copy = True):
-        self.copy = copy
-        self.strategies = strategies
-        self.missing_values = missing_values
-
-    def fit(self, X, y = None):
-        """
-        Fit MultipleImputer to X.
-
-        Parameters
-        ----------
-        X : 2d ndarray, shape [n_samples, n_features]
-            Input data
-
-        Returns
-        -------
-        self
-        """
-        allowed_strategies = {'mean', 'median', 'mode'}
-        for k in self.strategies:
-            if k not in allowed_strategies:
-                msg = 'Can only use these strategies: {0} got strategy={1}'
-                raise ValueError(msg.format(allowed_strategies, k))
-
-        # introduction to masked array for those that are not familiar
-        # https://docs.scipy.org/doc/numpy-1.13.0/reference/maskedarray.generic.html
-        mask = self._get_mask(X, self.missing_values)
-        X_masked = ma.masked_array(X, mask = mask)
-
-        if 'mean' in self.strategies:
-            mean_cols = self.strategies['mean']
-            mean_masked = ma.mean(X_masked[:, mean_cols].astype(np.float64), axis = 0)
-
-        if 'median' in self.strategies:
-            median_cols = self.strategies['median']
-            median_masked = ma.median(X_masked[:, median_cols].astype(np.float64), axis = 0)
-
-        # numpy MaskedArray doesn't seem to support the .mode
-        # method yet, thus we roll out our own
-        # https://docs.scipy.org/doc/numpy-1.13.0/reference/maskedarray.baseclass.html#maskedarray-baseclass
-        if 'mode' in self.strategies:
-            mode_cols = self.strategies['mode']
-            mode_values = np.empty(len(mode_cols))
-
-            # transpose to compute along each column instead of row
-            zipped = zip(X[:, mode_cols].T, mask[:, mode_cols].T)
-            for i, (col, col_mask) in enumerate(zipped):
-                col_valid = col[~col_mask]
-                values, _ = mode(col_valid)
-                mode_values[i] = values[0]
-
-        statistics = ma.masked_all(X.shape[1])
-        if 'mean' in self.strategies:
-            statistics[mean_cols] = mean_masked.data
-
-        if 'median' in self.strategies:
-            statistics[median_cols] = median_masked.data
-
-        if 'mode' in self.strategies:
-            statistics[mode_cols] = mode_values
-
-        self.statistics_ = statistics
-        return self
-
-    def _get_mask(self, X, value_to_mask):
-        """Compute the boolean mask X == missing_values."""
-        if value_to_mask == 'NaN' or np.isnan(value_to_mask):
-            # TODO :
-            # np.isnan or pd.isnull (this also works with object
-            # type, but is it worth it?)
-            return pd.isnull(X)
-        else:
-            return X == value_to_mask
-
-    def transform(self, X):
-        """
-        Transform X using MultipleImputer.
-
-        Parameters
-        ----------
-        X : 2d ndarray, shape [n_samples, n_features]
-            Input data
-
-        Returns
-        -------
-        X_transformed : 2d ndarray, shape [n_samples, n_features]
-            Transformed input data
-        """
-        if self.copy:
-            X = X.copy()
-
-        mask = self._get_mask(X, self.missing_values)
-        for strategy_cols in self.strategies.values():
-            fill_value = self.statistics_[strategy_cols]
-            for i, strategy_col in enumerate(strategy_cols):
-                X[:, strategy_col][mask[:, strategy_col]] = fill_value[i]
-
-        return X
+__all__ = ['BoxCoxTransformer', 'MultipleImputer', 'Preprocesser']
 
 
 class BoxCoxTransformer(BaseEstimator, TransformerMixin):
@@ -145,22 +18,26 @@ class BoxCoxTransformer(BaseEstimator, TransformerMixin):
 
     Parameters
     ----------
-    transformed_features : int/bool 1d ndarray or "all"
+    transformed_features : str 1d ndarray/list or "all"
         Specify what features are to be transformed.
         - "all" (default) : All features are to be transformed.
-        - array of int : Array of feature indices to be transformed.
-        - array of bool : Array of length n_features and with dtype=bool.
+        - array of str : Array of feature names to be transformed.
+
+    eps : float, default 1e-8
+        An epsilon value can be added to the data before estimating
+        the boxcox transformation
 
     copy : bool, default True
         Set to False to perform inplace transformation.
 
     Attributes
     ----------
-    transformed_features_ : int 1d ndarray
-        The indices of the features to be transformed
+    transformed_features_ : str 1d ndarray
+        Names of the features to be transformed
 
     lambdas_ : float 1d ndarray [n_transformed_features]
         The parameters of the BoxCox transform for the selected features.
+        Elements in the collection corresponds to the transformed_features_
 
     n_features_ : int
         Number of features inputted during fit
@@ -179,44 +56,45 @@ class BoxCoxTransformer(BaseEstimator, TransformerMixin):
         self.copy = copy
         self.transformed_features = transformed_features
 
-    def fit(self, X, y = None):
+    def fit(self, data, y = None):
         """
-        Fit BoxCoxTransformer to X.
+        Fit BoxCoxTransformer to the data.
 
         Parameters
         ----------
-        X : 2d ndarray, shape [n_samples, n_feature]
+        data : DataFrame, shape [n_samples, n_feature]
             Input data
+
+        y : default None
+            Ignore, argument required for constructing sklearn Pipeline
 
         Returns
         -------
         self
         """
-        self.n_features_ = X.shape[1]
+        self.n_features_ = data.shape[1]
         if self.transformed_features == 'all':
-            transformed_features = np.arange(self.n_features_)
+            transformed_features = data.columns.values
         else:
             # use np.copy instead of the .copy method
             # ensures it won't break if the user inputted
             # transformed_features as a list
             transformed_features = np.copy(self.transformed_features)
-            if transformed_features.dtype == np.bool:
-                transformed_features = np.where(transformed_features)[0]
 
-        if np.any(X[:, transformed_features] + self.eps <= 0):
+        if np.any(data[transformed_features] + self.eps <= 0):
             raise ValueError('BoxCox transform can only be applied on positive data')
 
         # TODO :
         # an embarrassingly parallelized problem, i.e.
         # each features' boxcox lambda can be estimated in parallel
         # needs to investigate if it's a bottleneck
-        self.lmbdas_ = [self._boxcox(X[:, i]) for i in transformed_features]
+        self.lmbdas_ = np.asarray([self._boxcox(data[i].values)
+                                   for i in transformed_features])
         self.transformed_features_ = transformed_features
         return self
 
     def _boxcox(self, x, lmbda = None):
         """Utilize scipy's boxcox transformation"""
-        x = x.astype(np.float64)
         mask = np.isnan(x)
         x_valid = x[~mask] + self.eps
         if lmbda is None:
@@ -226,33 +104,176 @@ class BoxCoxTransformer(BaseEstimator, TransformerMixin):
             x[~mask] = boxcox(x_valid, lmbda)
             return x
 
-    def transform(self, X):
+    def transform(self, data):
         """
-        Transform X using BoxCoxTransformer.
+        Transform the data using BoxCoxTransformer.
 
         Parameters
         ----------
-        X : 2d ndarray, shape [n_samples, n_features]
+        data : DataFrame, shape [n_samples, n_features]
             Input data
 
         Returns
         -------
-        X_transformed : 2d ndarray, shape [n_samples, n_features]
+        data_transformed : DataFrame, shape [n_samples, n_features]
             Transformed input data
         """
-        if np.any(X[:, self.transformed_features_] + self.eps <= 0):
+        if np.any(data[self.transformed_features_] + self.eps <= 0):
             raise ValueError('BoxCox transform can only be applied on positive data')
 
         if self.copy:
-            X = X.copy()
+            data = data.copy()
 
         for i, feature in enumerate(self.transformed_features_):
-            X[:, feature] = self._boxcox(X[:, feature], self.lmbdas_[i])
+            data[feature] = self._boxcox(data[feature].values, self.lmbdas_[i])
 
-        return X
+        return data
 
 
-class Preprocess(BaseEstimator, TransformerMixin):
+class MultipleImputer(BaseEstimator, TransformerMixin):
+    """
+    Extends the sklearn Imputer Transformer [1]_ by allowing users
+    to specify different imputing strategies for different columns
+
+    Parameters
+    ----------
+    strategies : dict of list[str]
+        Keys of the dictionary should one of the three valid
+        strategies {'mode', 'mean', 'median'} and the values
+        are the column names whose NA values will be filled
+        should its corresponding strategies
+        e.g. {'mode': fill_mode_cols, 'median': fill_median_cols}
+
+    missing_values : float or "NaN"/np.nan, default "NaN"
+        The placeholder for the missing values. All occurrences of
+        `missing_values` will be imputed. For missing values encoded as np.nan,
+        we can either use the string value "NaN" or np.nan.
+
+    copy : bool, default True
+        Set to False to perform inplace transformation.
+
+    Attributes
+    ----------
+    statistics_ : dict of 1d ndarray
+        The imputation fill value for each feature, the 1d ndarray
+        corresponds to the strategies argument's input order
+
+    References
+    ----------
+    .. [1] `Scikit-learn Imputer
+            <http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Imputer.html>`_
+    """
+
+    def __init__(self, strategies, missing_values = "NaN", copy = True):
+        self.copy = copy
+        self.strategies = strategies
+        self.missing_values = missing_values
+
+    def fit(self, data, y = None):
+        """
+        Fit MultipleImputer to the input data.
+
+        Parameters
+        ----------
+        data : DataFrame, shape [n_samples, n_features]
+            Input data
+
+        y : default None
+            Ignore, argument required for constructing sklearn Pipeline
+
+        Returns
+        -------
+        self
+        """
+        mode_name = 'mode'
+        mean_name = 'mean'
+        median_name = 'median'
+        allowed_strategies = {mode_name, mean_name, median_name}
+        for k in self.strategies:
+            if k not in allowed_strategies:
+                msg = 'Can only use these strategies: {0} got strategy={1}'
+                raise ValueError(msg.format(allowed_strategies, k))
+
+        statistics = {}
+        if mean_name in self.strategies:
+            mean_cols = self.strategies[mean_name]
+            X_masked = self._get_masked(data, mean_cols)
+            mean_masked = ma.mean(X_masked, axis = 0)
+            statistics[mean_name] = mean_masked.data
+
+        if median_name in self.strategies:
+            median_cols = self.strategies[median_name]
+            X_masked = self._get_masked(data, median_cols)
+            median_masked = ma.median(X_masked, axis = 0)
+            statistics[median_name] = median_masked.data
+
+        # numpy MaskedArray doesn't seem to support the .mode
+        # method yet, thus we roll out our own
+        # https://docs.scipy.org/doc/numpy-1.13.0/reference/maskedarray.baseclass.html#maskedarray-baseclass
+        if mode_name in self.strategies:
+            mode_cols = self.strategies[mode_name]
+            X_masked = self._get_masked(data, mode_cols)
+            mode_values = np.empty(len(mode_cols))
+
+            # transpose to compute along each column instead of row.
+            # TODO :
+            # an embarrassingly parallel problem, needs to investigate
+            # if this is a bottleneck
+            zipped = zip(X_masked.data.T, X_masked.mask.T)
+            for i, (col, col_mask) in enumerate(zipped):
+                col_valid = col[~col_mask]
+                values, _ = mode(col_valid)
+                mode_values[i] = values[0]
+
+            statistics[mode_name] = mode_values
+
+        self.statistics_ = statistics
+        return self
+
+    def _get_masked(self, data, target_cols):
+        """
+        Utilize masked array to compute the statistics.
+
+        Introduction to masked array for those that are not familiar
+        - https://docs.scipy.org/doc/numpy-1.13.0/reference/maskedarray.generic.html
+        """
+        X = data[target_cols].values
+        if self.missing_values == 'NaN' or np.isnan(self.missing_values):
+            mask = np.isnan(X)
+        else:
+            mask = X == self.missing_values
+
+        X_masked = ma.masked_array(X, mask = mask)
+        return X_masked
+
+    def transform(self, data):
+        """
+        Transform input data using MultipleImputer.
+
+        Parameters
+        ----------
+        data : DataFrame, shape [n_samples, n_features]
+            Input data
+
+        Returns
+        -------
+        data_transformed : DataFrame, shape [n_samples, n_features]
+            Transformed input data
+        """
+        if self.copy:
+            data = data.copy()
+
+        values = {}
+        for strategy, cols in self.strategies.items():
+            stats = self.statistics_[strategy]
+            value = dict(zip(cols, stats))
+            values.update(value)
+
+        data = data.fillna(values)
+        return data
+
+
+class Preprocesser(BaseEstimator, TransformerMixin):
     """
     Generic data preprocessing including:
     - standardize numeric columns and remove potential
@@ -276,10 +297,10 @@ class Preprocess(BaseEstimator, TransformerMixin):
 
     Attributes
     ----------
-    colnames_ : list[str]
+    colnames_ : str 1d ndarray
         Column name of the transformed numpy array
 
-    num_cols_ : list[str] or None
+    num_cols_ : str 1d ndarray or None
         Final numeric column after removing potential multi-collinearity,
         if there're no numeric input features then the value will be None
 
@@ -311,15 +332,15 @@ class Preprocess(BaseEstimator, TransformerMixin):
         data : DataFrame, shape [n_samples, n_features]
             Input data
 
+        y : default None
+            Ignore, argument required for constructing sklearn Pipeline
+
         Returns
         -------
         self
         """
         if self.num_cols is None and self.cat_cols is None:
             raise ValueError("There must be a least one input feature column")
-
-        # TODO : fix this for both DataFrame and numpy or restrict to one of them
-        data = pd.DataFrame(data.copy())
 
         # Label encoding across multiple columns in scikit-learn
         # https://stackoverflow.com/questions/24458645/label-encoding-across-multiple-columns-in-scikit-learn
@@ -335,7 +356,7 @@ class Preprocess(BaseEstimator, TransformerMixin):
             self.scaler_ = StandardScaler()
             scaled = self.scaler_.fit_transform(data[self.num_cols])
             colnames = self._remove_collinearity(scaled)
-            self.num_cols_ = colnames.copy()
+            self.num_cols_ = np.array(colnames)
         else:
             colnames = []
             self.num_cols_ = None
@@ -344,12 +365,11 @@ class Preprocess(BaseEstimator, TransformerMixin):
         # categorical columns) so we can refer to them later
         if self.cat_cols is not None:
             for col in self.cat_cols:
-                # TODO : is str(col) neccessary or just col
-                cat_colnames = [str(col) + '_' + str(classes)
+                cat_colnames = [col + '_' + str(classes)
                                 for classes in self.label_encode_dict_[col].classes_]
                 colnames += cat_colnames
 
-        self.colnames_ = colnames
+        self.colnames_ = np.asarray(colnames)
         return self
 
     def _remove_collinearity(self, scaled):
@@ -376,19 +396,18 @@ class Preprocess(BaseEstimator, TransformerMixin):
 
     def transform(self, data):
         """
-        Transform X using Preprocess Transformer.
+        Transform the input data using Preprocess Transformer.
 
         Parameters
         ----------
-        X : DataFrame, shape [n_samples, n_features]
+        data : DataFrame, shape [n_samples, n_features]
             Input data
 
         Returns
         -------
-        X_transformed : 2d ndarray, shape [n_samples, n_features]
+        X : 2d ndarray, shape [n_samples, n_features]
             Transformed input data
         """
-        data = pd.DataFrame(data.copy())
         if self.cat_cols is not None:
             label_encoded = (data[self.cat_cols].
                              apply(lambda x: self.label_encode_dict_[x.name].transform(x)))
