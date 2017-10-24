@@ -1,0 +1,3 @@
+Lucene is an Information Retrieval library written in Java.
+I am happy.
+My name is Ethen.

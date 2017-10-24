@@ -1,0 +1,310 @@
+[Original] .START 
+[coreNLP] . START
+[Lucene english] start
+[Lucene porter] start
+[Lucene kstem] start
+[Original] In another reflection that the growth of the economy is leveling off, the government said that orders for manufactured goods and spending on construction failed to rise in September. 
+[coreNLP] in another reflection that the growth of the economy be level off , the government say that order for manufacture goods and spending on construction fail to rise in September .
+[Lucene english] anoth reflect growth economi level off govern said order manufactur good spend construct fail rise septemb
+[Lucene porter] in anoth reflect that the growth of the economi is level off the govern said that order for manufactur good and spend on construct fail to rise in septemb
+[Lucene kstem] in another reflection that the growth of the economy is level off the government said that orders for manufacture goods and spend on construction fail to rise in september
+[Original] Meanwhile, the National Association of Purchasing Management said its latest survey indicated that the manufacturing economy contracted in October for the sixth consecutive month.
+[coreNLP] meanwhile , the National Association of Purchasing Management say its latest survey indicate that the manufacture economy contract in October for the sixth consecutive month .
+[Lucene english] meanwhil nation associ purchas manag said it latest survei indic manufactur economi contract octob sixth consecut month
+[Lucene porter] meanwhil the nation associ of purchas manag said it latest survei indic that the manufactur economi contract in octob for the sixth consecut month
+[Lucene kstem] meanwhile the national association of purchase management said its latest survey indicate that the manufacture economy contract in october for the sixth consecutive month
+[Original] Its index inched up to 47.6% in October from 46% in September.
+[coreNLP] its index inch up to 47.6 % in October from 46 % in September .
+[Lucene english] it index inch up 47.6 octob from 46 septemb
+[Lucene porter] it index inch up to in octob from in septemb
+[Lucene kstem] its index inch up to in october from in september
+[Original] Any reading below 50% suggests the manufacturing sector is generally declining. 
+[coreNLP] any reading below 50 % suggest the manufacturing sector be generally decline .
+[Lucene english] ani read below 50 suggest manufactur sector gener declin
+[Lucene porter] ani read below suggest the manufactur sector is gener declin
+[Lucene kstem] any reading below suggest the manufacture sector is generally decline
+[Original] The purchasing managers, however, also said that orders turned up in October after four months of decline. 
+[coreNLP] the purchasing manager , however , also say that order turn up in October after four month of decline .
+[Lucene english] purchas manag howev also said order turn up octob after four month declin
+[Lucene porter] the purchas manag howev also said that order turn up in octob after four month of declin
+[Lucene kstem] the purchase manager however also said that orders turn up in october after four month of decline
+[Original] Factories booked $236.74 billion in orders in September, nearly the same as the $236.79 billion in August, the Commerce Department said.
+[coreNLP] factory book $ 236.74 billion in order in September , nearly the same as the $ 236.79 billion in August , the Commerce Department say .
+[Lucene english] factori book 236.74 billion order septemb nearli same 236.79 billion august commerc depart said
+[Lucene porter] factori book billion in order in septemb nearli the same as the billion in august the commerc depart said
+[Lucene kstem] factory book billion in orders in september nearly the same as the billion in august the commerce department said
+[Original] If not for a 59.6% surge in orders for capital goods by defense contractors, factory orders would have fallen 2.1%. 
+[coreNLP] if not for a 59.6 % surge in order for capital goods by defense contractor , factory order would have fall 2.1 % .
+[Lucene english] 59.6 surg order capit good defens contractor factori order would have fallen 2.1
+[Lucene porter] if not for a surg in order for capit good by defens contractor factori order would have fallen
+[Lucene kstem] if not for a surge in orders for capital goods by defense contractor factory orders would have fallen
+[Original] In a separate report, the department said construction spending ran at an annual rate of $415.6 billion, not significantly different from the $415.8 billion reported for August.
+[coreNLP] in a separate report , the department say construction spending run at a annual rate of $ 415.6 billion , not significantly different from the $ 415.8 billion report for August .
+[Lucene english] separ report depart said construct spend ran annual rate 415.6 billion significantli differ from 415.8 billion report august
+[Lucene porter] in a separ report the depart said construct spend ran at an annual rate of billion not significantli differ from the billion report for august
+[Lucene kstem] in a separate report the department said construction spend ran at an annual rate of billion not significant different from the billion report for august
+[Original] Private construction spending was down, but government building activity was up.
+[coreNLP] private construction spending be down , but government building activity be up .
+[Lucene english] privat construct spend down govern build activ up
+[Lucene porter] privat construct spend wa down but govern build activ wa up
+[Lucene kstem] private construction spend was down but government building activity was up
+[Original] The figures in both reports were adjusted to remove the effects of usual seasonal patterns, but weren't adjusted for inflation. 
+[coreNLP] the figure in both report be adjust to remove the effect of usual seasonal pattern , but be not adjust for inflation .
+[Lucene english] figur both report were adjust remov effect usual season pattern weren't adjust inflat
+[Lucene porter] the figur in both report were adjust to remov the effect of usual season pattern but weren t adjust for inflat
+[Lucene kstem] the figures in both report were adjust to remove the effects of usual seasonal pattern but weren t adjust for inflation
+[Original] Kenneth Mayland, economist for Society Corp., a Cleveland bank, said demand for exports of factory goods is beginning to taper off.
+[coreNLP] Kenneth Mayland , economist for Society Corp. , a Cleveland bank , say demand for export of factory goods be begin to taper off .
+[Lucene english] kenneth mayland economist societi corp cleveland bank said demand export factori good begin taper off
+[Lucene porter] kenneth mayland economist for societi corp a cleveland bank said demand for export of factori good is begin to taper off
+[Lucene kstem] kenneth mayland economist for society corp a cleveland bank said demand for export of factory goods is beginning to taper off
+[Original] At the same time, the drop in interest rates since the spring has failed to revive the residential construction industry. 
+[coreNLP] at the same time , the drop in interest rate since the spring have fail to revive the residential construction industry .
+[Lucene english] same time drop interest rate sinc spring ha fail reviv residenti construct industri
+[Lucene porter] at the same time the drop in interest rate sinc the spring ha fail to reviv the residenti construct industri
+[Lucene kstem] at the same time the drop in interest rate since the spring has fail to revive the residential construction industry
+[Original] "What sector is stepping forward to pick up the slack?" he asked. "I draw a blank." 
+[coreNLP] `` what sector be step forward to pick up the slack ? '' he ask . `` I draw a blank . ''
+[Lucene english] what sector step forward pick up slack he ask i draw blank
+[Lucene porter] what sector is step forward to pick up the slack he ask i draw a blank
+[Lucene kstem] what sector is step forward to pick up the slack he ask i draw a blank
+[Original] By most measures, the nation's industrial sector is now growing very slowly -- if at all.
+[coreNLP] by most measure , the nation 's industrial sector be now grow very slowly -- if at all .
+[Lucene english] most measur nation industri sector now grow veri slowli all
+[Lucene porter] by most measur the nation s industri sector is now grow veri slowli if at all
+[Lucene kstem] by most measure the nation s industrial sector is now grow very slow if at all
+[Original] Factory payrolls fell in September.
+[coreNLP] factory payroll fall in September .
+[Lucene english] factori payrol fell septemb
+[Lucene porter] factori payrol fell in septemb
+[Lucene kstem] factory payroll fell in september
+[Original] So did the Federal Reserve Board's industrial-production index. 
+[coreNLP] so do the Federal Reserve Board 's industrial-production index .
+[Lucene english] so did feder reserv board industri product index
+[Lucene porter] so did the feder reserv board s industri product index
+[Lucene kstem] so did the federal reserve board s industrial production index
+[Original] Yet many economists aren't predicting that the economy is about to slip into recession.
+[coreNLP] yet many economist be not predict that the economy be about to slip into recession .
+[Lucene english] yet mani economist aren't predict economi about slip recess
+[Lucene porter] yet mani economist aren t predict that the economi is about to slip into recess
+[Lucene kstem] yet many economist aren t predict that the economy is about to slip into recession
+[Original] They cite a lack of "imbalances" that provide early warning signals of a downturn. 
+[coreNLP] they cite a lack of `` imbalance '' that provide early warning signal of a downturn .
+[Lucene english] cite lack imbal provid earli warn signal downturn
+[Lucene porter] thei cite a lack of imbal that provid earli warn signal of a downturn
+[Lucene kstem] they cite a lack of imbalance that provide early warning signal of a downturn
+[Original] Inventories are closely watched for such clues, for instance.
+[coreNLP] inventory be closely watch for such clue , for instance .
+[Lucene english] inventori close watch clue instanc
+[Lucene porter] inventori ar close watch for such clue for instanc
+[Lucene kstem] inventory are close watch for such clue for instance
+[Original] Economists say a buildup in inventories can provoke cutbacks in production that can lead to a recession.
+[coreNLP] economist say a buildup in inventory can provoke cutback in production that can lead to a recession .
+[Lucene english] economist sai buildup inventori can provok cutback product can lead recess
+[Lucene porter] economist sai a buildup in inventori can provok cutback in product that can lead to a recess
+[Lucene kstem] economist say a buildup in inventory can provoke cutback in production that can lead to a recession
+[Original] But yesterday's factory orders report had good news on that front: it said factory inventories fell 0.1% in September, the first decline since February 1987. 
+[coreNLP] but yesterday 's factory order report have good news on that front : it say factory inventory fall 0.1 % in September , the first decline since February 1987 .
+[Lucene english] yesterdai factori order report had good new front said factori inventori fell 0.1 septemb first declin sinc februari 1987
+[Lucene porter] but yesterdai s factori order report had good new on that front it said factori inventori fell in septemb the first declin sinc februari
+[Lucene kstem] but yesterday s factory orders report had good news on that front it said factory inventory fell in september the first decline since february
+[Original] "This conforms to the `soft landing' scenario," said Elliott Platt, an economist at Donaldson, Lufkin & Jenrette Securities Corp. "I don't see any signs that inventories are excessive." A soft landing is an economic slowdown that eases inflation without leading to a recession. 
+[coreNLP] `` this conform to the ` soft landing ' scenario , '' say Elliott Platt , a economist at Donaldson , Lufkin & Jenrette Securities Corp. `` I do not see any sign that inventory be excessive . '' a soft landing be a economic slowdown that ease inflation without lead to a recession .
+[Lucene english] conform soft land scenario said elliott platt economist donaldson lufkin jenrett secur corp i don't see ani sign inventori excess soft land econom slowdown eas inflat without lead recess
+[Lucene porter] thi conform to the soft land scenario said elliott platt an economist at donaldson lufkin jenrett secur corp i don t see ani sign that inventori ar excess a soft land is an econom slowdown that eas inflat without lead to a recess
+[Lucene kstem] this conform to the soft landing scenario said elliott platt an economist at donaldson lufkin jenrette security corp i don t see any sign that inventory are excessive a soft landing is an economic slowdown that ease inflation without leading to a recession
+[Original] The department said orders for nondurable goods -- those intended to last fewer than three years -- fell 0.3% in September to $109.73 billion after climbing 0.9% the month before.
+[coreNLP] the department say order for nondurable goods -- those intend to last fewer than three year -- fall 0.3 % in September to $ 109.73 billion after climb 0.9 % the month before .
+[Lucene english] depart said order nondur good those intend last fewer than three year fell 0.3 septemb 109.73 billion after climb 0.9 month befor
+[Lucene porter] the depart said order for nondur good those intend to last fewer than three year fell in septemb to billion after climb the month befor
+[Lucene kstem] the department said orders for nondurable goods those intended to last few than three years fell in september to billion after climb the month before
+[Original] Orders for durable goods were up 0.2% to $127.03 billion after rising 3.9% the month before.
+[coreNLP] order for durable goods be up 0.2 % to $ 127.03 billion after rise 3.9 % the month before .
+[Lucene english] order durabl good were up 0.2 127.03 billion after rise 3.9 month befor
+[Lucene porter] order for durabl good were up to billion after rise the month befor
+[Lucene kstem] orders for durable goods were up to billion after rising the month before
+[Original] The department previously estimated that durable-goods orders fell 0.1% in September. 
+[coreNLP] the department previously estimate that durable-goods order fall 0.1 % in September .
+[Lucene english] depart previous estim durabl good order fell 0.1 septemb
+[Lucene porter] the depart previous estim that durabl good order fell in septemb
+[Lucene kstem] the department previous estimate that durable goods orders fell in september
+[Original] Factory shipments fell 1.6% to $234.4 billion after rising 5.4% in August.
+[coreNLP] factory shipment fall 1.6 % to $ 234.4 billion after rise 5.4 % in August .
+[Lucene english] factori shipment fell 1.6 234.4 billion after rise 5.4 august
+[Lucene porter] factori shipment fell to billion after rise in august
+[Lucene kstem] factory shipment fell to billion after rising in august
+[Original] Shipments have been relatively level since January, the Commerce Department noted. 
+[coreNLP] shipment have be relatively level since January , the Commerce Department note .
+[Lucene english] shipment have been rel level sinc januari commerc depart note
+[Lucene porter] shipment have been rel level sinc januari the commerc depart note
+[Lucene kstem] shipment have been relatively level since january the commerce department noted
+[Original] Manufacturers' backlogs of unfilled orders rose 0.5% in September to $497.34 billion, helped by strength in the defense capital goods sector.
+[coreNLP] manufacturer ' backlog of unfilled order rise 0.5 % in September to $ 497.34 billion , help by strength in the defense capital goods sector .
+[Lucene english] manufactur backlog unfil order rose 0.5 septemb 497.34 billion help strength defens capit good sector
+[Lucene porter] manufactur backlog of unfil order rose in septemb to billion help by strength in the defens capit good sector
+[Lucene kstem] manufacturer backlog of unfill orders rose in september to billion help by strength in the defense capital goods sector
+[Original] Excluding these orders, backlogs declined 0.3%. 
+[coreNLP] exclude these order , backlog decline 0.3 % .
+[Lucene english] exclud order backlog declin 0.3
+[Lucene porter] exclud these order backlog declin
+[Lucene kstem] excluding these orders backlog decline
+[Original] In its construction spending report, the Commerce Department said residential construction, which accounts for nearly half of all construction spending, was off 0.9% in September to an annual rate of $191.9 billion.
+[coreNLP] in its construction spending report , the Commerce Department say residential construction , which account for nearly half of all construction spending , be off 0.9 % in September to a annual rate of $ 191.9 billion .
+[Lucene english] it construct spend report commerc depart said residenti construct which account nearli half all construct spend off 0.9 septemb annual rate 191.9 billion
+[Lucene porter] in it construct spend report the commerc depart said residenti construct which account for nearli half of all construct spend wa off in septemb to an annual rate of billion
+[Lucene kstem] in its construction spend report the commerce department said residential construction which account for nearly half of all construction spend was off in september to an annual rate of billion
+[Original] David Berson, economist for the Mortgage Bankers Association, predicted the drop in interest rates eventually will boost spending on single-family homes, but probably not until early next year. 
+[coreNLP] David Berson , economist for the Mortgage Bankers Association , predict the drop in interest rate eventually will boost spending on single-family home , but probably not until early next year .
+[Lucene english] david berson economist mortgag banker associ predict drop interest rate eventu boost spend singl famili home probabl until earli next year
+[Lucene porter] david berson economist for the mortgag banker associ predict the drop in interest rate eventu will boost spend on singl famili home but probabl not until earli next year
+[Lucene kstem] david berson economist for the mortgage banker association predict the drop in interest rate eventually will boost spend on single family home but probably not until early next year
+[Original] Spending on private, nonresidential construction was off 2.6% to an annual rate of $99.1 billion with no sector showing strength.
+[coreNLP] spend on private , nonresidential construction be off 2.6 % to a annual rate of $ 99.1 billion with no sector show strength .
+[Lucene english] spend privat nonresidenti construct off 2.6 annual rate 99.1 billion sector show strength
+[Lucene porter] spend on privat nonresidenti construct wa off to an annual rate of billion with no sector show strength
+[Lucene kstem] spend on private nonresident construction was off to an annual rate of billion with no sector showing strength
+[Original] Government construction spending rose 4.3% to $88 billion. 
+[coreNLP] government construction spending rise 4.3 % to $ 88 billion .
+[Lucene english] govern construct spend rose 4.3 88 billion
+[Lucene porter] govern construct spend rose to billion
+[Lucene kstem] government construction spend rose to billion
+[Original] After adjusting for inflation, the Commerce Department said construction spending didn't change in September. 
+[coreNLP] after adjust for inflation , the Commerce Department say construction spending do not change in September .
+[Lucene english] after adjust inflat commerc depart said construct spend didn't chang septemb
+[Lucene porter] after adjust for inflat the commerc depart said construct spend didn t chang in septemb
+[Lucene kstem] after adjust for inflation the commerce department said construction spend didn t change in september
+[Original] For the first nine months of the year, total construction spending ran about 2% above last year's level. 
+[coreNLP] for the first nine month of the year , total construction spending run about 2 % above last year 's level .
+[Lucene english] first nine month year total construct spend ran about 2 abov last year level
+[Lucene porter] for the first nine month of the year total construct spend ran about abov last year s level
+[Lucene kstem] for the first nine month of the year total construction spend ran about above last year s level
+[Original] The government's construction spending figures contrast with a report issued earlier in the week by McGraw-Hill Inc. 's F.W. Dodge Group.
+[coreNLP] the government 's construction spending figure contrast with a report issue earlier in the week by McGraw-Hill Inc. 's F.W. Dodge Group .
+[Lucene english] govern construct spend figur contrast report issu earlier week mcgraw hill inc s f.w dodg group
+[Lucene porter] the govern s construct spend figur contrast with a report issu earlier in the week by mcgraw hill inc s f w dodg group
+[Lucene kstem] the government s construction spend figures contrast with a report issue early in the week by mcgraw hill inc s f w dodge group
+[Original] Dodge reported an 8% increase in construction contracts awarded in September.
+[coreNLP] Dodge report a 8 % increase in construction contract award in September .
+[Lucene english] dodg report 8 increas construct contract award septemb
+[Lucene porter] dodg report an increas in construct contract award in septemb
+[Lucene kstem] dodge report an increase in construction contract award in september
+[Original] The goverment counts money as it is spent; Dodge counts contracts when they are awarded.
+[coreNLP] the goverment count money as it be spend ; Dodge count contract when they be award .
+[Lucene english] gover count monei spent dodg count contract when award
+[Lucene porter] the gover count monei as it is spent dodg count contract when thei ar award
+[Lucene kstem] the goverment count money as it is spent dodge count contract when they are award
+[Original] The government includes money spent on residential renovation; Dodge doesn't. 
+[coreNLP] the government include money spend on residential renovation ; Dodge do not .
+[Lucene english] govern includ monei spent residenti renov dodg doesn't
+[Lucene porter] the govern includ monei spent on residenti renov dodg doesn t
+[Lucene kstem] the government include money spent on residential renovate dodge doesn t
+[Original] Although the purchasing managers' index continues to indicate a slowing economy, it isn't signaling an imminent recession, said Robert Bretz, chairman of the association's survey committee and director of materials management at Pitney Bowes Inc., Stamford, Conn.
+[coreNLP] although the purchasing manager ' index continue to indicate a slow economy , it be not signal a imminent recession , say Robert Bretz , chairman of the association 's survey committee and director of material management at Pitney Bowes Inc. , Stamford , Conn. .
+[Lucene english] although purchas manag index continu indic slow economi isn't signal immin recess said robert bretz chairman associ survei committe director materi manag pitnei bow inc stamford conn
+[Lucene porter] although the purchas manag index continu to indic a slow economi it isn t signal an immin recess said robert bretz chairman of the associ s survei committe and director of materi manag at pitnei bow inc stamford conn
+[Lucene kstem] although the purchase manager index continue to indicate a slow economy it isn t signal an imminent recession said robert bretz chairman of the association s survey committee and director of material management at pitney bow inc stamford conn
+[Original] He said the index would have to be in the low 40% range for several months to be considered a forecast of recession. 
+[coreNLP] he say the index would have to be in the low 40 % range for several month to be consider a forecast of recession .
+[Lucene english] he said index would have low 40 rang sever month consid forecast recess
+[Lucene porter] he said the index would have to be in the low rang for sever month to be consid a forecast of recess
+[Lucene kstem] he said the index would have to be in the low range for several month to be considered a forecast of recession
+[Original] The report offered new evidence that the nation's export growth, though still continuing, may be slowing.
+[coreNLP] the report offer new evidence that the nation 's export growth , though still continue , may be slow .
+[Lucene english] report offer new evid nation export growth though still continu mai slow
+[Lucene porter] the report offer new evid that the nation s export growth though still continu mai be slow
+[Lucene kstem] the report offer new evidence that the nation s export growth though still continue may be slow
+[Original] Only 19% of the purchasing managers reported better export orders in October, down from 27% in September.
+[coreNLP] only 19 % of the purchasing manager report better export order in October , down from 27 % in September .
+[Lucene english] onli 19 purchas manag report better export order octob down from 27 septemb
+[Lucene porter] onli of the purchas manag report better export order in octob down from in septemb
+[Lucene kstem] only of the purchase manager report better export orders in october down from in september
+[Original] And 8% said export orders were down last month, compared with 6% the month before. 
+[coreNLP] and 8 % say export order be down last month , compare with 6 % the month before .
+[Lucene english] 8 said export order were down last month compar 6 month befor
+[Lucene porter] and said export order were down last month compar with the month befor
+[Lucene kstem] and said export orders were down last month compare with the month before
+[Original] The purhasing managers' report also added evidence that inflation is under control.
+[coreNLP] the purhasing manager ' report also add evidence that inflation be under control .
+[Lucene english] purhas manag report also ad evid inflat under control
+[Lucene porter] the purhas manag report also ad evid that inflat is under control
+[Lucene kstem] the purhase manager report also add evidence that inflation is under control
+[Original] For the fifth consecutive month, purchasing managers said prices for the goods they purchased fell.
+[coreNLP] for the fifth consecutive month , purchase manager say price for the goods they purchase fall .
+[Lucene english] fifth consecut month purchas manag said price good purchas fell
+[Lucene porter] for the fifth consecut month purchas manag said price for the good thei purchas fell
+[Lucene kstem] for the fifth consecutive month purchase manager said price for the goods they purchase fell
+[Original] The decline was even steeper than in September. 
+[coreNLP] the decline be even steeper than in September .
+[Lucene english] declin even steeper than septemb
+[Lucene porter] the declin wa even steeper than in septemb
+[Lucene kstem] the decline was even steep than in september
+[Original] They also said that vendors were delivering goods more quickly in October than they had for each of the five previous months.
+[coreNLP] they also say that vendor be deliver goods more quickly in October than they have for each of the five previous month .
+[Lucene english] also said vendor were deliv good more quickli octob than had each five previou month
+[Lucene porter] thei also said that vendor were deliv good more quickli in octob than thei had for each of the five previou month
+[Lucene kstem] they also said that vendor were deliver goods more quick in october than they had for each of the five previous month
+[Original] Economists consider that a sign that inflationary pressures are abating.
+[coreNLP] economist consider that a sign that inflationary pressure be abate .
+[Lucene english] economist consid sign inflationari pressur abat
+[Lucene porter] economist consid that a sign that inflationari pressur ar abat
+[Lucene kstem] economist consider that a sign that inflationary pressure are abate
+[Original] When demand is stronger than suppliers can handle and delivery times lengthen, prices tend to rise. 
+[coreNLP] when demand be stronger than supplier can handle and delivery time lengthen , price tend to rise .
+[Lucene english] when demand stronger than supplier can handl deliveri time lengthen price tend rise
+[Lucene porter] when demand is stronger than supplier can handl and deliveri time lengthen price tend to rise
+[Lucene kstem] when demand is strong than supplier can handle and delivery times lengthen price tend to rise
+[Original] The purchasing managers' report is based on data provided by more than 250 purchasing executives.
+[coreNLP] the purchasing manager ' report be base on datum provide by more than 250 purchase executive .
+[Lucene english] purchas manag report base data provid more than 250 purchas execut
+[Lucene porter] the purchas manag report is base on data provid by more than purchas execut
+[Lucene kstem] the purchase manager report is base on data provided by more than purchase executive
+[Original] Each of the survey's indicators gauges the difference between the number of purchasers reporting improvement in a particular area and the number reporting a worsening. 
+[coreNLP] each of the survey 's indicator gauge the difference between the number of purchaser report improvement in a particular area and the number report a worsen .
+[Lucene english] each survei indic gaug differ between number purchas report improv particular area number report worsen
+[Lucene porter] each of the survei s indic gaug the differ between the number of purchas report improv in a particular area and the number report a worsen
+[Lucene kstem] each of the survey s indicator gauge the difference between the number of purchaser report improvement in a particular area and the number report a worsen
+[Original] For the first time, the October survey polled members on imports.
+[coreNLP] for the first time , the October survey poll member on import .
+[Lucene english] first time octob survei poll member import
+[Lucene porter] for the first time the octob survei poll member on import
+[Lucene kstem] for the first time the october survey poll member on import
+[Original] It found that of the 73% who import, 10% said they imported more in October and 12% said they imported less than the previous month.
+[coreNLP] it find that of the 73 % who import , 10 % say they import more in October and 12 % say they import less than the previous month .
+[Lucene english] found 73 who import 10 said import more octob 12 said import less than previou month
+[Lucene porter] it found that of the who import said thei import more in octob and said thei import less than the previou month
+[Lucene kstem] it found that of the who import said they import more in october and said they import less than the previous month
+[Original] While acknowledging one month's figures don't prove a trend, Mr. Bretz said, "It does lead you to suspect imports are going down, or at least not increasing that much." 
+[coreNLP] while acknowledge one month 's figure do not prove a trend , Mr. Bretz say , `` it do lead you to suspect import be go down , or at least not increase that much . ''
+[Lucene english] while acknowledg on month figur don't prove trend mr bretz said doe lead you suspect import go down least increas much
+[Lucene porter] while acknowledg on month s figur don t prove a trend mr bretz said it doe lead you to suspect import ar go down or at least not increas that much
+[Lucene kstem] while acknowledge one month s figures don t prove a trend mr bretz said it do lead you to suspect import are go down or at least not increase that much
+[Original] Items listed as being in short supply numbered only about a dozen, but they included one newcomer: milk and milk powder. "It's an odd thing to put on the list," Mr. Bretz noted.
+[coreNLP] item list as be in short supply number only about a dozen , but they include one newcomer : milk and milk powder . `` it be a odd thing to put on the list , '' Mr. Bretz note .
+[Lucene english] item list be short suppli number onli about dozen includ on newcom milk milk powder odd thing put list mr bretz note
+[Lucene porter] item list as be in short suppli number onli about a dozen but thei includ on newcom milk and milk powder it s an odd thing to put on the list mr bretz note
+[Lucene kstem] item list as being in short supply number only about a dozen but they included one newcomer milk and milk powder it s an odd thing to put on the list mr bretz noted
+[Original] He said that for the second month in a row, food processors reported a shortage of nonfat dry milk.
+[coreNLP] he say that for the second month in a row , food processor report a shortage of nonfat dry milk .
+[Lucene english] he said second month row food processor report shortag nonfat dry milk
+[Lucene porter] he said that for the second month in a row food processor report a shortag of nonfat dry milk
+[Lucene kstem] he said that for the second month in a row food process report a shortage of nonfat dry milk
+[Original] They blamed increased demand for dairy products at a time of exceptionally high U.S. exports of dry milk, coupled with very low import quotas. 
+[coreNLP] they blame increase demand for dairy product at a time of exceptionally high U.S. export of dry milk , couple with very low import quota .
+[Lucene english] blame increas demand dairi product time exception high u. export dry milk coupl veri low import quota
+[Lucene porter] thei blame increas demand for dairi product at a time of exception high u s export of dry milk coupl with veri low import quota
+[Lucene kstem] they blame increase demand for dairy product at a time of exceptional high u s export of dry milk couple with very low import quota
+[Original] Pamela Sebastian in New York contributed to this article. 
+[coreNLP] Pamela Sebastian in New York contribute to this article .
+[Lucene english] pamela sebastian new york contribut articl
+[Lucene porter] pamela sebastian in new york contribut to thi articl
+[Lucene kstem] pamela sebastian in new york contribute to this article
+[Original] Here are the Commerce Department's figures for construction spending in billions of dollars at seasonally adjusted annual rates. 
+[coreNLP] here be the Commerce Department 's figure for construction spending in billion of dollar at seasonally adjust annual rate .
+[Lucene english] here commerc depart figur construct spend billion dollar season adjust annual rate
+[Lucene porter] here ar the commerc depart s figur for construct spend in billion of dollar at season adjust annual rate
+[Lucene kstem] here are the commerce department s figures for construction spend in billion of dollar at seasonal adjust annual rate
+[Original] Here are the Commerce Department's latest figures for manufacturers in billions of dollars, seasonally adjusted. 
+[coreNLP] here be the Commerce Department 's latest figure for manufacturer in billion of dollar , seasonally adjust .
+[Lucene english] here commerc depart latest figur manufactur billion dollar season adjust
+[Lucene porter] here ar the commerc depart s latest figur for manufactur in billion of dollar season adjust
+[Lucene kstem] here are the commerce department s latest figures for manufacturer in billion of dollar seasonal adjust

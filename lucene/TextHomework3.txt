@@ -1,0 +1,479 @@
+
+hw0 kylie behnke
+------------------------------------------------------------
+
+bear raise elk grove village illinois graduate summa cum laude knox college b.a. data analytics minor economics three year study additionally john weigel prize recipient graduate senior highest academic achievement class
+
+pursue datum analytic blend enthusiasm math strength creative problem solve school didnâ offer major field design œdata analyticsâ major ultimately accept offer knox collegeâ curriculum committee
+
+senior select complete undergraduate honor research project investigate student retention knox college build predictive model identify student likely leave prior graduate thus improve retention rate addition research aim benefit school stay active campus tutor math computer science 100 hour tutor log utilize excellent communication skill linguistic flexibility earn level iii master tutor certification college reading learning association
+
+three internship two datum science team within organization mapping technology company throughout time team frequently work prepare cleanse datum algorithm development recently intern nielsen global information measurement company work e-commerce team analyze online shopping datum also create analytic surround amazon prime day amazonâ busiest profitable day year
+
+decide pursue masterâ degree analytic northwestern university msia program merge educational experience real world problem solve skill eager work closely business industry project prepare career datum science increasingly data-driven future
+
+first become interested text analytic team need perform sentiment analysis project first quarter msia program analyze yelp tripadvisor review various chicago location architecture firm use tf-idf feel get better insight exposure different technique additionally internship nielsen one important project work match partial product description full product description amazon shopper make purchase receive email truncate description product buy since nielsen work scrape email datum access truncate description order correctly apportion sale text analytic utilize match truncate full overall see hear prevalent useful text analytic eager learn valuable set skill
+
+future plan work data scientist chicagoland area particular field mind however interestedâ autonomous driving love get chance work fascinating paradigm shift technology
+
+
+hw0 jonathan burge
+------------------------------------------------------------
+
+although bear delaware grow side country suburb seattle complete undergraduate degree computer science mathematics whitworth university liberal art school spokane washington coursework computer science expose artificial intelligence natural language processing machine learning find leverage statistics allow interesting effective solution become interested datum science
+
+first become interested text analytic take undergraduate class artificial intelligence part individual project learn natural language processing program simple n-gram model document classification word prediction interested learn sophisticated text analytic volume unstructured datum can apply gain value
+
+graduate msia intend stay chicago begin full time employment summer work chatham financial financial advisory company kennett square pennsylvania time chatham learn lot valuation various financial derivative risk analysis commodity foreign exchange exposure well stochastic simulation technique open look full time opportunity outside finance sector area include tech healthcare consulting
+
+outside school one primary hobby ultimate frisbee begin play ultimate frisbee college play universityâ club team due time demand school currently play fairly casual level summer opportunity play beach tournament wildwood new jersey largest annual beach tournament four hundred team attend year
+
+
+hw0 sam carruthers
+------------------------------------------------------------
+
+hello see sam carruthers native evanston can seem get away place bad enough parent professor northwestern needless say try avoid sociology dept. wayâ class thankfully office southern side campus pre-msia carleton college major economics post-college work marketing mix modeling consult groupâ nielsen build model estimate effect client advertising effort sale answer question like increase effectiveness new worth increase spend second spot expensive daypart trim back budget mobile allocate dollar achieve maximum volume growth challenging rewarding work couple year feel like want switch less niche narrow field client work datum statistical quirk obstacle overcome end day marketing mix model quite similar look move area broaden analytical toolset enjoy varied day-to-day think msia program prepare quite well sort work expose student large number area within datum science term area study tool use will graduate large foundation knowledge skill can build upon future career transunion beyond
+
+probably similar motivation take text analytic 35-odd people program area datum science little familiarity exclusively work structured datum job class project etc. thus far want take advantage opportunity offer class gain least understanding furthermore seem like lot future coworker much experience text analytic somewhat well-versed field clear comparative advantage.â
+
+outside coursework like make datum science pun long walk beach.â
+
+
+hw0 lydia chang
+------------------------------------------------------------
+
+lydia bear raise china always fascinate predict human behavior use datum earn bachelorâ degree statistics psychology rice university yet complexity randomness human behavior motivate learn advanced analytic technique hone programming skill therefore msia perfect fit
+
+join program work datum analyst jd.com largest b2c online retailer china take charge analyze massive user demography behavior purchase history datum incredibly rewarding predict consumer purchase intention modeling improve effect precision marketing also exciting communicate internal business team manufacturersâ partner help make unbiased decision customize report
+
+past research experience help recognize dataset evolve rapidly volume complexity rise social media trend will leverage unstructured datum like text understand customer better guide business decision trim cost lift sale short march quantify unstructured datum will sweep business academia government recognize future trend field seek acquire complex knowledge text analytic make use huge unstructured dataset
+
+future hope apply skill company can leverage datum understand customer better tackle data-intensive issue also want gain experience end end large scale customer research project translate insight action ultimately want expert field
+
+beyond career travel hike enthusiast amateur chinese folk dancer harp player motto live œto travel liveâ
+
+
+hw0 michael cho
+------------------------------------------------------------
+
+originally new jersey come msia spend two year risk analyst help ecommerce company fraud first develop interest datum science take business statistics course duke amaze math programming use deliver solid advice stakeholder organization take job risk analyst aci work project manager software developer learn fraud algorithm work actual saas product advise ecommerce client like macys come non-technical background study math programming evening take lot course coursera work full time seek program rigorous allow opportunity work lot corporate project northwestern seem like perfect opportunity realize interest become interested text analytic self-study topic use regular expression various project classify faq prospective applicant northwestern msia program scrape web datum pattern nested html json format also interested latest application use deep learning architecture word2vec make sense unstructured text datum plan future apply skill ecommerce consulting ecommerce breadth datum datum scientist can mine feature find customer seem fascinating consulting allow gain wide variety experience see analytic use across multiple business model excite learn area datum science increase technical skill area hope apply learn class future project
+
+
+hw0 bryce codell
+------------------------------------------------------------
+
+name bryce codell grow highland park illinois fifteen mile north evanston prior msia attend swarthmore college graduate 2013 major economics minor statistics time swarthmore spend semester abroad sydney australia also play baseball graduation spend three year work business analyst privately hold staffing company headquarter suburb chicago job get first exposure sql data analysis responsible hoc datum request learn build dashboard help colleague manage responsibility use datum experience work combine brief introduction statistical programming minor swarthmore prompt look graduate degree analytic ultimately lead apply msia also learn lot recruiter firm spend much time manually scour resume validate applicantsâ fit different job learn process first pique interest text analytic spend past summer interning new york company call wework build co-working space firm share full-time offer yet hope return wework another firm new york graduate will also apply firm denver san francisco like work data scientist year eventually move role product manager pursue entrepreneurial endeavor personal note like travel can speak spanish italian enjoy watch baseball
+
+
+hw0 annie didier
+------------------------------------------------------------
+
+hola
+
+annie hail washington like typical washington thing like coffee grey sky linux mean microsoft skiing nirvana quite ready leave nest undergrad small liberal art school whitworth nestle wood just minute home learn mathematics catch fall pinecone
+
+
+
+peaceful study whitworth crave excitement beyond pinecone curtain join teach america send atlanta get excitement bargain stint teaching mathematics high schooler return hermitian life mathematics study graduate school receive funding applied mathematics doctoral program phoenix trade ski rock climb gear sunscreen
+
+
+
+tenure arizona state university join center adaptive neural systems study intrinsic property alpha motoneuron follow partial spinal cord injury work mathematical neuroscience ultimately lead field analytic conduct research find question extract use datum overwhelmingly large library scientific literature just compelling problem want solve datum furthermore research class neuromuscular control system give exposure neural system predictive learning algorithm experience inspire learn machine emulate human learning
+
+
+
+perform research realize although want less excitement teach america academia afford much solitude tedium realize program focus produce academician funnel life low pay grant revision search industry focus program receive masterâ asu
+
+
+
+bring northwestern text analytic thing brain seemingly effortlessly like speak understand speech enormously difficult task machine many neural network algorithm resemble equation use describe flow electron neurotransmitter thus information neuron successfully œlearnâ process quantitative datum canâ help feel something yet unlock way can use biomimicry enable computer understand comprehend easily
+
+
+hw0 meghan menghan ding
+------------------------------------------------------------
+
+originally shenzhen southern part china come united state senior year high school rochester 2009 complete undergraduate study northwestern 2014 degree statistics economics work investment management project management year decide take technical path business world come back northwestern msia program become interested text analytic since join msia program hear term learn see people present work text analytic either class industry amaze amount value extract unstructured datum want learn powerful tool future plan career datum science especially decision science side believe text analytic natural language processing will one major distinguishing point make better datum scientist another major reason decide text analytic class pick python msia fall love elegant language want become better
+
+
+hw0 matthew farkas
+------------------------------------------------------------
+
+name matt farkas cumming georgia bear pennsylvania move georgia three msia undergraduate georgia institute technology study industrial engineering take computational data analysis class work data-centric project undergrad motivate learn datum science apply datum science master program
+
+though work experience couple internship full time experience expose lightweight analytic recent internship summer msia position little bit web scrape visualization tableau good exposure start thing learn msia
+
+text analytic interesting serious interest start learn datum science msia program within program course assignment leverage text technique start show use text analytic really excite course weâ learn
+
+immediate future recently accept full time position company intern summer easy decision work interesting people awesome product something use every day excite addition recently start new venture couple classmate excited opportunity well always interested entrepreneurship idea start company addition actually use text analytic point line venture course help prepare well
+
+
+hw0 dylan fontaine
+------------------------------------------------------------
+
+bear raise orlando florida live entire childhood attend undergrad university florida study industrial systems engineering time undergrad complete internship large company -lrb- lockheed martin raytheon procter gamble -rrb- internship focus manufacturing supply chain enjoy problem-solving aspect job enjoy data analysis involve interest data analysis inspire join datasci new club focus datum science datasci expose many topic relate analytic machine learning never see interest pique soon realize yet toolkit necessary successful datum scientist apply msia acquire toolkit
+
+first expose text analytic first quarter northwestern professor klabjan talk course œanalytics competitive advantageâ teach foundational topic word stem use tf-idf matrix prediction problem find topic fascinating time explore depth since course broad introductory course type analytic look forward expand knowledge text analytic next month
+
+future look forward work data scientist sure will work yet focus job search chicago identical twin brother dustin -lrb- also msia -rrb- will work chicago great stay close wherever land hope challenging position can continue learn grow throughout career
+
+
+hw0 adam goodkind
+------------------------------------------------------------
+
+new york city raise new jersey attend college work earn masterâ degree new york city come northwestern also spend time live salt lake city utah seattle washington
+
+draw current graduate program people program content program interested computational psycholinguistic experimental linguistics general northwestern number linguist psychologist computer scientist pursue research area
+
+enrol linguistics phd program pursue masterâ degree computational linguistics addition work finance work private wealth management large investment bank task transfer asset well improve workflow course pursue masterâ degree conduct research keystroke dynamics deduce pattern typing rhythm can use identify typist well type
+
+actually become interested text analytic work finance one process try improve deal transfer asset firm certain class asset deem risky volatile asset need flag closer inspection either leave firm come holding number asset class identifiable certain text pattern description although wording description always consistent use rudimentary natural language processing able catch asset special classification save time handle processing save firm money reduce human capital mitigating risk flagging appropriate asset
+
+future can see complete phdâ look beyond see either professor research institution work natural language processing software company many large software company like google microsoft large cutting-edge research facility work product-oriented theoretical research
+
+spare time enjoy play golf racquetball also enjoy read write learn draw paint live edgewater girlfriend research assistant psychology professor
+
+
+hw0 julia greenberger
+------------------------------------------------------------
+
+bear raise right evanston just short bike ride campus grow pancake walker brothers shwarma pita inn attend washington university st. louis earn b.s. system engineering minor mathematics desire apply math make real world business decision lead field economic consulting graduation
+
+next four year washington d.c. work two economic consulting firm spend first two year work antitrust analyze pricing effect merger acquisition next position transition energy electricity industry conduct analysis federal climate proposal use quadratic programming model quantify electric sector macroeconomic impact
+
+work analyst bound confines microsoft excel choose study analytic expand technical skill set want learn make prediction work big dataset able help company make important informed decision
+
+first year msia provide basic understanding work text datum topic modeling sentiment analysis regex education lack formal foundation text analytic hope course will give strong foundation allow confidently work text dataset career understand underlie algorithm assumption
+
+future career hope work company use datum make positive impact environment especially interested solar wind energy electric vehicle believe investment industry will continue grow firm individual choose mitigate risk energy supply heavily dependent fossil fuel
+
+
+hw0 madhuri gupta
+------------------------------------------------------------
+
+madhuri gupta graduate student masters science analytic -lrb- msia -rrb- program northwestern university bear bring india undergrad instrumentation control engineering graduate 2010 work analyze signal datum obtain sensor across thermal power plant objective prevent plant trip trip lead huge loss time money work predict trip event realize want get formal treatment subject start look online various course program offer analytic education data science specialization coursera provide john hopkins university seem suitable gauge level interest int field 10-course specialization find extremely intuitive interesting
+
+capstone project specialization build œnext word predictor appâ take input word/phrase output next probable word sophisticated might text analytic expertise use n-gram predict next word base weighted observe frequency phrase
+
+meanwhile start look best program offer analytic data science degree northwestern top list apply msia program get accept later 1st quarter program part text analytic project studio gang architect objective popular sentiment analysis building construct studio gang find user say positive negative use text mining technique like document feature matrix tf-idf
+
+look elective fall quarter year find text analytic option look like great opportunity learn skill depth give chance explore wide variety technique underlying assumption hope empower understand technique best situation
+
+future intend deploy skill learn program solve business problem come interesting analytical solution extract business value
+
+
+hw0 sai haran
+------------------------------------------------------------
+
+name sai haran bear raise suburb massachusetts spend childhood quiet town bedford graduate high school attend georgetown university study economics music subsequently return boston try work way startup scene didnâ work well hope several month without consistent livable paycheck join financial software company call eze software group technical consultant
+
+
+
+eze move away economics background focus technical skill sql coding much different education nice change pace find work challenging work largest financial institution world stressful also great experience belt
+
+
+
+two year work fintech space want return analytical root develop undergrad study economics look several program land northwestern best balance statistics computer science network opportunity say choice right one judge material learn people meet experience whole
+
+
+
+text analytic interest mine since program mother work field hear bit piece sheâ work past datum science knowledge pick past year begin understand small fraction sheâ build career excite continue learn text analytic understand career besides itâ great skill datum scientistâ toolbox
+
+
+
+move forward short term like work ecommerce video game industry vast opportunity make difference datum science technique include text analytic ecommerce build around customer able understand customer sentiment feedback without manually parse response can say video game industry game evolve social experience involve communication amongst gamer feedback gamer developer long term like move back startup space possibly start company hope experience gain work datum science give enough insight make product succeed help succeed entrepreneur
+
+
+
+
+
+
+hw0 rohan jha
+------------------------------------------------------------
+
+name mithrandir wizard middle-earth member istari order last istari reach haven mithlond recent time commonly refer asâ gandalf grey.â also bearer elvenâ ring power narya -lrb- ring fire -rrb- give cirdan himself.â result think fire natural spirit element.â particularly adept fire enjoy create grand display fiery art sky creative outlet also amusement friend -lrb- mostly hobbits -rrb- wizard entrust task provide counsel men elf oppose sauron travel extensively across middle-earth search information around sauron resurgence bilbo mysterious ring acquire creature gollum
+
+immense wealth information power textâ analytic will surely assist quest get information around ring suspicion ring one ring hence imperative learn it.â particularly interested regular expression greatly increase search capability archive minas tirith another useful application translate theâ work across various elvish dwarvish language speak language can still benefit knowledge pass great ancestor
+
+graduation first task confirm suspicion one ring indeed happen seek counsel saruman white inform elrond plan action create destroy ring stop resurgence sauron utmost priority safety middle-earth
+
+
+hw0 sik jung
+------------------------------------------------------------
+
+seoul korea grow since move shanghai china attend high school move los angeles attend ucla now evanston
+
+come msia want datum science field first hear field take statistics econometric course ucla get fascinate want learn work take datum science course online apply graduate program fully immerse datum science northwestern visit friend evanston summer 2015 get visit northwestern campus think beautiful little know bad winter
+
+come msia work consultant deloitte los angeles work financial transaction group accounting consulting initial public offering merger acquisition type financial transaction even though non-data-science work opportunity work deloitte analytics group use sas analyze transaction datum various clients.â
+
+get interested text analytic take professor diegoâ class fall use various text analytic methodsâââ regular expression topic modeling tf-idf latent dirichlet allocationâ parse analyze email receive msia use method cluster email recommend past answer future email also practicum gogo use various text analytic method word2vec cluster text
+
+immediate plan find company interesting datum product can passionate will see take
+
+
+hw0 michael kaesler
+------------------------------------------------------------
+
+bear clarendon hills suburb west chicago high school attend university colorado boulder colorado graduate major mathematics economics minor computer science however interesting major change in-between originally enrol intend take pre-med track however strong aversion chemistry freshman year cause brief foray english last semester brief stint switch economics start add major minor originally plan get quantitative finance however somewhere along line lose interest simultaneously discover field datum science
+
+
+
+graduate intern ecolab naperville data science intern first experience text analytic order merge pair database predictive analysis force use fuzzy matching technique along regular expression use edit distance measure similarity string particular field determine indeed match
+
+
+
+complete internship enrol northwestern university masters analytics program student msia assign consult particular company throughout first three quarter program company project assign actually require similar text match ecolab although time search database base fuzzy string matching just merge two database one time consequently search speed higher importance overall accuracy user able remove unwanted item focus place regular expression edit distance
+
+
+
+future want employ data scientist
+
+
+hw0 ikhwan kim
+------------------------------------------------------------
+
+ik-hwan seoul south korea graduate northwestern university bachelorâ degree economics 2015
+
+fascinate power machine learning adaptibility economic statistical analysis study multiple programming language statistics undergraduate career work resolution economics llc graduation passion handle datum material everyday life grow career economic consultant analyze datum estimate damages class action lawsuit involve lot datum wrangle well extract quantitative datum text datum work field lead interested datum science analytic eventually lead msia program happy descriptive analysis work time want solid understanding machine learning predictive analytic tool can proficiently deal broader range datum
+
+text analytic especially interesting difficult quantify aggregate free-form text witness numerous occasion company struggle extract meaningful insight text datum personal experience deal e-mail body feedback customer struggle automate datum processing dataset scale give fact type text datum grow day able process draw value natural language seem become skillset extremely valuable plan work inside tech industry foreseeable future although believe skill gain program transferable multiple industry expect utilize tool learn include text analytic actively career data scientist
+
+
+hw0 roshan kumar
+------------------------------------------------------------
+
+india integrated masterâ degree mathematics computing indian institute technology delhi time also work research intern inria grenoble france come program work year analytic start professional career oracle analytic division learn develop different modelling technique different banking client work year oracle decide work different domain passion analytic help rise leadership role analytic tesco experience involve interact extensively stakeholder director level executive understand business need solve use modeling technique work analytic year want study datum science hence enrol northwesternâ analytic program
+
+realize text analytic important datum scientist datum present todayâ world clean datum preprocessing important hence text analytic important tool datum scientist also like course content interested learn text analytic preprocess document clustering retrieval sentiment analysis post name entity recognition -lrb- ner -rrb-
+
+future want work company can prediction mainly related customer behavior impact huge mass work also interested know latest technology real-time analytic particular long term goal see chief analytics officer company drive important business decision manage group datum scientist
+
+personal front like dance play ping pong train salsa jive bachata perform stage show past also recently discover like hike travel sort water sport also france italy netherlands switzerland first time usa hope meet new people make amazing friend stay
+
+
+hw0 kate larsen
+------------------------------------------------------------
+
+live east coast upstate new york south florida brief stint mexico spend life virginia
+
+undergrad university virginia major computer science minor math work deloitte consulting washington d.c. two year work primarily etl developer capture transform source datum large industrial machine enable operational decision make insight much work descriptive nature look graduate school transition predictive prescriptive analytic
+
+main motivation join msia learn tool underlie algorithm statistics implement datum science problem within context real industry project good amount technical experience want increase statistics knowledge field
+
+past summer work nike north america analytics team data science intern work deal numerical booking account datum see opportunity text analytic product description investigate product genealogy
+
+become interested text analytic work different project last year msia see many opportunity derive information interesting perspective text study topic text analytic deeply briefly work text analysis yelp description datum see sentiment chicago culture airbnb host post description find unique property
+
+future look forward lead actionable datum drive analysis company interested either small boutique datum science consulting firm company health fitness industry find technical nature field challenging intriguing also interested understand impact translate result back business
+
+
+hw0 aron liu
+------------------------------------------------------------
+
+hw0 introduction
+aron liu
+
+grow wisconsin move east coast attend dartmouth college graduate bachelor art june 2015 major mathematics economics modify computer science specifically focus statistics financial mathematics analysis economic datum graduation move san francisco bay area work actuarial analyst valuate administrate many different qualified retirement pension plan calculate review numerous actuarial cost work closely investment institution allocate contribution monitor trust work year actuarial field want pivot technical career path feel like continue education master degree best way bring master science analytics program northwestern university
+
+interested text analytic think currently one universally applicable in-demand skill datum scientist now lot hype nowadays around extract value unstructured datum text analytic seem one developed formalize area related analyze unstructured datum text analytic also completely different class program focused structured numerical categorical datum think comprehensive well-rounded education handle type datum important work text analytic project throughout msia program internship always self-learning search internet think learn text analytic formal setting extremely beneficial strengthen internalize base knowledge subject graduation plan work analytic role company chicago
+
+
+hw0 ming liu
+------------------------------------------------------------
+
+name ethen msia program prior come msia program undergrad back taipei taiwan industrial management national taiwan university science technology reason come program start take couple computer science analytic course junior year find enjoy express logic code work datum derive insight little detour major make certain want learn analytic decide wish pursue advanced degree related fields.â
+
+bit research feel like msia aim program strike good balance theory apply part datum science thus struggle gre test apply program thankfully accept
+
+become interested text analytic come across method deal cold start problem recommendation system -lrb- note cold start basically user product interact system thus canâ leverage canonical machine learn algorithm prior history work -rrb- scenario productâ item description can use feature provide additional side information task make problem still feasible solve realize work knowledge perform text analytic highly beneficial field interested
+
+plan near future aim machine learn engineer technical datum scientist role field recommendation system get year industrial hands-on experience technical role maybe consider transition business-oriented datum science role.â
+
+
+hw0 kristin meier
+------------------------------------------------------------
+
+name kristin meier grow long island new york attend george washington university major economics minor mathematics statistics throughout study become increasingly interested learn use data analysis solve real-world problem graduate work research assistant federal reserve board governors washington d.c.
+
+federal reserve opportunity work many project inspire interest datum analytic become interested programming work want expand data analysis toolkit seek build educational foundation work experience classroom practical application master science analytics program offer perfect opportunity advance skill combine several subject area interest
+
+recently hadnâ think much quantify textual datum briefly learn technique become interested text analytic expand knowledge subject lot unstructured datum world will extremely beneficial know extract information use employer advantage internship summer policy research organization learn interesting project use text analytic classify domestic abuse case crisis text hotline datum application text analytic immense
+
+future plan include find job datum science enable contribute business value company hope work somewhere can continue grow data scientist polish machine learn skill excite opportunity lie ahead
+
+free time enjoy travel sport explore new area city
+
+
+hw0 nicole mirea
+------------------------------------------------------------
+
+bear raise los angeles specifically growing-up westwood less mile university california los angeles eventually parent move glendale less year later return ucla study cognitive science undergraduate sometimes especially restless night walk old neighborhood retrace childhood step check see whether memory still square reality manage change geographic location least search way change around find novelty time
+
+first year ucla take course myth legend folktale hear myth many culture make wonder commonality whether might share plotline character archetype modern urban legend surely person never able absorb analyze lore every culture within single lifetimeâ leave aside fact culture share language computer perform task spark interest text analytic register domain name plan make website folklore database people around world submit myth legend culture unfortunately plan come fruition -lrb- still domain name -rrb-
+
+story come study linguistics northwestern bit improbable undergrad never want grad school look student lab clearly angle marvel enthusiasm reality reluctance fable tell whenever thing plan classic sour grape whatever think mess experiment get bad grade like actually want grad school anyway afraid want think smart enough
+
+eventually meeting grad student figure genius order succeed just inquisitive hardworking ultimately career choose involve downside find academia real reason disprefer job addition skillset best-suit profession tech industry entirely disillusion technology promise connect give everyone voice consolidated control hand information capital want complicit impossible sustain work open-source project academia solution constraint-satisfaction problem viable path skill put good use without make world worse
+
+future flexible fill choice point now intend see whether like teaching finish phd program see job market look like 2021
+
+
+hw0 craig
+------------------------------------------------------------
+
+name craig bear raise san francisco complete undergraduate study economics university california berkeley hold variety progressively analytical role prior graduate school include work auditor management consultant discover enjoy work datum didnâ skill necessary tackle problem type scale although consider acquire skill alternative means mooc boot camp ultimately decide come back school full-time completely focus learning leave degree right choice
+
+
+
+always fascination language devour book type start young age even though get advanced degree technical field type person score higher verbal portion quantitative portion standardized exam alternate universe probably study historyâ might still retirement people company become aware amount information store unstructured datum understand parse analyze datum become increasingly important think weâ see tip iceberg come text analytic want build foundational skill necessary explore
+
+
+
+someone grow heart silicon valley part seemingly every type organization love work datum startup immediately graduation intend work hands-on datum individual contributor 3-5 year re-evaluate hobby like weightlifting bake car likely look opportunity combine datum science one -lrb- -rrb- thing point
+
+
+hw0 santiago olivar aicinena
+------------------------------------------------------------
+
+bear raise mexico city receive b.a. economics instituto tecnolã gico autã nomo xico -lrb- itam -rrb- 2016 work year mexican federal ministry economy three year bank mexico financial researcher latter position give responsibility gathering analyze big diverse dataset final objective present result board governors work gain experience work huge database first challenge programming skill order assess big diverse dataset increase day day significant handicap decide learn new programming language sql python overcome situation result discover use leadership quantitative programming skill contribution toward institutionâ revenue data-driven insight
+
+prefer master science analytics program similar one student teach skill drive business success today data-driven world move beyond simple data analysis program seek equip student technical knowledge business acumen necessary translate complex datum set meaningful information
+
+start become interested text analytic notice many internship full-time position require experience text analytic natural language processing also realize datum generate today unstructured text analytic toolbox important get data-driven insight
+
+despite background financial arena believe graduate msia program work almost industry feel challenge fortunate live moment time torrent new datum create represent unique moment assess opportunity add value within institution along industry
+
+
+hw0 jose maria serio pastor
+------------------------------------------------------------
+
+bear raise manila philippines attend university illinois urbana-champaign graduate b.s. industrial engineering concentration operations research compliment technical training involvement international company fortune 500 company semester-long project throughout college career consulting regular client interface exposure front-end various business grapple specific problem confirm desire hone skill data analysis statistics ultimately ability parlay quantitative skill develop practical business solution
+engineering management consulting experience encourage pursue career assist organization optimize operation specifically develop pricing revenue strategy msia program northwestern university bridge gap managerial engineering perspective problem solve rigorous study mathematical statistical method compel apply learning faculty company partner peer optimization heuristic big datum analytic datum mining class will strengthen skill already acquire undergraduate coursework involvement consulting
+text analytic start become interesting summer work data scientist political consulting firm first week notice considerable amount datum receive scrape website buy third party collect api unstructured often textual realize need formal training analyze textual datum everyday amount text datum grow
+summer mostly work sentiment analysis use vader algorithm nltk package python also dab sentiment analysis language english use third party api call
+
+
+hw0 eric pawlakos
+------------------------------------------------------------
+
+bear raise bay area grow walnut creek move around 8th grade bring msia interest statistics undergraduate major math/econ find interesting class statistics econometric opportunity within financial industry interested learn data analysis opportunity explore industry
+
+program undergraduate student ucla study math/econ also intern financial firm san francisco write company valuation report -lrb- potential growth experience management -rrb- determine company invest
+
+become interested text analytic one area class program cover also due large amount datum store text seem text analytic quite important data scientist know
+
+plan future find job ideally location havenâ since havenâ spend much time east coast look opportunity
+
+need include additional stuff hit 300-600 word limit bit attend ucdavis year ucla switch major time davis find campus ucla one favorite campus play rugby throughout high school college stop play ucla play guitar since high school mainly casually fun
+
+two sibling older younger brother older one college berkeley since graduate younger one just start high school
+
+
+
+
+hw0 ashley thomas
+------------------------------------------------------------
+
+name rose thomas -lrb- however legal name ashley elizabeth thomas address later -rrb- houma small town/city southwest new orleans come straight undergrad come msia reason mixture continue education area widely applicable pretty interesting avoid œreal workingâ world gain sense direction program work experience two investment banking internship far schooling economics-mathematics student nyu two year transfer brown university graduate applied mathematics school dance great deal student group continue northwestern currently two dance group campus one primarily hip hop another mostly contemporary jazz however dance many style two include ballet tap bollywood pole dance broadway general œdance teamâ style become interested text analytic talk people personal pain try digest large body text usable datum current plan future work centurylink senior analyst role try dance professionally either side take time finally previously promise think might explain rose choose french class name 9th grade continue take french rest high school classmate begin call rose outside classroom well within spread classmate werenâ even take french friend teacher really enjoy name reason feel like better fit ashley college just start rose someone call ashley will definitely still answer donâ worry ever happen
+
+
+hw0 aditya venkataraman
+------------------------------------------------------------
+
+aditya venkataraman america say live state relatively evenly distribute throughout young life currently reside lafayette bear raise mostly south midwest attend carnegie mellon university undergrad graduate last year 2016 originally electrical computer engineering major undergrad happy hate eventually switch civil engineering minor statistics sophomore summer take probability theory class captivate endless possibility application statistics decide switch major statistics minor civil environmental engineering just flip-flopping study earlier senior spring take natural language processing class teach statistics perspective rather computer science perspective class open possibility work unstructured text datum statistical perspective different possibility statistical analysis learn interesting topic like n-gram hidden markov model viterbi algorithm interesting thing realm stats future plan work company can work smart motivated people engaging work type industry doesnâ matter much broad exposure will allow specialize bit pinpoint want career road like work back west coast close family can outdoors-y activity interested well close friend
+
+
+hw0 xingyu wang
+------------------------------------------------------------
+
+everyone xingyu wang graduate peking university china b.s. psychology applied mathematics freshman year sharpen programming skill take freshman course major study apply math enjoy theoretical practical side quantitative methodology cover utilize course like operation research statistical learning along study psychology participate variety research project code experiment/simulation script identify pattern decision-making process reveal datum one research propose test model human saccade -lrb- rapid eye movement -rrb- decision making base bayesian update statistical inference model theoretically predict eye-movement pattern successfully fit empirical datum matlab simulation tune another two model analyze chinese college entrance exam record verify mental motivational influencer exam performance word itâ combination three discipline intrigue lead study datum science analytic
+
+
+
+join msia also work intern datum analyst chinese online education platform devise survey analyze record database train predict model churn rate identify efficient advertising strategy target different user
+
+
+
+get flavor text analytic quarter msia one course project team employ lda extract topic million job post group accordingly analysis technique topic modelling underlying theory part reason take text analytic course besides always interested machine learning/statistical learning far work structured datum well image believe paradigm work text unique many different level whether itâ perform prediction/classification base give text generate meaningful text hope get better understanding whatâ best nlp text analytic can now state-of-the-art way attack problem future wish deepen understanding machine learning optimization technique involve work project
+
+
+
+
+
+
+hw0 christopher ward
+------------------------------------------------------------
+
+hometown eastlake ohio approximately mile downtown cleveland attend
+
+ohio state university undergraduate study study major accounting via osuâ prestigious accounting honor program also earn minor mathematics economics
+
+
+
+graduate ohio state make way chicago chicagoland home last five year deem dual citizen chicago cleveland first four year employ multinational accounting firm ernst young llp auditor financial service firm specialize broker dealer private equity fund mutual fund proprietary trading company many client highly profitable like believe success due auditing skill definitely situation correlation imply causation
+
+
+
+life auditor demand provide many phenomenal learning opportunity age multiple people work direction experience find many job able build many strong relationship remain amongst important one life
+
+
+
+one joke hear accounting œcreative accountant jail.â comment encapsulate rationale leave world accounting accountant encounter unfamiliar issue definitive way proceed consult accounting guidance rule accounting codify highly detail thus anyone practice new creative accounting might perform illegal act hand unfamiliar issue bedrock make analytic fascinating best insight discovery often begin people ponder question response donâ know.â
+
+
+
+along line one interesting source datum available free text human uniquely differentiate life form due ability think critically express thought opinion emotion via write language write provide massive amount datum help advance compute power can analyze learn species interact world around
+
+
+
+future recently sign lease condo downtown chicago plan stay foreseeable future location convenient provide easy access many form transportation restaurant grocery nightlife additionally already accept full-time job offer transunion office across street residence mean will one easiest commute ever
+
+
+
+last certainly least look forward yearâ baseball playoff hopeful cleveland indians will able complete unfinished business avenge defeat last yearâ world series occur account chicago cubs
+
+
+hw0 chaoran wei
+------------------------------------------------------------
+
+name chaoran wei msia program china undergraduate research project machine learning interested idea solve real world problem datum thatâ choose msia get master degree want become data scientist future
+
+
+
+investigate machine learning two year come msia biggest research project attempt classify image datum plankton specific species primary method group use deep convolutional neural networks -lrb- cnn -rrb- research result one conference presentation jmm -lrb- joint mathematics meeting -rrb- special session
+
+
+
+try variety text analytic algorithm undergraduate study use topic modeling technique extract different topic research papers international relations realm result exciting less interpretable time use lstm try generate text wall street journal turn model couldnâ generate meaningful word even day training try bunch method get good interpretable result thatâ part reason want take course get idea model use particular text analytic problem use delving deeper theory nlp
+
+
+
+future plan become data scientist like idea extract meaningful information pattern large dataset bring business value company feel like solve puzzle money increasingly amount text datum diverse source present web believe text analytic class quarter will serve well future career
+
+
+hw0 lauren
+------------------------------------------------------------
+
+name lauren come central china msia math major suny buffalo dabble lot social science discover datum science/analytics quantitative social science research lot statistical method deploy although didnâ personally engage text analytic project time definitely significant research work interest area social science offer great range interesting problem involve natural language processing instance text tell authorâ intent bias can measure much therapist empathize patient university washingtonâ nlp group example collaborate widely political scientist psychologist social scientist tackle kind question remember see paper title œcontextualized sarcasm detection twitterâ cool sarcasm subtle nature depend highly subject matter many case almost like insider joke able detect algorithmically sound like great idea
+
+future hope work project enjoy live city decent public transportation lot korean food earn enough money actually adopt panda bear watch panda video probably biggest addiction thereâ just something hypnotize bear even just roll munch bamboo sleep play keeper play play snow play toy just nothing general pandas can spend hour day sleep eat 20lb bamboo shoot day best lifestyle eat sleep repeat
+
+stop troll reach 300 word already point
+
+
+hw0 kevin zhai
+------------------------------------------------------------
+
+year ago dad study english college nanjing china one day history professor come college give lecture dad choose translator lecture professor dad talk one reason another dad decide get phd history states professor finish phd find job montgomery professor move whole family new land thatâ end bear montgomery
+
+
+
+fast forward year 2011 time pick college hadnâ live anywhere quaint little city whole life know time pack grit tooth elsewhere end upenn study materials science choose major probably wanderlust think look cool didnâ really know else fancy interest time graduate reazly work lab run simulation molecule wasnâ calling want leverage computer science skill decide datum science right path apply graduate school right bachelor luckily get accept great program northwestern
+
+
+
+first quarter take survey class look various use case capability analytic specifically team project topic modelling corpus research papers look different topic evolve year first foray power text crunching nlp amaze powerful certainly pitfall methodology show lot promise term future plan world oyster patron seafood restaurant
+
+
+
+spice thing -lrb- since hit 300 minimum word count already -rrb- decide insert excerpt kama sutra œwhat make one attractive appearance quality age liberality paste rosebay wild ginger plum leave can make one seductive can salve eye make grind herb put powder wick burn myrobalan oil human skull lick paste honey ghee mixed powder dry red blue lotus rise chestnut make person attractive eye peacock hyena put inside locket gold wear right hand also render one attractive place bristle certain insect bear tree penis massage oil ten night repeat will make penis swell lie face downward string cot let penis hang process conclude gradually relieve pain cold salve swell last life.â
