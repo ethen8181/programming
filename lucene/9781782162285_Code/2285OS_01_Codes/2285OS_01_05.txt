@@ -1,0 +1,3 @@
+     indexWriter.deleteDocuments(new Term("id", "1"));
+     indexWriter.close();
+

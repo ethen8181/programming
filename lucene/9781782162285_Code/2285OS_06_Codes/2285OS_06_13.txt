@@ -1,0 +1,18 @@
+    UserSecurityFilter userSecurityFilter = new UserSecurityFilter("userId", "groupId", "1001", "40");
+
+    IndexReader indexReader = DirectoryReader.open(directory);
+    IndexSearcher indexSearcher = new IndexSearcher(indexReader);
+
+    Query query = new MatchAllDocsQuery();
+    TopDocs topDocs = indexSearcher.search(query, userSecurityFilter, 100);
+    for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
+        doc = indexReader.document(scoreDoc.doc);
+        System.out.println("file: " +
+                doc.getField("file").stringValue() +
+                " - userId: " +
+                doc.getField("userId").stringValue() +
+                " - groupId: " +
+                doc.getField("groupId").stringValue());
+    }
+
+    indexReader.close();

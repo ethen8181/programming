@@ -1,0 +1,1 @@
+NumericRangeFilter numericRangeFilter = NumericRangeFilter.newIntRange("num", 200, 400, true, true);

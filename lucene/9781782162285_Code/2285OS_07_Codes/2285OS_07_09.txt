@@ -1,0 +1,10 @@
+public class PayloadAnalyzer extends StopwordAnalyzerBase {
+    protected TokenStreamComponents createComponents(final String fieldName, final Reader reader) {
+        final StandardTokenizer source = new StandardTokenizer(reader);
+        TokenStream filter = new StandardFilter(source);
+        filter = new LowerCaseFilter(filter);
+        filter = new StopFilter(filter, stopwords);
+        filter = new PayloadFilter(filter);
+        return new TokenStreamComponents(source, filter);
+    }
+}

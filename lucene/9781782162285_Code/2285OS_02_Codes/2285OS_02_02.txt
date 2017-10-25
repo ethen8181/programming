@@ -1,0 +1,3 @@
+    Reader reader = new StringReader(“Text to be passed”);
+    Analyzer analyzer = new SimpleAnalyzer();
+    TokenStream tokenStream = analyzer.tokenStream("myField", reader);

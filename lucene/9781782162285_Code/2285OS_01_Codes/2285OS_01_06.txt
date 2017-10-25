@@ -1,0 +1,4 @@
+    Directory directory = getDirectory();
+    IndexReader indexReader = DirectoryReader.open(directory);
+    IndexSearcher indexSearcher = new IndexSearcher(indexReader);
+

@@ -1,0 +1,1 @@
+FieldCacheRangeFilter fieldCacheTermRangeFilter = FieldCacheRangeFilter.newStringRange("name", "A", "G", true, true);

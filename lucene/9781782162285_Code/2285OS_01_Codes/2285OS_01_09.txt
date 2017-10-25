@@ -1,0 +1,18 @@
+public List<Document> getPage(int from , int size){
+    List<Document> documents = new ArraList<Document>();
+    Query query = parser.parse(searchTerm);
+    TopDocs hits = searcher.search(query, maxNumberOfResults);
+
+    int end = Math.min(hits.totalHits, size);
+
+    for (int i = from; i < end; i++) {
+        int docId = hits.scoreDocs[i].doc;
+
+        //load the document
+        Document doc = searcher.doc(docId);
+        documents.add(doc);
+    }
+
+    return documents;
+}
+

@@ -1,0 +1,8 @@
+public float coord(int overlap, int maxOverlap) {
+    if (overlap > 1) {
+        return overlap / maxOverlap;
+    } else {
+        return 10;
+    }
+}
+

@@ -1,0 +1,24 @@
+StandardAnalyzer analyzer = new StandardAnalyzer();
+Directory directory = new RAMDirectory();
+IndexWriterConfig config = new IndexWriterConfig(Version.LATEST, analyzer);
+IndexWriter indexWriter = new IndexWriter(directory, config);
+
+Document doc = new Document();
+doc.add(new StringField("content", "Humpty Dumpty sat on a wall", Field.Store.YES));
+indexWriter.addDocument(doc);
+doc = new Document();
+doc.add(new StringField("content", "Humpty Dumpty had a great fall", Field.Store.YES));
+indexWriter.addDocument(doc);
+doc = new Document();
+doc.add(new StringField("content", "All the king's horses and all the king's men", Field.Store.YES));
+indexWriter.addDocument(doc);
+doc = new Document();
+doc.add(new StringField("content", "Couldn't put Humpty together again", Field.Store.YES));
+indexWriter.addDocument(doc);
+
+indexWriter.commit();
+indexWriter.close();
+
+IndexReader indexReader = DirectoryReader.open(directory);
+
+Dictionary dictionary = new LuceneDictionary(indexReader, "content");

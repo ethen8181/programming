@@ -1,0 +1,9 @@
+curl -XGET 'http://localhost:9200/news/article/_search?q=monday'
+
+curl -XGET 'http://localhost:9200/news,news2/article/_search?q=monday'
+
+curl -XGET 'http://localhost:9200/news/article,article2/_search?q=monday'
+
+curl -XGET 'http://localhost:9200/news/_search?q=monday'
+
+curl -XGET 'http://localhost:9200/_search?q=monday'

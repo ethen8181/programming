@@ -1,0 +1,2 @@
+query = new TermQuery(new Term("content", "humpty"));
+query = new TermRangeQuery("content", new BytesRef("a"), new BytesRef("c"), true, true);

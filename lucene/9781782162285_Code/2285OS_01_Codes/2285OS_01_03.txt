@@ -1,0 +1,4 @@
+Document doc = new Document();
+String text = "Lucene is an Information Retrieval library written in Java.";
+doc.add(new TextField("fieldname", text, Field.Store.YES));
+

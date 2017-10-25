@@ -1,0 +1,2 @@
+queryParser.setPhraseSlop(1);
+Query query = queryParser.parse("\"humpty dumpty\"");

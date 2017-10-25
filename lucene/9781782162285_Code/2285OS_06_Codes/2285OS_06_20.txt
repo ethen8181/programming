@@ -1,0 +1,3 @@
+queryParser.setFuzzyMinSim(2f);
+queryParser.setFuzzyPrefixLength(3);
+Query query = queryParser.parse("hump~");

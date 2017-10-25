@@ -1,0 +1,7 @@
+public float idf(long docFreq, long numDocs) {
+    if (docFreq > 2) {
+        return super.idf(docFreq, numDocs);
+    } else {
+        return super.idf(docFreq * 100, numDocs);
+    }
+}

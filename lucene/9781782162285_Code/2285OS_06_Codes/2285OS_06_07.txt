@@ -1,0 +1,1 @@
+PrefixFilter prefixFilter = new PrefixFilter(new Term("name", "F"));

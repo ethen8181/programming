@@ -1,0 +1,29 @@
+StandardAnalyzer analyzer = new StandardAnalyzer();
+Directory directory = new RAMDirectory();
+IndexWriterConfig config = new IndexWriterConfig(Version.LATEST, analyzer);
+IndexWriter indexWriter = new IndexWriter(directory, config);
+
+Document doc = new Document();
+StringField stringField = new StringField("name", "", Field.Store.YES);
+
+String[] contents = {"foxtrot", "echo", "delta", "charlie", "bravo", "alpha"};
+for (String content : contents) {
+    stringField.setStringValue(content);
+    doc.removeField("name");
+    doc.add(stringField);
+    indexWriter.addDocument(doc);
+}
+
+indexWriter.commit();
+
+IndexReader indexReader = DirectoryReader.open(directory);
+IndexSearcher indexSearcher = new IndexSearcher(indexReader);
+WildcardQuery query = new WildcardQuery(new Term("name","*"));
+SortField sortField = new SortField("name", SortField.Type.STRING);
+Sort sort = new Sort(sortField);
+
+TopDocs topDocs = indexSearcher.search(query, null, 100, sort);
+for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
+    doc = indexReader.document(scoreDoc.doc);
+    System.out.println(scoreDoc.score + ": " + doc.getField("name").stringValue());
+}

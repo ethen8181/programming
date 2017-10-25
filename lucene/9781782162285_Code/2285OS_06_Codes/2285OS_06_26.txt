@@ -1,0 +1,12 @@
+PhraseQuery query = new PhraseQuery();
+query.add(new Term("content", "humpty"));
+query.add(new Term("content", "together"));
+
+MultiPhraseQuery query2 = new MultiPhraseQuery();
+Term[] terms1 = new Term[1];
+terms1[0] = new Term("content", "humpty");
+Term[] terms2 = new Term[2];
+terms2[0] = new Term("content", "dumpty");
+terms2[1] = new Term("content", "together");
+query2.add(terms1);
+query2.add(terms2);

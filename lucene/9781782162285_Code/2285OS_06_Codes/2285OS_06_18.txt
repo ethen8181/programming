@@ -1,0 +1,3 @@
+queryParser.setDateResolution("date", DateTools.Resolution.DAY);
+queryParser.setLocale(Locale.US);
+queryParser.setTimeZone(TimeZone.getTimeZone("America/New_York"));

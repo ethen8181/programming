@@ -1,0 +1,20 @@
+public class AnagramQuery extends CustomScoreQuery {
+
+    private final String field;
+    private final Set<String> terms = new HashSet<String>();
+
+    public AnagramQuery(Query subquery, String field) {
+        super(subquery);
+        this.field = field;
+        HashSet<Term> termSet = new HashSet<Term>();
+        subquery.extractTerms(termSet);
+        for (Term term : termSet) {
+            terms.add(term.text());
+        }
+    }
+
+    @Override
+    protected CustomScoreProvider getCustomScoreProvider(AtomicReaderContext context) {
+        return new AnagramQueryScoreProvider(context, field, terms);
+    }
+}

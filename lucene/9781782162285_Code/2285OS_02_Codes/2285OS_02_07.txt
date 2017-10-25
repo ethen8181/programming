@@ -1,0 +1,9 @@
+public class CourtesyTitleAnalyzer extends Analyzer {
+
+    @Override
+    protected TokenStreamComponents createComponents(String fieldName, Reader reader) {
+        Tokenizer letterTokenizer = new LetterTokenizer(reader);
+        TokenStream filter = new CourtesyTitleFilter(letterTokenizer);
+        return new TokenStreamComponents(letterTokenizer, filter);
+    }
+}

@@ -1,0 +1,5 @@
+{ index: { "_index" : "news", "_type" : "article", "_id" : "2" } }
+{ "title" : "Debt crisis: as it happened, April 25, 2012" , "publication_date" : "2012-03-23", "content" : "US Federal Reserve raises growth forecasts and says will keep interest rates low until 2014, as chairman Ben Bernanke says the bank remains prepared to do more to help economy" }
+{ index: { "_index" : "news", "_type" : "article" } }
+{ "title" : "Stocks: 2013 is one for the record books." , "publication_date" : "2013-12-31", "content" : "The Dow Jones industrial average (INDU) had its best year since 1998. The blue chip index gained 26.5% this year, hitting 52 all-time highs along the way. And the Nasdaq (COMP) surged 38%, marking its best year since 2009." }
+

@@ -1,0 +1,8 @@
+FreeTextSuggester freeTextSuggester = new FreeTextSuggester(analyzer, analyzer, 3);
+freeTextSuggester.build(dictionary);
+
+List<Lookup.LookupResult> lookupResultList = freeTextSuggester.lookup("h", false, 10);
+
+for (Lookup.LookupResult lookupResult : lookupResultList) {
+    System.out.println(lookupResult.key + ": " + lookupResult.value);
+}

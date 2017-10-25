@@ -1,0 +1,16 @@
+public class MyTokenizer extends CharTokenizer {
+
+    public MyTokenizer(Reader input) {
+        super(input);
+    }
+
+    public MyTokenizer(AttributeFactory factory, Reader input) {
+        super(factory, input);
+    }
+
+    @Override
+    protected boolean isTokenChar(int c) {
+        return !Character.isSpaceChar(c);
+    }
+}
+

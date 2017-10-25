@@ -1,0 +1,10 @@
+Directory directory = 
+    FSDirectory.open(new File("/data/index"));
+IndexReader indexReader = 
+    DirectoryReader.open(directory);
+IndexSearcher indexSearcher = 
+    new IndexSearcher(indexReader);
+Query query = new TermQuery(
+    new Term("content", "alpha"));
+TopDocs topDocs = 
+    indexSearcher.search(query, 100);

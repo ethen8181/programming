@@ -1,0 +1,7 @@
+curl -XPOST 'http://localhost:9200/news/article/' -d '
+{
+    "title" : "Dow Rises, Gains 1.5% on Week" ,
+    "publication_date" : "2012-03-03",
+    "content" : "Solid quarterly results from consumer-oriented stocks including Amazon.com AMZN +15.75% overshadowed data on slowing economic growth, pushing benchmarks to their biggest weekly advance since mid-March."
+}'
+

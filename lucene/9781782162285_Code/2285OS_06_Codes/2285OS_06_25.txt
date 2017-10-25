@@ -1,0 +1,2 @@
+PrefixQuery query = new PrefixQuery(new Term("content", "hum"));
+WildcardQuery query2 = new WildcardQuery(new Term("content", "*um*"));

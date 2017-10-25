@@ -1,0 +1,35 @@
+SearcherManager searcherManager = new SearcherManager(indexWriter, true, new SearcherFactory());
+TrackingIndexWriter trackingIndexWriter = new TrackingIndexWriter(indexWriter);
+ControlledRealTimeReopenThread controlledRealTimeReopenThread = new ControlledRealTimeReopenThread(trackingIndexWriter, searcherManager, 5, 0.001f);
+controlledRealTimeReopenThread.start();
+
+long indexGeneration = 0;
+
+// add documents to index here
+
+indexGeneration = trackingIndexWriter.addDocument(doc);
+
+controlledRealTimeReopenThread.waitForGeneration(indexGeneration);
+
+IndexSearcher indexSearcher = searcherManager.acquire();
+
+// perform search here
+
+searcherManager.release();
+
+indexWriter.commit();
+
+// add more documents to index here
+
+indexGeneration = trackingIndexWriter.addDocument(doc);
+
+controlledRealTimeReopenThread.waitForGeneration(indexGeneration);
+
+indexSearcher = searcherManager.acquire();
+
+// perform another search here
+
+searcherManager.release();
+
+controlledRealTimeReopenThread.close();
+indexWriter.commit();

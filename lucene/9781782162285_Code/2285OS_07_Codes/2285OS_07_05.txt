@@ -1,0 +1,7 @@
+public float lengthNorm(FieldInvertState state) {
+    if (state.getLength() % 2 == 1) {
+        return super.lengthNorm(state) * 100;
+    }
+    return super.lengthNorm(state);
+}
+

@@ -1,0 +1,2 @@
+queryParser.setLowercaseExpandedTerms(true);
+Query query = queryParser.parse("\"Humpty Dumpty\"");

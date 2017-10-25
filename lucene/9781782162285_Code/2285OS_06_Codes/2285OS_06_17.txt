@@ -1,0 +1,2 @@
+queryParser.setAutoGeneratePhraseQueries(true);
+Query query = queryParser.parse("humpty+dumpty+sat");

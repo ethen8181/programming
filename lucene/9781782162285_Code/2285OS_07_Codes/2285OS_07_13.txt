@@ -1,0 +1,7 @@
+public float tf(float freq) {
+    if (freq > 1f) {
+        return super.tf(freq) * 100;
+    }
+    return super.tf(freq);
+}
+

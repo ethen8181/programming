@@ -1,0 +1,10 @@
+curl -XPUT "localhost:9200/news/_mapping/article" -d '
+{
+    "article" : {
+        "properties" : {
+            "title" : {"type" : "string", "store" : true, "index" : "analyzed" },
+            "content": {"type" : "string", "store" : true, "index" : "analyzed" },
+            "publication_date": {"type" : "date", "store" : true, "index" : "not_analyzed" }
+        }
+    }
+}'

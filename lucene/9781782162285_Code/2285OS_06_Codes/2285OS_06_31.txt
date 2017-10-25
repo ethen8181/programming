@@ -1,0 +1,33 @@
+SpanNearQuery query1 = new SpanNearQuery(
+    new SpanQuery[] {
+        new SpanTermQuery(new Term("content", "wall")),
+        new SpanTermQuery(new Term("content", "humpty")),
+    },
+    4,
+    false);
+
+SpanFirstQuery query2 = new SpanFirstQuery(
+    new SpanTermQuery(new Term("content", "sat")),
+    3
+);
+
+SpanNotQuery query3 = new SpanNotQuery(
+    query1,
+    new SpanTermQuery(new Term("content", "sat"))
+);
+
+SpanOrQuery query4 = new SpanOrQuery(
+    query1,
+    new SpanTermQuery(new Term("content", "together"))
+);
+
+WildcardQuery wildcard = new WildcardQuery(new Term("content", "hum*"));
+SpanQuery query5 = new SpanMultiTermQueryWrapper<WildcardQuery>(wildcard);
+
+SpanQuery q1  = new SpanTermQuery(new Term("content", "dumpty"));
+SpanQuery q2  = new SpanTermQuery(new Term("content2", "humpty"));
+SpanQuery maskedQuery = new FieldMaskingSpanQuery(q2, "content");
+Query query6 = new SpanNearQuery(new SpanQuery[]{q1, maskedQuery}, 4, false);
+
+SpanPositionRangeQuery query7 = new SpanPositionRangeQuery(
+        new SpanTermQuery(new Term("content", "wall")), 5, 6);

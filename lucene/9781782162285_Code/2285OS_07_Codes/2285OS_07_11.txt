@@ -1,0 +1,7 @@
+public float scorePayload(int doc, int start, int end, BytesRef payload) {
+    float val = PayloadHelper.decodeFloat(payload.bytes);
+    if (start == 0 || start == 1) {
+        return val * 0.1f;
+    }
+    return val * 100f;
+}

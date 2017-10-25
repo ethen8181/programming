@@ -1,0 +1,13 @@
+BooleanQuery query = new BooleanQuery();
+query.add(new BooleanClause(
+        new TermQuery(new Term("content", "humpty")),
+        BooleanClause.Occur.MUST));
+query.add(new BooleanClause(new TermQuery(
+        new Term("content", "dumpty")),
+        BooleanClause.Occur.MUST));
+query.add(new BooleanClause(new TermQuery(
+        new Term("content", "wall")),
+        BooleanClause.Occur.SHOULD));
+query.add(new BooleanClause(new TermQuery(
+        new Term("content", "sat")),
+        BooleanClause.Occur.MUST_NOT));

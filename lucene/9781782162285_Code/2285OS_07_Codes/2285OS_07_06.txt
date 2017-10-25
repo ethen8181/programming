@@ -1,0 +1,6 @@
+public float queryNorm(float sumOfSquaredWeights) {
+    if (Math.round(sumOfSquaredWeights * 100f) % 2 == 0) {
+        return super.queryNorm(sumOfSquaredWeights) * 100;
+    }
+    return super.queryNorm(sumOfSquaredWeights);
+}

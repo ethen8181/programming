@@ -1,0 +1,1 @@
+RegexpQuery query = new RegexpQuery(new Term("content", ".um.*"));

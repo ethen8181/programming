@@ -1,0 +1,1 @@
+TermRangeFilter termRangeFilter = TermRangeFilter.newStringRange("name", "A", "G", true, true);

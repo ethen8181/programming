@@ -1,0 +1,3 @@
+    QueryParser parser = new QueryParser(Version.LUCENE_4_10_2, "Content", analyzer);
+    Query query = parser.parse("Lucene");
+

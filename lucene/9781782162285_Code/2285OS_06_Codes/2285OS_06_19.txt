@@ -1,0 +1,2 @@
+queryParser.setDefaultOperator(QueryParser.Operator.AND);
+Query query = queryParser.parse("humpty dumpty");

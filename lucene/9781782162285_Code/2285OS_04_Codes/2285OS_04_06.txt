@@ -1,0 +1,12 @@
+Directory directory = 
+    FSDirectory.open(new File("/data/index"));
+Analyzer analyzer = new StandardAnalyzer();
+IndexReader indexReader = 
+    DirectoryReader.open(directory);
+IndexSearcher indexSearcher = 
+    new IndexSearcher(indexReader);
+QueryParser queryParser = 
+    new QueryParser("content", analyzer);
+Query query = queryParser.parse("alpha beta");
+TopDocs topDocs = 
+    indexSearcher.search(query, 100);

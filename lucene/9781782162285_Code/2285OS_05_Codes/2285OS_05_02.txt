@@ -1,0 +1,23 @@
+SearcherManager searcherManager = new SearcherManager(indexWriter, true, new SearcherFactory());
+
+// add documents to index here
+
+searcherManager.maybeRefresh();
+indexSearcher = searcherManager.acquire();
+
+// perform search here
+
+searcherManager.release(indexSearcher);
+
+indexWriter.commit();
+
+// add more documents to index here
+
+searcherManager.maybeRefresh();
+indexSearcher = searcherManager.acquire();
+
+// perform search here
+
+searcherManager.release(indexSearcher);
+
+indexWriter.commit();

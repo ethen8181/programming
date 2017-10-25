@@ -1,0 +1,1 @@
+Query query = NumericRangeQuery.newIntRange("num", 0, 200, true, true);

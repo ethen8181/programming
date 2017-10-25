@@ -1,0 +1,2 @@
+    TermRangeFilter termRangeFilter = TermRangeFilter.newStringRange("name", "A", "G", true, true);
+    CachingWrapperFilter cachingWrapperFilter = new CachingWrapperFilter(termRangeFilter);

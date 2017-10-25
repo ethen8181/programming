@@ -1,0 +1,30 @@
+StandardAnalyzer analyzer = new StandardAnalyzer();
+Directory directory = new RAMDirectory();
+IndexWriterConfig config = 
+    new IndexWriterConfig(Version.LATEST, analyzer);
+IndexWriter indexWriter = new IndexWriter(directory, config);
+
+Document doc = new Document();
+StringField stringField = 
+    new StringField("name", "", Field.Store.YES);
+
+String[] contents = {"alpha", "bravo", "charlie", 
+    "delta", "echo", "foxtrot"};
+for (String content : contents) {
+    stringField.setStringValue(content);
+    doc.removeField("name");
+    doc.add(stringField);
+    indexWriter.addDocument(doc);
+}
+
+indexWriter.commit();
+
+IndexReader indexReader = DirectoryReader.open(directory);
+
+BinaryDocValues cache = FieldCache.DEFAULT.getTerms(
+    SlowCompositeReaderWrapper.wrap(indexReader), "name", true);
+
+for (int i = 0; i < indexReader.maxDoc(); i++) {
+    BytesRef bytesRef = cache.get(i);
+    System.out.println(i + ": " + bytesRef.utf8ToString());
+}

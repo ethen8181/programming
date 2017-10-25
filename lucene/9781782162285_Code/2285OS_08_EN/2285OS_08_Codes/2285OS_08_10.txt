@@ -1,0 +1,7 @@
+curl -XPUT 'http://localhost:9200/news/article/1' -d '
+{
+    "title" : "Europe stocks tumble on political fears , PMI data" ,
+    "publication_date" : "2012-03-30",
+    "content" : "LONDON (MarketWatch)-European stock markets tumbled to a three-month low on Monday, driven by steep losses for banks and resource firms after weak purchasing-managers index readings from China and Europe. At the same time, political tensions in France and the Netherlands fuelled fears of further euro-zone turmoil"
+}'
+

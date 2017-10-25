@@ -1,0 +1,8 @@
+Analyzer analyzer = new WhitespaceAnalyzer(Version.LUCENE_4_10_2);
+        
+Directory directory = new RAMDirectory();
+
+IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_4_10_2, analyzer);
+
+IndexWriter indexWriter = new IndexWriter(directory, config);
+

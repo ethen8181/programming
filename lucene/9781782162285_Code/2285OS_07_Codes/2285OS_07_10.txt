@@ -1,0 +1,9 @@
+BooleanQuery query = new BooleanQuery();
+query.add(new PayloadTermQuery(
+        new Term("content", "humpty"),
+        new AveragePayloadFunction(), true),
+        BooleanClause.Occur.SHOULD);
+query.add(new PayloadTermQuery(
+        new Term("content", "dumpty"),
+        new AveragePayloadFunction(), true),
+        BooleanClause.Occur.SHOULD);

@@ -1,0 +1,1 @@
+Query query = queryParser.parse("[aa TO c]");

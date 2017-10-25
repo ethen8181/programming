@@ -1,0 +1,6 @@
+public float sloppyFreq(int distance) {
+    if (distance == 0) {
+        return super.sloppyFreq(distance) * 100;
+    }
+    return super.sloppyFreq(distance);
+}

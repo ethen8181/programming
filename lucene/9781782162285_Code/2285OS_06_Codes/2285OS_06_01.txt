@@ -1,0 +1,42 @@
+    Analyzer analyzer = new StandardAnalyzer();
+    Directory directory = new RAMDirectory();
+    IndexWriterConfig config = new IndexWriterConfig(Version.LATEST, analyzer);
+    IndexWriter indexWriter = new IndexWriter(directory, config);
+    Document doc = new Document();
+    StringField stringField = new StringField("name", "", Field.Store.YES);
+    TextField textField = new TextField("content", "", Field.Store.YES);
+    IntField intField = new IntField("num", 0, Field.Store.YES);
+
+    doc.removeField("name"); doc.removeField("content"); doc.removeField("num");
+    stringField.setStringValue("First");
+    textField.setStringValue("Humpty Dumpty sat on a wall,");
+    intField.setIntValue(100);
+    doc.add(stringField); doc.add(textField); doc.add(intField);
+    indexWriter.addDocument(doc);
+
+    doc.removeField("name"); doc.removeField("content"); doc.removeField("num");
+    stringField.setStringValue("Second");
+    textField.setStringValue("Humpty Dumpty had a great fall.");
+    intField.setIntValue(200);
+    doc.add(stringField); doc.add(textField); doc.add(intField);
+    indexWriter.addDocument(doc);
+
+    doc.removeField("name"); doc.removeField("content"); doc.removeField("num");
+    stringField.setStringValue("Third");
+    textField.setStringValue("All the king's horses and all the king's men");
+    intField.setIntValue(300);
+    doc.add(stringField); doc.add(textField); doc.add(intField);
+    indexWriter.addDocument(doc);
+
+    doc.removeField("name"); doc.removeField("content"); doc.removeField("num");
+    stringField.setStringValue("Fourth");
+    textField.setStringValue("Couldn't put Humpty together again.");
+    intField.setIntValue(400);
+    doc.add(stringField); doc.add(textField); doc.add(intField);
+    indexWriter.addDocument(doc);
+
+    indexWriter.commit();
+    indexWriter.close();
+
+    IndexReader indexReader = DirectoryReader.open(directory);
+    IndexSearcher indexSearcher = new IndexSearcher(indexReader);

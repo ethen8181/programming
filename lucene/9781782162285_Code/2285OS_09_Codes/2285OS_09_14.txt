@@ -1,0 +1,8 @@
+AnalyzingInfixSuggester analyzingInfixSuggester = new AnalyzingInfixSuggester(Version.LATEST, directory, analyzer);
+analyzingInfixSuggester.build(dictionary);
+
+List<Lookup.LookupResult> lookupResultList = analyzingInfixSuggester.lookup("put h", false, 10);
+
+for (Lookup.LookupResult lookupResult : lookupResultList) {
+    System.out.println(lookupResult.key + ": " + lookupResult.value);
+}

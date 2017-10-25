@@ -1,0 +1,8 @@
+AnalyzingSuggester analyzingSuggester = new AnalyzingSuggester(new StandardAnalyzer());
+analyzingSuggester.build(dictionary);
+
+List<Lookup.LookupResult> lookupResultList = analyzingSuggester.lookup("humpty dum", false, 10);
+
+for (Lookup.LookupResult lookupResult : lookupResultList) {
+    System.out.println(lookupResult.key + ": " + lookupResult.value);
+}

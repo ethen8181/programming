@@ -1,0 +1,32 @@
+    Analyzer analyzer = new StandardAnalyzer();
+    Directory directory = new RAMDirectory();
+    IndexWriterConfig config = new IndexWriterConfig(Version.LATEST, analyzer);
+    IndexWriter indexWriter = new IndexWriter(directory, config);
+    Document doc = new Document();
+    StringField stringFieldFile = new StringField("file", "", Field.Store.YES);
+    StringField stringFieldUserId = new StringField("userId", "", Field.Store.YES);
+    StringField stringFieldGroupId = new StringField("groupId", "", Field.Store.YES);
+
+    doc.removeField("file"); doc.removeField("userId"); doc.removeField("groupId");
+    stringFieldFile.setStringValue("Z:\\shared\\finance\\2014-sales.xls");
+    stringFieldUserId.setStringValue("1001");
+    stringFieldGroupId.setStringValue("20");
+    doc.add(stringFieldFile); doc.add(stringFieldUserId); doc.add(stringFieldGroupId);
+    indexWriter.addDocument(doc);
+
+    doc.removeField("file"); doc.removeField("userId"); doc.removeField("groupId");
+    stringFieldFile.setStringValue("Z:\\shared\\company\\2014-policy.doc");
+    stringFieldUserId.setStringValue("1101");
+    stringFieldGroupId.setStringValue("30");
+    doc.add(stringFieldFile); doc.add(stringFieldUserId); doc.add(stringFieldGroupId);
+    indexWriter.addDocument(doc);
+
+    doc.removeField("file"); doc.removeField("userId"); doc.removeField("groupId");
+    stringFieldFile.setStringValue("Z:\\shared\\company\\2014-terms-and-conditions.doc");
+    stringFieldUserId.setStringValue("1205");
+    stringFieldGroupId.setStringValue("40");
+    doc.add(stringFieldFile); doc.add(stringFieldUserId); doc.add(stringFieldGroupId);
+    indexWriter.addDocument(doc);
+
+    indexWriter.commit();
+    indexWriter.close();

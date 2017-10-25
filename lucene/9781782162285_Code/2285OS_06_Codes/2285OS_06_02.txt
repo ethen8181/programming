@@ -1,0 +1,17 @@
+    IndexReader indexReader = DirectoryReader.open(directory);
+    IndexSearcher indexSearcher = new IndexSearcher(indexReader);
+
+    Query query = new TermQuery(new Term("content", "humpty"));
+    TopDocs topDocs = indexSearcher.search(query, FILTER, 100);
+    System.out.println("Searching 'humpty'");
+    for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
+        doc = indexReader.document(scoreDoc.doc);
+        System.out.println("name: " + 
+                doc.getField("name").stringValue() +
+                " - content: " + 
+                doc.getField("content").stringValue() +
+                " - num: " + 
+                doc.getField("num").stringValue());
+    }
+
+    indexReader.close();

@@ -1,0 +1,7 @@
+PhraseQuery phraseQuery = new PhraseQuery();
+phraseQuery.add(new Term("content", "humpty"));
+phraseQuery.add(new Term("content", "together"));
+
+DisjunctionMaxQuery query = new DisjunctionMaxQuery(0.1f);
+query.add(new TermQuery(new Term("name", "First")));
+query.add(phraseQuery);

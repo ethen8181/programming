@@ -1,0 +1,8 @@
+FuzzySuggester fuzzySuggester = new FuzzySuggester(new StandardAnalyzer());
+fuzzySuggester.build(dictionary);
+
+List<Lookup.LookupResult> lookupResultList = fuzzySuggester.lookup("hampty", false, 10);
+
+for (Lookup.LookupResult lookupResult : lookupResultList) {
+    System.out.println(lookupResult.key + ": " + lookupResult.value);
+}

@@ -1,0 +1,21 @@
+DirectoryReader directoryReader = DirectoryReader.open(indexWriter, true);
+IndexSearcher indexSearcher = new IndexSearcher(directoryReader);
+
+SearcherLifetimeManager searcherLifetimeManager = new SearcherLifetimeManager();
+long searcherToken = searcherLifetimeManager.record(indexSearcher);
+
+indexSearcher = searcherLifetimeManager.acquire(searcherToken);
+
+if (indexSearcher != null) {
+    try {
+        // perform search here
+    } finally {
+        searcherLifetimeManager.release(indexSearcher);
+        indexSearcher = null;
+    }
+} else {
+    // searcher was pruned, notify user that search session has timed out
+}
+
+searcherLifetimeManager.prune(new SearcherLifetimeManager.PruneByAge(600.0));
+

@@ -1,0 +1,5 @@
+curl -XPOST 'http://localhost:9200/news/article/1/_update' -d '
+{ "doc" : {
+    "title" : "Europe stocks tumble on political fears, PMI data | STOCK NEWS" 
+  }
+}'
