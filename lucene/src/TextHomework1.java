@@ -94,7 +94,7 @@ public class TextHomework1 {
          * lowercase the tokens, gets rid of punctuation marks, while the CoreNLP
          * tokenization doesn't perform any of those tasks.
          */
-        String inputPath = "wsj_0036", outputPath = "TextHomework1.txt";
+        String inputPath = "wsj_0063", outputPath = "TextHomework1.txt";
         Scanner scanner = new Scanner(new File(inputPath));
         FileWriter fw = new FileWriter(outputPath);
         Tokenizer1 tokenizer = new Tokenizer1();

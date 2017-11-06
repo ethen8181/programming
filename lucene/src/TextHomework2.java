@@ -145,7 +145,7 @@ public class TextHomework2 {
          * the knowledge of the context, e.g. for the word economy. Porter stemming would
          * give us economi, whereas lemmization and kstems would retain the original form economy.
          */
-        String inputPath = "wsj_0036", outputPath = "TextHomework2.txt";
+        String inputPath = "wsj_0063", outputPath = "TextHomework2.txt";
         Scanner scanner = new Scanner(new File(inputPath));
         FileWriter fw = new FileWriter(outputPath);
         Tokenizer2 tokenizer = new Tokenizer2();
