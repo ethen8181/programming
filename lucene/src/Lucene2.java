@@ -4,13 +4,16 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.document.FieldType;
 import org.apache.lucene.document.StringField;
-import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
+import org.apache.lucene.index.IndexOptions;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.index.Terms;
+import org.apache.lucene.index.TermsEnum;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.BooleanClause;
@@ -23,6 +26,8 @@ import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
+import org.apache.lucene.util.BytesRef;
+
 
 public class Lucene2 {
 
@@ -33,11 +38,24 @@ public class Lucene2 {
         Directory directory = new RAMDirectory();
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         IndexWriter indexWriter = new IndexWriter(directory, config);
+        
+        /*
+         * To access term vector, we need to create our FieldType and
+         * pass the instance to the Field constructor
+         * 
+         * https://stackoverflow.com/questions/24687646/why-is-gettermvectors-always-returning-null
+         * https://lucene.apache.org/core/6_1_0/core/org/apache/lucene/index/IndexOptions.html
+         */
+        FieldType termVectorFieldType = new FieldType();
+        termVectorFieldType.setIndexOptions(IndexOptions.DOCS_AND_FREQS_AND_POSITIONS);
+        termVectorFieldType.setTokenized(true);
+        termVectorFieldType.setStored(true);
+        termVectorFieldType.setStoreTermVectors(true);
+        Field textField = new Field("content", "", termVectorFieldType);
 
         // add a bunch of sample documents
         Document doc = new Document();
         StringField stringField = new StringField("name", "", Field.Store.YES);
-        TextField textField = new TextField("content", "", Field.Store.YES);
 
         doc.removeField("name"); doc.removeField("content"); 
         stringField.setStringValue("First");
@@ -59,7 +77,7 @@ public class Lucene2 {
 
         doc.removeField("name"); doc.removeField("content"); 
         stringField.setStringValue("Fourth");
-        textField.setStringValue("Couldn't put Humpty together again.");
+        textField.setStringValue("Couldn't put humpty together again.");
         doc.add(stringField); doc.add(textField); 
         indexWriter.addDocument(doc);
 
@@ -118,6 +136,41 @@ public class Lucene2 {
         queryBuilder3.setSlop(slop);
         PhraseQuery query3 = queryBuilder3.build();
         printOutput(query3, directory);
+        
+        /*
+         * IndexReader's .maxDoc method returns 1 greater than the largest possible number of documents
+         * https://stackoverflow.com/questions/16851093/why-lucene-uses-maxdoc-instead-of-numdocs-to-compute-term-idf
+         * https://wiki.apache.org/lucene-java/LuceneFAQ#Why_does_IndexReader.27s_maxDoc.28.29_return_an_.27incorrect.27_number_of_documents_sometimes.3F
+         */
+        
+        // .getTermVector retrieves document-term based statistics data from the document
+        IndexReader indexReader = DirectoryReader.open(directory);
+        int docID = 3;
+        
+        /*
+         * Lucene uses BytesRef to represent UTF8 based bytes in the index,
+         * we can convert it back to string using .utf8ToString() 
+         * https://lucene.apache.org/core/4_3_0/core/org/apache/lucene/util/BytesRef.html
+         */
+        BytesRef term;
+        TermsEnum termsEnum;
+        
+        /*
+         * additional resources for TermVector
+         * http://makble.com/what-is-term-vector-in-lucene
+         */
+        Terms terms = indexReader.getTermVector(docID, "content");
+        if (terms != null && terms.size() > 0) {
+            // access the terms for this field
+            termsEnum = terms.iterator();          
+            while ((term = termsEnum.next()) != null) {
+                // access the current term and its frequency in the document
+                String token = term.utf8ToString();
+                long termFreq = termsEnum.totalTermFreq();
+                System.out.println("string: " + token + ", freq: " + termFreq);
+            }
+        }
+        indexReader.close();
     }
     
     public static void printOutput(Query query, Directory directory) throws IOException {
@@ -134,6 +187,7 @@ public class Lucene2 {
         for (ScoreDoc hit: hits) {
             int docId = hit.doc;
             Document docSearched = indexSearcher.doc(docId);
+            System.out.println("docID: " + docId);
             System.out.println("Content: " + docSearched.get("content"));
         }
         indexReader.close();
