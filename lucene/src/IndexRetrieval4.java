@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.CharArraySet;
+import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -43,7 +45,27 @@ class LuceneIndexRetrieval {
 
     LuceneIndexRetrieval() {
         directory = new RAMDirectory();
-        analyzer = new StandardAnalyzer();
+
+        /*
+         * Manually construct a custom set of stop words
+         * STOP_WORDS_SET from StandardAnalyzer is unmodifiable, thus we need to
+         * make a copy of it and then add to it
+         * 
+         * https://stackoverflow.com/questions/28899368/lucene-5-0-unsupportedoperationexception
+         */
+        CharArraySet stopSet = CharArraySet.copy(StandardAnalyzer.STOP_WORDS_SET);
+        stopSet.add("from");
+        stopSet.add("country");
+        stopSet.add("has");
+        stopSet.add("which");
+        stopSet.add("have");
+        stopSet.add("its");
+        stopSet.add("also");
+        stopSet.add("state");
+        stopSet.add("nation");
+        stopSet.add("were");
+        stopSet.add("govern");
+        analyzer = new EnglishAnalyzer(stopSet);
     }
 
     public void createIndex(String inputPath) throws IOException {
@@ -80,7 +102,7 @@ class LuceneIndexRetrieval {
         QueryParser queryParser = new QueryParser("city_text", analyzer);
         queryParser.setFuzzyMinSim(fuzzyMinSim);
         Query query = queryParser.parse(inputQuery);
-        writeOutput(query, outputPath);
+        writeOutput(outputPath, query);
     }
 
     public void boolQuery(String outputPath, Map<String, String[]> terms) throws ParseException, IOException {
@@ -101,7 +123,7 @@ class LuceneIndexRetrieval {
             }
         }
         BooleanQuery query = queryBuilder.build();
-        writeOutput(query, outputPath);
+        writeOutput(outputPath, query);
     }
 
     public void phraseQuery(String outputPath, String inputQuery, int slop) throws ParseException, IOException {
@@ -112,10 +134,10 @@ class LuceneIndexRetrieval {
         }
         queryBuilder.setSlop(slop);
         PhraseQuery query = queryBuilder.build();
-        writeOutput(query, outputPath);
+        writeOutput(outputPath, query);
     }
 
-    private void writeOutput(Query query, String outputPath) throws IOException {
+    private void writeOutput(String outputPath, Query query) throws IOException {
         // output the matched city to a .txt file
         IndexReader indexReader = DirectoryReader.open(directory);
         IndexSearcher indexSearcher = new IndexSearcher(indexReader);
@@ -166,13 +188,11 @@ class LuceneIndexRetrieval {
         for (int i = 0; i < indexReader.maxDoc(); i++) {
             wordCount = new HashMap<Integer, Long>(); 
             terms = indexReader.getTermVector(i, "country_text");
-
             if (terms != null && terms.size() > 0) {
                 // access the terms for this field
                 termsEnum = terms.iterator();          
                 while ((term = termsEnum.next()) != null) {
                     String word = term.utf8ToString();
-                    // System.out.println(word);
 
                     if (!fixedVocab) {
                         /*
@@ -189,13 +209,6 @@ class LuceneIndexRetrieval {
                     if (wordIndex != null) {
                         count = termsEnum.totalTermFreq();
                         wordCount.put(wordIndex, count);
-//                        count = wordCount.get(wordIndex);
-//                        System.out.println(wordCount.size());
-//                        if (count == null) {
-//                            wordCount.put(wordIndex, 1);
-//                        } else {
-//                            wordCount.put(wordIndex, count + 1);
-//                        }
                     }
                 }
             }
@@ -261,7 +274,7 @@ public class IndexRetrieval4 {
         // phrase query located below sea level with a slop of 10
         int slop3 = 10;
         String outputPath3 = "phraseQuery.txt";
-        String inputQuery3 = "located below sea level";
+        String inputQuery3 = "locat below sea level";
         lucene.phraseQuery(outputPath3, inputQuery3, slop3);
 
         // interesting query of our own choice
@@ -269,7 +282,8 @@ public class IndexRetrieval4 {
         String outputPath4 = "interestingQuery.txt";
         String inputQuery4 = "night market";
         lucene.phraseQuery(outputPath4, inputQuery4, slop4);
-
+        
+        // for outputting information needed to perform LDA in python
         boolean fixedVocab = false;
         lucene.outputDTM(fixedVocab);
     }
