@@ -47,7 +47,7 @@
             <children xsi:type="basic:PartStack" xmi:id="_7O-UNpGYEeeBM7_x5TRZmQ" elementId="explorer" containerData="1539" selectedElement="_7O-UN5GYEeeBM7_x5TRZmQ">
               <children xsi:type="advanced:Placeholder" xmi:id="_7O-UN5GYEeeBM7_x5TRZmQ" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_7O-VcJGYEeeBM7_x5TRZmQ"/>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_7O-UOJGYEeeBM7_x5TRZmQ" containerData="8461" selectedElement="_7O-UPZGYEeeBM7_x5TRZmQ">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_7O-UOJGYEeeBM7_x5TRZmQ" containerData="8461" selectedElement="_7O-UOZGYEeeBM7_x5TRZmQ">
               <children xsi:type="basic:PartSashContainer" xmi:id="_7O-UOZGYEeeBM7_x5TRZmQ" containerData="6861" selectedElement="_7O-UOpGYEeeBM7_x5TRZmQ" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_7O-UOpGYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.editorss" containerData="9000" ref="_7O-VapGYEeeBM7_x5TRZmQ"/>
                 <children xsi:type="basic:PartStack" xmi:id="_7O-UO5GYEeeBM7_x5TRZmQ" elementId="right" containerData="1000" selectedElement="_7O-UPJGYEeeBM7_x5TRZmQ">
@@ -56,7 +56,6 @@
               </children>
               <children xsi:type="basic:PartStack" xmi:id="_7O-UPZGYEeeBM7_x5TRZmQ" elementId="problems" containerData="3139" selectedElement="_7O-UQJGYEeeBM7_x5TRZmQ">
                 <tags>Scala</tags>
-                <tags>active</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_7O-UPpGYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.views.ProblemView" ref="_7O-VjJGYEeeBM7_x5TRZmQ"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_7O-UP5GYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.views.TaskList" ref="_7O-VkJGYEeeBM7_x5TRZmQ"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_7O-UQJGYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.console.ConsoleView" ref="_7O-VkZGYEeeBM7_x5TRZmQ"/>
@@ -90,9 +89,10 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_7O-VapGYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.editorss" selectedElement="_7O-Va5GYEeeBM7_x5TRZmQ">
-      <children xsi:type="basic:PartStack" xmi:id="_7O-Va5GYEeeBM7_x5TRZmQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_MPsnIJWzEeeD1rlsVbjdPA">
+      <children xsi:type="basic:PartStack" xmi:id="_7O-Va5GYEeeBM7_x5TRZmQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_J-pQgJVxEee1hqaV0q-ksA">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
+        <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_Yow-wJMEEeeuuNoBqfWVzg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="DegreesOfSeparation.scala" iconURI="platform:/plugin/org.scala-ide.sdt.core/icons/full/obj16/scu_obj.gif" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;scala.tools.eclipse.ScalaSourceFileEditor&quot; name=&quot;DegreesOfSeparation.scala&quot; partName=&quot;DegreesOfSeparation.scala&quot; title=&quot;DegreesOfSeparation.scala&quot; tooltip=&quot;sparkScala/src/ethen/spark/DegreesOfSeparation.scala&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/sparkScala/src/ethen/spark/DegreesOfSeparation.scala&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;4403&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
@@ -100,16 +100,18 @@
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_oXea8JTTEeeyo8XrvNfIWQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="MovieSimilarities1M.scala" iconURI="platform:/plugin/org.scala-ide.sdt.core/icons/full/obj16/scu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;scala.tools.eclipse.ScalaSourceFileEditor&quot; name=&quot;MovieSimilarities1M.scala&quot; partName=&quot;MovieSimilarities1M.scala&quot; title=&quot;MovieSimilarities1M.scala&quot; tooltip=&quot;sparkScala/src/ethen/spark/MovieSimilarities1M.scala&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/sparkScala/src/ethen/spark/MovieSimilarities1M.scala&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;154&quot; selectionTopPixel=&quot;1175&quot;/>&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;scala.tools.eclipse.ScalaSourceFileEditor&quot; name=&quot;MovieSimilarities1M.scala&quot; partName=&quot;MovieSimilarities1M.scala&quot; title=&quot;MovieSimilarities1M.scala&quot; tooltip=&quot;sparkScala/src/ethen/spark/MovieSimilarities1M.scala&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/sparkScala/src/ethen/spark/MovieSimilarities1M.scala&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;154&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>scala.tools.eclipse.ScalaSourceFileEditor</tags>
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_J-pQgJVxEee1hqaV0q-ksA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SparkSQL.scala" iconURI="platform:/plugin/org.scala-ide.sdt.core/icons/full/obj16/scu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;scala.tools.eclipse.ScalaSourceFileEditor&quot; name=&quot;SparkSQL.scala&quot; partName=&quot;SparkSQL.scala&quot; title=&quot;SparkSQL.scala&quot; tooltip=&quot;sparkScala/src/ethen/spark/SparkSQL.scala&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/sparkScala/src/ethen/spark/SparkSQL.scala&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1441&quot; selectionTopPixel=&quot;60&quot;/>&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;scala.tools.eclipse.ScalaSourceFileEditor&quot; name=&quot;SparkSQL.scala&quot; partName=&quot;SparkSQL.scala&quot; title=&quot;SparkSQL.scala&quot; tooltip=&quot;sparkScala/src/ethen/spark/SparkSQL.scala&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/sparkScala/src/ethen/spark/SparkSQL.scala&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1441&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>scala.tools.eclipse.ScalaSourceFileEditor</tags>
           <tags>removeOnHide</tags>
+          <tags>active</tags>
+          <tags>activeOnClose</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_4dX_4JV1Eee1hqaV0q-ksA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="PopularMoviesDataSets.scala" iconURI="platform:/plugin/org.scala-ide.sdt.core/icons/full/obj16/scu_obj.gif" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;scala.tools.eclipse.ScalaSourceFileEditor&quot; name=&quot;PopularMoviesDataSets.scala&quot; partName=&quot;PopularMoviesDataSets.scala&quot; title=&quot;PopularMoviesDataSets.scala&quot; tooltip=&quot;sparkScala/src/ethen/spark/PopularMoviesDataSets.scala&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/sparkScala/src/ethen/spark/PopularMoviesDataSets.scala&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;8&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;474&quot;/>&#xA;&lt;/editor>"/>
@@ -124,7 +126,7 @@
           <tags>removeOnHide</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_MPsnIJWzEeeD1rlsVbjdPA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="PopularHashtags.scala" iconURI="platform:/plugin/org.scala-ide.sdt.core/icons/full/obj16/scu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;scala.tools.eclipse.ScalaSourceFileEditor&quot; name=&quot;PopularHashtags.scala&quot; partName=&quot;PopularHashtags.scala&quot; title=&quot;PopularHashtags.scala&quot; tooltip=&quot;sparkScala/src/ethen/spark/PopularHashtags.scala&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/sparkScala/src/ethen/spark/PopularHashtags.scala&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2740&quot; selectionTopPixel=&quot;685&quot;/>&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;scala.tools.eclipse.ScalaSourceFileEditor&quot; name=&quot;PopularHashtags.scala&quot; partName=&quot;PopularHashtags.scala&quot; title=&quot;PopularHashtags.scala&quot; tooltip=&quot;sparkScala/src/ethen/spark/PopularHashtags.scala&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/sparkScala/src/ethen/spark/PopularHashtags.scala&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2402&quot; selectionTopPixel=&quot;0&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>scala.tools.eclipse.ScalaSourceFileEditor</tags>
           <tags>removeOnHide</tags>
@@ -176,8 +178,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
-      <tags>active</tags>
-      <tags>activeOnClose</tags>
       <menus xmi:id="_7O-VkpGYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.console.ConsoleView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -203,7 +203,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7O-VpZGYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_0EqmgJWyEeeD1rlsVbjdPA" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_7O_lyZGYEeeBM7_x5TRZmQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Pbcn4N7lEeexL5JsA7U11Q" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_7O_lyZGYEeeBM7_x5TRZmQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7O-VspGYEeeBM7_x5TRZmQ" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -221,7 +221,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7O-V3ZGYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_0EtCwJWyEeeD1rlsVbjdPA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_7O_leZGYEeeBM7_x5TRZmQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PbfEIN7lEeexL5JsA7U11Q" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_7O_leZGYEeeBM7_x5TRZmQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_7O-V6JGYEeeBM7_x5TRZmQ" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -695,7 +695,7 @@
     <bindings xmi:id="_7O-8C5GYEeeBM7_x5TRZmQ" keySequence="ALT+COMMAND+X J" command="_7O_lS5GYEeeBM7_x5TRZmQ">
       <tags>platform:cocoa</tags>
     </bindings>
-    <bindings xmi:id="_zZbRIZWyEeeD1rlsVbjdPA" keySequence="COMMAND+CTRL+F" command="_7O_mdZGYEeeBM7_x5TRZmQ"/>
+    <bindings xmi:id="_OtxCgN7lEeexL5JsA7U11Q" keySequence="COMMAND+CTRL+F" command="_7O_mdZGYEeeBM7_x5TRZmQ"/>
   </bindingTables>
   <bindingTables xmi:id="_7O-8DZGYEeeBM7_x5TRZmQ" elementId="org.eclipse.jdt.ui.javaEditorScope" bindingContext="_7O-8tZGYEeeBM7_x5TRZmQ">
     <bindings xmi:id="_7O-8DpGYEeeBM7_x5TRZmQ" keySequence="COMMAND+SHIFT+C" command="_7O_kxJGYEeeBM7_x5TRZmQ"/>
@@ -905,7 +905,7 @@
     <bindings xmi:id="_7O-8g5GYEeeBM7_x5TRZmQ" keySequence="ALT+CR" command="_7O_kpZGYEeeBM7_x5TRZmQ"/>
   </bindingTables>
   <bindingTables xmi:id="_7O-8hJGYEeeBM7_x5TRZmQ" contributorURI="platform:/fragment/org.eclipse.e4.ui.workbench.renderers.swt.cocoa" bindingContext="_7O-80pGYEeeBM7_x5TRZmQ">
-    <bindings xmi:id="_zZb4MJWyEeeD1rlsVbjdPA" keySequence="M1+W" command="_7O_md5GYEeeBM7_x5TRZmQ"/>
+    <bindings xmi:id="_OtxpkN7lEeexL5JsA7U11Q" keySequence="M1+W" command="_7O_md5GYEeeBM7_x5TRZmQ"/>
   </bindingTables>
   <bindingTables xmi:id="_7O-8hpGYEeeBM7_x5TRZmQ" bindingContext="_7O-81pGYEeeBM7_x5TRZmQ"/>
   <bindingTables xmi:id="_7O-8h5GYEeeBM7_x5TRZmQ" bindingContext="_7O-815GYEeeBM7_x5TRZmQ"/>
@@ -2505,7 +2505,7 @@
   <addons xmi:id="_7O_m45GYEeeBM7_x5TRZmQ" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
   <addons xmi:id="_7O_m5JGYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.workbench" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_7O_m5ZGYEeeBM7_x5TRZmQ" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
-  <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
+  <addons xmi:id="_OtjnId7lEeexL5JsA7U11Q" elementId="org.eclipse.ui.ide.addon.0" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
   <addons xmi:id="_7O_m55GYEeeBM7_x5TRZmQ" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
   <addons xmi:id="_7O_m6JGYEeeBM7_x5TRZmQ" elementId="org.eclipse.e4.ui.workbench.renderers.swt.cocoa.CocoaUIHandler" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.cocoa.CocoaUIHandler"/>
   <categories xmi:id="_7O_m6ZGYEeeBM7_x5TRZmQ" elementId="org.eclipse.team.ui.category.team" name="Team" description="Actions that apply when working with a Team"/>
