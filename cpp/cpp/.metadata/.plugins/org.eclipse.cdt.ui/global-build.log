@@ -1,0 +1,30 @@
+10:45:17 **** Incremental Build of configuration Debug for project LeetCode ****
+make all 
+Building file: ../src/LeetCode.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++0x -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/LeetCode.d" -MT"src/LeetCode.o" -o "src/LeetCode.o" "../src/LeetCode.cpp"
+Finished building: ../src/LeetCode.cpp
+ 
+Building target: LeetCode
+Invoking: MacOS X C++ Linker
+g++  -o "LeetCode"  ./src/LeetCode.o   
+Finished building target: LeetCode
+ 
+10:51:00 **** Incremental Build of configuration Debug for project LeetCode ****
+make all 
+make: Nothing to be done for `all'.
+10:51:08 **** Incremental Build of configuration Debug for project LeetCode ****
+make all 
+Building file: ../src/LeetCode.cpp
+Invoking: GCC C++ Compiler
+g++ -std=c++0x -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/LeetCode.d" -MT"src/LeetCode.o" -o "src/LeetCode.o" "../src/LeetCode.cpp"
+Finished building: ../src/LeetCode.cpp
+ 
+Building target: LeetCode
+Invoking: MacOS X C++ Linker
+g++  -o "LeetCode"  ./src/LeetCode.o   
+Finished building target: LeetCode
+ 
+21:46:26 **** Build of configuration Debug for project LeetCode ****
+make all 
+make: Nothing to be done for `all'.

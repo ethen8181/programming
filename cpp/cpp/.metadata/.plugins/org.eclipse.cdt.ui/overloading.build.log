@@ -1,0 +1,15 @@
+13:07:37 **** Incremental Build of configuration Debug for project overloading ****
+make all 
+Building file: ../src/overloading.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/overloading.d" -MT"src/overloading.o" -o "src/overloading.o" "../src/overloading.cpp"
+Finished building: ../src/overloading.cpp
+ 
+Building target: overloading
+Invoking: MacOS X C++ Linker
+g++  -o "overloading"  ./src/Complex.o ./src/overloading.o   
+Finished building target: overloading
+ 
+
+13:07:37 Build Finished (took 327ms)
+

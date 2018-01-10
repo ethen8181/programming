@@ -1,0 +1,15 @@
+05:13:20 **** Build of configuration Debug for project NewOperator ****
+make all 
+Building file: ../src/NewOperator.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/NewOperator.d" -MT"src/NewOperator.o" -o "src/NewOperator.o" "../src/NewOperator.cpp"
+Finished building: ../src/NewOperator.cpp
+ 
+Building target: NewOperator
+Invoking: MacOS X C++ Linker
+g++  -o "NewOperator"  ./src/NewOperator.o   
+Finished building target: NewOperator
+ 
+
+05:13:21 Build Finished (took 329ms)
+

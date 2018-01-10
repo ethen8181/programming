@@ -1,0 +1,20 @@
+04:41:30 **** Build of configuration Debug for project SDLBasics ****
+make all 
+Building file: ../src/Particle.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/local/Cellar/sdl2/2.0.5/include/SDL2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Particle.d" -MT"src/Particle.o" -o "src/Particle.o" "../src/Particle.cpp"
+Finished building: ../src/Particle.cpp
+ 
+Building file: ../src/SDLBasics.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/local/Cellar/sdl2/2.0.5/include/SDL2 -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/SDLBasics.d" -MT"src/SDLBasics.o" -o "src/SDLBasics.o" "../src/SDLBasics.cpp"
+Finished building: ../src/SDLBasics.cpp
+ 
+Building target: SDLBasics
+Invoking: MacOS X C++ Linker
+g++ -L/usr/local/Cellar/sdl2/2.0.5/lib -o "SDLBasics"  ./src/Particle.o ./src/SDLBasics.o ./src/Screen.o ./src/Swarm.o   -lSDL2
+Finished building target: SDLBasics
+ 
+
+04:41:31 Build Finished (took 715ms)
+

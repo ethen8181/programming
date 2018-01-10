@@ -1,0 +1,162 @@
+//============================================================================
+// Name        : Vector.cpp
+// Author      : Ethen
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <vector>
+#include <map>
+#include <set>
+using namespace std;
+
+
+class Person {
+private:
+	string name;
+	int age;
+
+public:
+	Person(): name(""), age(0) {
+		// default constructor required
+		// for using custom objects as values;
+		// because map[key] will first create a
+		// empty value of the same type and then
+		// copy the value over
+	}
+
+	Person(string name, int age) {
+		this->name = name;
+		this->age = age;
+	}
+
+	void print() const {
+		cout << name << ": " << age << endl;
+	}
+
+	bool operator<(const Person &other) const {
+		// 1. the reference is efficient since we don't want to make a copy
+		// 2. const Person because we don't want a less operator to be
+		// able to modify the object;
+		// 3. const function because we also don't want the operator to be
+		// able to modify the object itself
+		if (name == other.name) {
+			return age < other.age;
+		} else {
+			return name < other.name;
+		}
+	}
+};
+
+int main() {
+	// create a vector (resizable array) of string type
+	// and pre-size the vector (not necessary)
+	vector<string> strings(3);
+
+	// the square bracket is overloaded for the vector class,
+	// so we can directly modify the element of the vector;
+	// note that this operation is undefined for element outside
+	// the vector (i.e. when the initialized size is 5, we can't
+	// use strings[9] = "ten", since it's out of bounds
+	strings[0] = "one";
+	strings[1] = "two";
+	strings[2] = "three";
+	cout << strings[2] << endl;
+
+	// add more elements to the vector
+	strings.push_back("four");
+	cout << strings.size() << endl;
+
+	// the .begin will give us an iterator that points to the first element
+	// of the vector
+	vector<string>::iterator it;
+    for (it = strings.begin(); it != strings.end(); it++) {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+
+    // Maps
+    map<string, int> ages;
+    ages["Mike"] = 40;
+    ages["Vicky"] = 30;
+
+    // check whether a key exists in the dictionary,
+    // if the key is not in the dictionary, the .find method
+    // will return the end of the iterator
+    if (ages.find("Vicky") != ages.end()) {
+    	cout << "Found Vicky" << endl;
+    } else {
+    	cout << "Vicky not Found" << endl;
+    }
+
+    // looping through maps using iterator
+    map<string, int>::iterator i;
+    for (i = ages.begin(); i != ages.end(); i++) {
+    	cout << i->first << ": " << i->second << endl;
+    }
+
+    // the iterator of the map is actually a pair,
+    // thus we can deference the pointer and access the
+    // .first and .second attribute from the pair data structure
+    for (i = ages.begin(); i != ages.end(); i++) {
+    	pair<string, int> element = *i;
+    	cout << element.first << ": " << element.second << endl;
+    }
+
+
+    // custom objects as map values
+    cout << "Custom objects as map values" << endl;
+    map<int, Person> people;
+    people[0] = Person("Mike", 40);
+    people[1] = Person("Vicky", 30);
+    people[2] = Person("Raj", 20);
+    map<int, Person>:: iterator i1;
+    for (i1 = people.begin(); i1 != people.end(); i1++) {
+    	i1->second.print();
+    }
+
+
+    // multimap
+    cout << "multimap" << endl;
+    multimap<int, string> lookup;
+
+    // an alternative way of inserting values in a map
+    // note that for multimap, we have to use insert since
+    // there's no bracket syntax
+    lookup.insert(make_pair(30, "Bob"));
+    lookup.insert(make_pair(30, "Mike"));
+    lookup.insert(make_pair(40, "Vicky"));
+
+    // since multimap can accept multiple pairs with the same key
+    // we need to use equal_range to loop through all the value
+    typedef multimap<int, string>::iterator multimap_it;
+    pair<multimap_it, multimap_it> its = lookup.equal_range(30);
+    for (multimap_it i2 = its.first; i2 != its.second; i2++) {
+    	cout << i2->first << ": " << i2->second << endl;
+    }
+
+    // in c++11 inside of having a massive boilerplate type code
+    // we can use auto to infer the type
+    auto its2 = lookup.equal_range(30);
+    for (multimap_it i2 = its2.first; i2 != its2.second; i2++) {
+    	cout << i2->first << ": " << i2->second << endl;
+    }
+
+
+    // set
+    cout << "Set" << endl;
+    set<int> numbers;
+    numbers.insert(30);
+    numbers.insert(50);
+    numbers.insert(30);
+    numbers.insert(40);
+
+    if (numbers.find(30) != numbers.end()) {
+    	cout << numbers << endl;
+    }
+
+	return 0;
+}

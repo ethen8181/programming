@@ -1,0 +1,15 @@
+14:44:55 **** Incremental Build of configuration Debug for project cpp11-3 ****
+make all 
+Building file: ../src/cpp11-3.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/cpp11-3.d" -MT"src/cpp11-3.o" -o "src/cpp11-3.o" "../src/cpp11-3.cpp"
+Finished building: ../src/cpp11-3.cpp
+ 
+Building target: cpp11-3
+Invoking: MacOS X C++ Linker
+g++  -o "cpp11-3"  ./src/cpp11-3.o   
+Finished building target: cpp11-3
+ 
+
+14:44:56 Build Finished (took 377ms)
+
