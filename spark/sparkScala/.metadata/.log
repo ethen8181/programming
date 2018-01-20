@@ -1582,3 +1582,13 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/ethen
 
 !ENTRY org.eclipse.core.net 1 0 2017-09-09 18:01:27.272
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2018-01-17 08:35:12.620 -----------------------------------------------
+eclipse.buildId=4.6.1-vfinal-2017-06-09T11:19:56Z-Typesafe
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/ethen/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/ethen/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2018-01-17 08:35:20.753
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences

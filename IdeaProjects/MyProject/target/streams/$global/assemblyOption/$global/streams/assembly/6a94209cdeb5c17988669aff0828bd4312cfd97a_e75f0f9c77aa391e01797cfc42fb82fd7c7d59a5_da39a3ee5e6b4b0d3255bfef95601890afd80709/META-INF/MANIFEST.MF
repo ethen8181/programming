@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1502983397919
+Bundle-Description: Scalactic is an open-source library for Scala projec
+ ts.
+Bundle-DocURL: http://www.scalactic.org/
+Bundle-ManifestVersion: 2
+Bundle-Name: Scalactic
+Bundle-SymbolicName: org.scalactic
+Bundle-Vendor: Artima, Inc.
+Bundle-Version: 3.0.4
+Created-By: 1.8.0_144 (Oracle Corporation)
+Export-Package: org.scalactic;uses:="org.scalactic.source,scala,scala.co
+ llection,scala.collection.generic,scala.collection.immutable,scala.coll
+ ection.mutable,scala.collection.parallel,scala.collection.parallel.immu
+ table,scala.concurrent,scala.math,scala.reflect,scala.reflect.api,scala
+ .reflect.internal,scala.reflect.macros.whitebox,scala.runtime,scala.uti
+ l";version="3.0.4",org.scalactic.anyvals;uses:="scala,scala.collection.
+ immutable,scala.math,scala.reflect,scala.reflect.api,scala.reflect.macr
+ os.whitebox";version="3.0.4",org.scalactic.exceptions;uses:="scala,scal
+ a.collection,scala.reflect,scala.runtime";version="3.0.4",org.scalactic
+ .source;uses:="scala,scala.collection,scala.reflect,scala.reflect.api,s
+ cala.reflect.macros.whitebox,scala.runtime";version="3.0.4"
+Import-Package: scala.xml;version="[1.0,1.1)",scala;version="[2.12,2.13)
+ ",scala.collection;version="[2.12,2.13)",scala.collection.convert;versi
+ on="[2.12,2.13)",scala.collection.generic;version="[2.12,2.13)",scala.c
+ ollection.immutable;version="[2.12,2.13)",scala.collection.mutable;vers
+ ion="[2.12,2.13)",scala.collection.parallel;version="[2.12,2.13)",scala
+ .collection.parallel.immutable;version="[2.12,2.13)",scala.compat;versi
+ on="[2.12,2.13)",scala.concurrent;version="[2.12,2.13)",scala.math;vers
+ ion="[2.12,2.13)",scala.reflect;version="[2.12,2.13)",scala.reflect.api
+ ;version="[2.12,2.13)",scala.reflect.internal;version="[2.12,2.13)",sca
+ la.reflect.internal.util;version="[2.12,2.13)",scala.reflect.io;version
+ ="[2.12,2.13)",scala.reflect.macros;version="[2.12,2.13)",scala.reflect
+ .macros.contexts;version="[2.12,2.13)",scala.reflect.macros.whitebox;ve
+ rsion="[2.12,2.13)",scala.runtime;version="[2.12,2.13)",scala.runtime.j
+ ava8;version="[2.12,2.13)",scala.tools.nsc.typechecker;version="[2.12,2
+ .13)",scala.util;version="[2.12,2.13)",scala.util.control;version="[2.1
+ 2,2.13)"
+Private-Package: org.scalactic.*
+Tool: Bnd-2.1.0.20130426-122213

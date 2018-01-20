@@ -3305,3 +3305,5 @@ java.util.NoSuchElementException: None.get
 2017-09-09 18:04:19,562  WARN [org.scalaide.ui.internal.reconciliation.ScalaReconciler] - CustomSemanticAction - Timeout while waiting for `askLoadedTyped` during semantic highlighting.
 2017-12-11 20:36:31,209 ERROR [Worker-3] - System.err - log4j:WARN No appenders could be found for logger (org.eclipse.jgit.util.FS).
 2017-12-11 20:36:31,213 ERROR [Worker-3] - System.err - log4j:WARN Please initialize the log4j system properly.
+2018-01-17 08:35:30,442 ERROR [Worker-3] - System.err - log4j:WARN No appenders could be found for logger (org.eclipse.jgit.util.FS).
+2018-01-17 08:35:30,443 ERROR [Worker-3] - System.err - log4j:WARN Please initialize the log4j system properly.

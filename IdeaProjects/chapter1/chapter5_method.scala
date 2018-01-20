@@ -1,5 +1,6 @@
+
 // availability:
-// 1. private makes the method accessable to the current class
+// 1. private makes the method accessible to the current class
 // and other instances of the current class
 // 2. protected makes the method available to the sub-class
 

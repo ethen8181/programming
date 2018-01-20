@@ -231,4 +231,3 @@ class Person7(name: String, age: Int) {
 // ? 4.4 private primary constructor, utility class
 // ? how to write equality in Java
 // http://www.artima.com/lejava/articles/equality.html
-// ? scalaTest

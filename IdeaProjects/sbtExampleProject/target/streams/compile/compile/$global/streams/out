@@ -1,0 +1,8 @@
+[0m[[0m[33mwarn[0m] [0m[0m/Users/ethen/IdeaProjects/sbtExampleProject/src/main/scala/example/Future1.scala:4:25: imported `Future' is permanently hidden by definition of object Future in package example[0m
+[0m[[0m[33mwarn[0m] [0m[0mimport scala.concurrent.Future[0m
+[0m[[0m[33mwarn[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/ethen/IdeaProjects/sbtExampleProject/src/main/scala/example/Future1.scala:12:33: example.Future.type does not take parameters[0m
+[0m[[0m[31merror[0m] [0m[0m    val f: Future[Int] = Future {[0m
+[0m[[0m[31merror[0m] [0m[0m                                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

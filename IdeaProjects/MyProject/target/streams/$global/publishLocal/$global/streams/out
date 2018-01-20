@@ -1,0 +1,10 @@
+[0m[[0m[0minfo[0m] [0m[0m:: delivering :: default#myproject_2.12;0.1 :: 0.1 :: release :: Wed Jan 17 16:38:58 CST 2018[0m
+[0m[[0m[0mdebug[0m] [0m[0m	options = status=release pubdate=Wed Jan 17 16:38:58 CST 2018 validate=true resolveDynamicRevisions=true merge=true resolveId=null pubBranch=null[0m
+[0m[[0m[0minfo[0m] [0m[0m	delivering ivy file to /Users/ethen/IdeaProjects/MyProject/target/scala-2.12/ivy-0.1.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	deliver done (22ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0mlocal do not support transaction. ivy pattern does not use revision as a directory[0m
+[0m[[0m[0minfo[0m] [0m[0m	published myproject_2.12 to /Users/ethen/.ivy2/local/default/myproject_2.12/0.1/poms/myproject_2.12.pom[0m
+[0m[[0m[0minfo[0m] [0m[0m	published myproject_2.12 to /Users/ethen/.ivy2/local/default/myproject_2.12/0.1/jars/myproject_2.12.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	published myproject_2.12 to /Users/ethen/.ivy2/local/default/myproject_2.12/0.1/srcs/myproject_2.12-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	published myproject_2.12 to /Users/ethen/.ivy2/local/default/myproject_2.12/0.1/docs/myproject_2.12-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	published ivy to /Users/ethen/.ivy2/local/default/myproject_2.12/0.1/ivys/ivy.xml[0m

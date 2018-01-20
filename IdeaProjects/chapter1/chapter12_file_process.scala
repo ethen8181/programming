@@ -2,6 +2,8 @@
 import scala.io.Source
 import java.io.{FileNotFoundException, IOException}
 
+import scala.sys.process
+
 // open a plain text file and process the file line by line
 // the getLines method returns an iterator that has each
 // line without any newline character
@@ -159,7 +161,6 @@ import java.io.{ObjectOutputStream, FileOutputStream}
 class Stock(var symbol: String, var price: BigDecimal) extends Serializable {
     override def toString: String = f"$symbol%s is ${price.toDouble}%.2f"
 }
-
 val nflx = new Stock("NFLX", BigDecimal(85.00))
 
 // write instance out to a file
@@ -173,7 +174,121 @@ val stock = ois.readObject.asInstanceOf[Stock]
 ois.close
 println(stock)
 
+// for listing files in a directory and filtering those files
+// in Scala we can do it without using FileFilter with an
+// accept method like Java
+import java.io.File
 
+def listDir(dir: String): List[File] = {
+    val file1 = new File(dir)
+    if (file1.exists && file1.isDirectory) {
+        file1.listFiles.filter(_.isFile).toList
+    } else {
+        List[File]()
+    }
+}
+val dir = "temp"
+listDir(dir)
+
+// checking file extensions
+def listFile(dir: File, extensions: List[String]): List[File] = {
+    // listFiles returns an Array[File]
+    val result = dir.listFiles.filter { file =>
+        file.isFile && extensions.exists(file.getName.endsWith(_))
+    }
+    result.toList
+}
+
+val okFileExtensions = List("wav", "mp3")
+listFile(new File("/tmp"), okFileExtensions)
+
+
+// for listing sub directory
+// Java-like code
+def getSubDirectory1(dir: File): List[String] = {
+    val files = dir.listFiles
+    val dirNames = collection.mutable.ArrayBuffer[String]()
+    for (file <- files) {
+        if (file.isDirectory) {
+            dirNames += file.getName
+        }
+    }
+    dirNames.toList
+}
+
+// Scala-like code
+def getSubDirectory2(dir: File): List[String] = {
+    val files = dir.listFiles
+    val dirNames = for {
+        file <- files
+        if file.isDirectory
+    } yield file.getName
+    dirNames.toList
+}
+
+def getSubDirectory3(dir: File): List[String] = {
+    dir.
+    listFiles.
+    filter(_.isDirectory).
+    map(_.getName).
+    toList
+}
+
+
+// executing external commands
+// e.g. use afplay to play sound files
+// the ! method of the string execute the
+// command and obtain its exit code; be
+// aware of trailing or leading whitespace;
+// there's also the !! method that obtain its output
+import sys.process._
+val cmd = "ls -al"
+val exitCode = cmd.!
+val results = cmd.!!
+
+// when running external command, we may get a newline character
+// as well, when this happens, just trim to result
+"pwd".!!.trim
+
+// check whether an executable is available on your system
+// a which command resulting in a nonzero exit code
+val executable1 = "which hadoop2".!
+
+// or use the lineStream_! method, since it returns a stream,
+// we call the headOption method to obtain the Option immediately
+val executable2 = "which hadoop2".lineStream_!.headOption
+"which ls".lineStream_!.headOption
+
+
+// piping external commands, the syntax is very similar to the Unix
+// system command, except we need to precede it with the # sign;
+// the following code prints the total number of process that's running
+import sys.process._
+val numProcess = ("ps aux" #| "wc -l").!!.trim
+println(numProcess)
+
+// use can use #> to redirect STDOUT, or #>> to append
+// to a file, we can also use this with passwords
+// e.g. cat password
+import java.io.File
+("ps aux" #| "grep http" #> new File("process.out")).!!
+
+// cmd1 #&& cmd2 = execute cmd2 if cmd1 runs successfully
+// cmd1 #|| cmd2 = execute cmd2 if cmd1 has an nonzero exit status
+// so the following command can be read as run the ls command, if it's
+// found remove it or else print the not found message
+("ls temp" #&& "rm temp" #|| "echo 'temp' not found").!!.trim
+
+// there's a difference between external command and shell's built-in command
+// The ls command is an external command, we can check using "which ls". Some
+// other command such as "cd" are built into the shell, we won't find them as
+// files on the file system; e.g.
+// to use a wildcard character like *, we can invoke it inside
+// a Unix shell; -c argument of the /bin/sh command treats the following
+// string as command line call
+val filesExist = Seq("/bin/sh", "-c", "ls *.scala")
+val compileFiles = Seq("/bin/sh", "-c", "scalac *.scala")
+(filesExist #&& compileFiles #|| "echo no files to compile").!!
 
 
 // 12.1 Arm library, scala sbt
