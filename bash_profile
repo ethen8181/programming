@@ -7,7 +7,7 @@ export PATH="$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 
 
 # export SPARK_HOME=~/spark
-# export PYSPARK_PYTHON=python3
+# export PYSPARK_PYTHON=~/anaconda3/bin/python
 # export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 # export PACKAGES="com.databricks:spark-csv_2.11:1.4.0"
 # export PYSPARK_SUBMIT_ARGS="--packages ${PACKAGES} pyspark-shell"
