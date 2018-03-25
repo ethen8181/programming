@@ -1,0 +1,14 @@
+<!-- Display two navigation links for previous/next page in the flight list -->
+{% macro display_nav(offsets, path, record_count) %}
+<div style="text-align: center;">
+    {% for key, values in offsets.items() %}
+        <!-- Ensure there's no previous page link on the first page and no next page
+             link on the last page. -->
+        {% if values['start'] >= 0 and values['end'] > 0 and record_count > values['end'] %}
+            <a href="{{path}}?start={{ values['start'] }}&end={{ values['end'] }}">{{key}}</a>
+        {% else %}
+            {{key}}
+        {% endif %}
+    {% endfor %}
+</div>
+{% endmacro %}
