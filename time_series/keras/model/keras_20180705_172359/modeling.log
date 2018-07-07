@@ -1,0 +1,12 @@
+[I 180705 17:23:59 keras_model_training:31] preprocessing
+[I 180705 17:24:01 keras_model_training:36] preprocessed data shape: 420551 rows, 15 columns
+[I 180705 17:24:01 keras_model_training:37] sample preprocessed data:
+                 Date Time  p (mbar)  T (degC)  Tpot (K)  Tdew (degC)  rh (%)    ...     sh (g/kg)  H2OC (mmol/mol)  rho (g/m**3)  wv (m/s)  max. wv (m/s)  wd (deg)
+    0  01.01.2009 00:10:00    996.52     -8.02    265.40        -8.90    93.3    ...          1.94             3.12       1307.75      1.03           1.75     152.3
+    1  01.01.2009 00:20:00    996.57     -8.41    265.01        -9.28    93.4    ...          1.89             3.03       1309.80      0.72           1.50     136.1
+    2  01.01.2009 00:30:00    996.53     -8.51    264.91        -9.31    93.9    ...          1.88             3.02       1310.24      0.19           0.63     171.6
+    3  01.01.2009 00:40:00    996.51     -8.31    265.12        -9.07    94.2    ...          1.92             3.08       1309.19      0.34           0.50     198.0
+    4  01.01.2009 00:50:00    996.51     -8.27    265.15        -9.04    94.1    ...          1.92             3.09       1309.00      0.32           0.63     214.3
+    
+    [5 rows x 15 columns]
+[I 180705 17:25:34 keras_model_training:89] Took 1.573442820707957 minutes to run the end to end pipeline
