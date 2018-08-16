@@ -12,3 +12,8 @@ data
 image_features_Clothing_Shoes_and_Jewelry.b.crdownload
 image
 img_features.pkl
+
+# kaggle dogs & cats
+all/
+all.zip
+keras_img/
