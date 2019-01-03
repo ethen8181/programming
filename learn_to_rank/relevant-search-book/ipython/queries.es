@@ -1,4 +1,33 @@
-
+GET tmdb/_doc/_search
+{
+    "query": {
+        "function_score": {
+            "query": {
+                "multi_match": {
+                    "query": "william shatner patrick stewart",
+                    "type": "cross_fields",
+                    "fields": [
+                        "overview",
+                        "title",
+                        "directors.name",
+                        "cast.name"
+                    ]
+                }
+            },
+            "functions": [
+                {
+                    "filter": {
+                        "query": {
+                            "match_phrase": {
+                                "title": "star trek"
+                            }
+                        }
+                    }
+                }   
+            ]
+        }
+    }
+}
 
 
 GET tmdb/_doc/_search 
@@ -61,6 +90,19 @@ PUT tmdb
                         "bigram_filter"
                     ]
                 }
+            }
+        }
+    }
+}
+
+
+POST hotels/_search
+{
+    "suggest" : {
+        "hotel_suggest": {
+            "text" : "m",
+            "completion" : {
+                "field" : "name_suggest"
             }
         }
     }
