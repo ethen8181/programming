@@ -203,7 +203,7 @@ No data loss, ensures no duplicated messages being sent, ensure ordering within 
 
 - `enable.idempotence=true` (producer level). This implies that:
   - `ack=all` (producer level), which ensures the data is properly replicated before an ack is received.
-  - `retries=MAX_INT` (producer level), ensures trasient errors are retried indefinitely.
+  - `retries=MAX_INT` (producer level), ensures transient errors are retried indefinitely.
   - `max.in.flight.requests.per.connection=5` (producer level). Multiple request is tried at a time to increase throughout, ordering is still guaranteed with a idempotent producer.
 - `min.insync.replicas=2` (broker/topic level). Ensures two brokers have the data after an ack. This config goes hand in hand with `ack=all`. e.g. if `replication.factor=3`, then that means we can only tolerate 1 broker going down, otherwise the producer will receive a not enough replicas exception on send.
 

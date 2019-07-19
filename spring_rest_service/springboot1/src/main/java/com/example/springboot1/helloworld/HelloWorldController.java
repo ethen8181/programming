@@ -1,7 +1,6 @@
 package com.example.springboot1.helloworld;
 
 
-import com.example.springboot1.helloworld.HelloWorldBean;
 import org.springframework.web.bind.annotation.*;
 
 /*

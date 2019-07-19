@@ -1,3 +1,5 @@
+# Master Java Web Services and REST API with Spring Boot
+
 ## BackGround
 
 Spring Project can be composed of many different components. e.g.
@@ -18,7 +20,7 @@ The trend is that instead of building 1 monolithic application, we're buiding mu
 
 Diving a little bit more in-depth on its features.
 
-- It provides quick starter projects with auto-configuration. Once we start up the quick starter projects we get a lot of stuff that we originally had to manually configure for free.
+- It provides quick starter projects with auto-configuration. Once we start up the quick starter projects we get a lot of stuff that we originally had to manually configure for free. Some more details on auto-configuration. https://aboullaite.me/the-magic-behind-the-magic-spring-boot-autoconfiguration/
 - Embedded Server. The old way of deploying our applications used to go like this: we spin up let's say a linux machine, we install a server on that machine only then do we deploy our web application on it. With Spring Boot, we can package our servers, such as Tomcat along with our application.
 
 

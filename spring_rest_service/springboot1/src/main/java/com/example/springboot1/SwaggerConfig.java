@@ -26,9 +26,15 @@ import java.util.Set;
     - @Component is a class-level annotation that can be applied to any class to the application to make that bean
     a spring managed component.
     - @Bean is a method-level annotation that is used to register the bean returned by the method as a spring
-    configuration bean in the IOC container.
+    configuration bean in the IOC container. Annotating a class with the @Configuration annotation indicates that
+    the class can be used by the Spring IOC container as a source of bean definitions. Then the @Bean annotation
+    tells Spring that a method annotated with @Bean will return an object that should be registered as a bean
+    in the Spring application context.
 
     https://stackoverflow.com/questions/10604298/spring-component-versus-bean
+    https://www.tutorialspoint.com/spring/spring_bean_definition.htm
+    https://www.tutorialspoint.com/spring/spring_java_based_configuration.htm
+    https://www.journaldev.com/2623/spring-autowired-annotation#spring-autowired-annotation-and-qualifier-bean-autowiring-by-constructor-example
  */
 @Configuration
 @EnableSwagger2

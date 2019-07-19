@@ -1,7 +1,6 @@
 package com.ethen.kafka1.tutorial2;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonParser;
 import com.google.gson.annotations.SerializedName;
 import javafx.util.Pair;
 import org.apache.http.HttpHost;
