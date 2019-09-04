@@ -26,6 +26,9 @@ Use Cases:
 - Uber uses it to gather user, taxi, trip data in real time to compute and forecast demand, then leverage that info to compute surge pricing in real time.
 - Linkedin uses kafka to prevent spam, collect user interactions to make better connection recommendations in real time.
 
+
+Message Broker: https://medium.com/@xaviergeerinck/an-introduction-to-message-brokers-9bd203b4ebbd
+
 ## Apache Kafka Theory
 
 **Topic:** base of everything, presenting a particular stream of data. Similar to a table in a database (without all the constraints), we can have as many topic as we want and a topic is identified by its name.

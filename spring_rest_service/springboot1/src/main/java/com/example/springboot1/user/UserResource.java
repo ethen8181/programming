@@ -20,6 +20,10 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 @RestController
 public class UserResource {
 
+    /*
+        Distinction on how Autowired, Inject and Resource resolve dependencies.
+        https://www.sourceallies.com/2011/08/spring-injection-with-resource-and-autowired/
+     */
     @Autowired
     private UserDaoService service;
 
