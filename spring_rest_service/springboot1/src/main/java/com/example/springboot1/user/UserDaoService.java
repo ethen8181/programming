@@ -14,6 +14,8 @@ import java.util.List;
 
     We'll switch all of these to talking with JPA, a proper database once we learn about them.
     For now we'll store all of our data inside the memory using a static ArrayList
+
+    http://zetcode.com/springboot/component/
  */
 @Component
 public class UserDaoService {
