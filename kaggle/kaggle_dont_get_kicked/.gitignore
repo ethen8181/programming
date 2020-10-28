@@ -1,0 +1,7 @@
+src/.ipynb_checkpoints
+src/__pycache__
+output/
+model/
+DontGetKicked/
+DontGetKicked.zip
+**/data_challenge.log
