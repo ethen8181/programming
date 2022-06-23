@@ -64,7 +64,7 @@ class AkkaStreamPractice2 {
         /*
             akka stream offers many syntactic sugars. e.g.
 
-            .toMat(sink)(Keep.left).run() is equivalent to .runWith(sink)
+            .toMat(sink)(Keep.right).run() is equivalent to .runWith(sink)
          */
         implicit val system = ActorSystem("Practice2")
         implicit val materializer = ActorMaterializer()
@@ -74,7 +74,7 @@ class AkkaStreamPractice2 {
         val flow = Flow[Int].filter(_ % 2 == 0)
         val sink = Sink.fold[Int, Int](0)((a, b) => a + 1)
         val graph = source.via(flow)
-        val done = graph.runWith(sink)
+        val done: Future[Int] = graph.runWith(sink)
         done.onComplete {
             case Success(value) => println(s"total value: $value")
             case Failure(exception) => println(s"exception $exception")

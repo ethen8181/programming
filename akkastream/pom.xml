@@ -10,7 +10,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <flink.version>1.13.2</flink.version>
         <akka.version>2.5.19</akka.version>
         <scala.binary.version>2.11</scala.binary.version>
         <scala.version>2.11.12</scala.version>
@@ -44,7 +43,5 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-
 
 </project>
